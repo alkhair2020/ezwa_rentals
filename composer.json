@@ -55,7 +55,7 @@
             "database/factories"
         ],
         "files": [
-            "app/Helpers/QuizeHelpers.php"
+            "app/Helpers/DateHelper.php"
         ]
     },
     "autoload-dev": {
