@@ -36,7 +36,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title" id="basic-layout-form">عقار جديد</h4>
+                    <h4 class="card-title" id="basic-layout-form">وحدة جديدة</h4>
                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -53,13 +53,13 @@
                     <form class="form" action="{{route('properties.store')}}" method="POST" name="le_form"  enctype="multipart/form-data">
                             @csrf
                         <div class="form-body">
-                            <h4 class="form-section"><i class="ft-user"></i> بيانات العقار</h4>
+                            <h4 class="form-section"><i class="ft-user"></i> بيانات الوحدة</h4>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="projectinput5">نوع العقار</label>
+                                        <label for="projectinput5">نوع الوحدة</label>
                                         <select id="typeId" name="type" class="form-control">
-                                            <option value="" selected="" disabled="">اختر نوع العقار</option>
+                                            <option value="" selected="" disabled="">اختر نوع الوحدة</option>
                                             <option value="apartment">شقة</option>
                                             <!-- <option value="house">منزل</option> -->
                                             <option value="room">غرفة</option>
@@ -70,8 +70,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="projectinput1">رقم العقار</label>
-                                        <input type="number" name="number" id="numberId" class="form-control" placeholder="اكتب رقم العقار"
+                                        <label for="projectinput1">رقم الوحدة</label>
+                                        <input type="number" name="number" id="numberId" class="form-control" placeholder="اكتب رقم الوحدة"
                                         name="fname">
                                         <span id="numberError" class="error-message"></span>
                                     </div>
@@ -103,7 +103,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="projectinput4">عنوان العقار</label>
+                                        <label for="projectinput4">عنوان الوحدة</label>
                                         <input type="text" name="address" id="addressId" class="form-control" placeholder="عنوان العقار" >
                                         <span id="addressError" class="error-message"></span>
                                     </div>

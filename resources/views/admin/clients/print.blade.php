@@ -166,8 +166,10 @@
                   
                   @if($clients->property_type=='monthly')
                      شهري
-                  @else
+                  @elseif($clients->property_type=='weekly')
                      اسبوعي
+                  @else
+                     يومي
                   @endif
                 </p>
                 <p>{{$clients->properties->price}}
@@ -212,11 +214,7 @@
                 </p>
                 <p>
                   <span class="text-muted"></span>
-                     @if($clients->property_type=='monthly')
-                     30
-                     @else
-                     7
-                     @endif
+                     {{$clients->count_day}}
                 </p>
                 <p>
                   <span class="text-muted"> </span>{{$clients->discount}}

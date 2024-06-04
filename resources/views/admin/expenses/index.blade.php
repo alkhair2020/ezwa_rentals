@@ -111,10 +111,15 @@
                             <div class="col-12 col-sm-6">
                                 <div class="form-group">
                                     <label> المبلغ</label>
-                                    <input type="text" name="amount" class="form-control" value="{{old('amount')}}" id="amountId">
+                                    @if(isset($client))
+                                        <input type="text" name="amount" id="amountId" class="form-control" readonly value="{{$client->insurance}}">
+                                    @else
+                                        <input type="text" name="amount" id="amountId" class="form-control" >
+                                    @endif
                                     <span id="amountError" class="error-message"></span>
                                 </div>
                             </div>
+                           
                             
                             
                         </div>

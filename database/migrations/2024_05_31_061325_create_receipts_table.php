@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubQuestionsTable extends Migration
+class CreateReceiptsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateSubQuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub_questions', function (Blueprint $table) {
+        Schema::create('receipts', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->index('user_id');
+            $table->integer('client_id')->index('client_id');
+            $table->float('amount')->default('0');
+            $table->string('date');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateSubQuestionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sub_questions');
+        Schema::dropIfExists('receipts');
     }
 }

@@ -51,6 +51,7 @@
                                     <th>السعر</th>
                                     <th>الخصم</th>
                                     <th>الاجمالي</th>
+                                    <th>التأمين</th>
                                     <th>العمليات</th>
                                 </tr>
                             </thead>
@@ -67,8 +68,8 @@
                                     <td>{{$client->end_date}}</td>
                                     <td>{{$client->properties->price}}</td>
                                     <td>{{$client->discount}}</td>
-                                    
                                     <td>{{$client->total}}</td>
+                                    <td>{{$client->insurance}}</td>
 
 
                                     <td>
@@ -77,14 +78,30 @@
                                             <button type="button" class="btn btn-icon btn-info mr-1"><i
                                                     class="la la-print"></i></button>
                                         </a>
-                                        <a  class="btn btn-sm bg-success-light"
-                                            href="{{ url('admin/clients/receipts', $client->id) }}">
-                                            <button type="button" class="btn btn-icon btn-secondary mr-1"> <i class="la la-money"></i></button>
-                                        </a>
-                                        <a  class="btn btn-sm bg-success-light"
+                                        @if($client->receipts)
+                                            <a class="btn btn-sm bg-success-light" href="{{ url('admin/receipts/print', $client->receipts->id) }}">
+                                                <button type="button" class="btn btn-icon btn-secondary mr-1"> <i class="la la-money"></i></button>
+                                            </a>
+                                        @else
+                                            <a  class="btn btn-sm bg-success-light" data-toggle="modal"  data-target="#create_receipts">
+                                            <!-- <a  class="btn btn-sm bg-success-light" href="{{ url('admin/clients/receipts', $client->id) }}"> -->
+                                                <button type="button" class="btn btn-icon btn-secondary mr-1"> <i class="la la-money"></i></button>
+                                            </a>
+                                        @endif
+                                        @if($client->expenses)
+                                            <a class="btn btn-sm bg-success-light" href="{{ url('admin/expenses/print', $client->expenses->id) }}">
+                                            <button type="button" class="btn btn-icon btn-light mr-1"><i class="la la-plug"></i></button>
+                                            </a>
+                                        @else
+                                            <a  class="btn btn-sm bg-success-light" data-toggle="modal" data-catid="{{ $client->id }}"  data-target="#create_expenses">
+                                            <!-- <a  class="btn btn-sm bg-success-light" href="{{ url('admin/clients/receipts', $client->id) }}"> -->
+                                            <button type="button" class="btn btn-icon btn-light mr-1"><i class="la la-plug"></i></button>
+                                            </a>
+                                        @endif
+                                        <!-- <a  class="btn btn-sm bg-success-light"
                                             href="{{ url('admin/clients/expenses', $client->id) }}">
                                             <button type="button" class="btn btn-icon btn-light mr-1"><i class="la la-plug"></i></button>
-                                        </a>
+                                        </a> -->
                                         <a class="btn btn-sm bg-success-light" href="{{ route('clients.edit', $client->id) }}">
                                             <button type="button" class="btn btn-icon btn-success mr-1"><i
                                                 class="la la-edit"></i></button>
@@ -100,6 +117,35 @@
                             <tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="create_expenses" aria-hidden="true" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">اضافة سند صرف</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{route('expenses.store')}}" method="POST" 
+                        name="le_form"  enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="client_id" id="cat_id">
+                        <div class="row form-row">
+                            <div class="col-12 col-sm-12">
+                                <div class="form-group">
+                                    <label> المبلغ</label>
+                                    <input type="text" name="amount"  class="form-control" >
+                                    <span id="amountError" class="error-message"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" onclick="return Validateallinput()">حفظ</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -137,14 +183,18 @@
 
 <script>
 
-
-    $('#delete').on('show.bs.modal', function (event) {
-
+    $('#create_expenses').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget)
-
+        
         var cat_id = button.data('catid')
         var modal = $(this)
+        modal.find('.modal-body #cat_id').val(cat_id);
+    })
 
+    $('#delete').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var cat_id = button.data('catid')
+        var modal = $(this)
         modal.find('.modal-body #cat_id').val(cat_id);
     })
 
@@ -155,7 +205,11 @@
 <style>
     .btn-sm, .btn-group-sm > .btn {
     padding: 0.1rem 0.1rem !important;
-}
+    }
+    .table th, .table td {
+        padding: 0.75rem 1rem;
+        text-align:center
+    }
   </style>
 <!--/ Multi-column ordering table -->
 @endsection

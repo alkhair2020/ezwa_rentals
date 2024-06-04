@@ -14,7 +14,7 @@
         @endif
         <div class="col-md-12 col-12">
             <div class="dropdown float-md-right">
-                <a href="{{route('properties.create')}}" class="btn btn-primary float-right mb-2">اضافة عقار</a>
+                <a href="{{route('properties.create')}}" class="btn btn-primary float-right mb-2">اضافة وحدة</a>
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">العقارات</h4>
+                    <h4 class="card-title">الوحدات</h4>
                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
                         <ul class="list-inline mb-0">
@@ -41,8 +41,8 @@
                         <table class="table table-striped table-bordered multi-ordering">
                             <thead>
                                 <tr>
-                                    <th>نوع العقار</th>
-                                    <th>رقم العقار</th>
+                                    <th>نوع الوحدات</th>
+                                    <th>رقم الوحدة</th>
                                     <th>عدد الغرف</th>
                                     <th>عدد الحمامات</th>
                                     <th>السعر</th>

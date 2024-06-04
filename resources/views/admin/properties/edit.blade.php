@@ -36,7 +36,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title" id="basic-layout-form">عقار جديد</h4>
+                    <h4 class="card-title" id="basic-layout-form">تعديل الوحدة </h4>
                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
                         <ul class="list-inline mb-0">
@@ -54,13 +54,13 @@
                             @csrf
                             @method('put')
                             <div class="form-body">
-                                <h4 class="form-section"><i class="ft-user"></i> بيانات العقار</h4>
+                                <h4 class="form-section"><i class="ft-user"></i> بيانات الوحدة</h4>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="projectinput5">نوع العقار</label>
+                                            <label for="projectinput5">نوع الوحدة</label>
                                             <select id="projectinput5" name="type" class="form-control">
-                                                <option value="" selected="" disabled="">اختر نوع العقار</option>
+                                                <option value="" selected="" disabled="">اختر نوع الوحدة</option>
                                                 <option value="apartment" {{ $property->type == 'apartment' ? "selected" : "" }}>شقة</option>
                                                 <!-- <option value="house">منزل</option>-->
                                                 <option value="room" {{ $property->type == 'room' ? "selected" : "" }}>غرفة</option>
@@ -70,9 +70,9 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="projectinput1">رقم العقار</label>
+                                            <label for="projectinput1">رقم الوحدة</label>
                                             <input type="number" name="number" id="projectinput1" class="form-control"
-                                                placeholder="اكتب رقم العقار" name="fname" value="{{$property->number}}">
+                                                placeholder="اكتب رقم الوحدة" name="fname" value="{{$property->number}}">
                                         </div>
                                     </div>
 
@@ -101,9 +101,9 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="projectinput4">عنوان العقار</label>
+                                            <label for="projectinput4">عنوان الوحدة</label>
                                             <input type="text" name="address" id="projectinput4" class="form-control"
-                                                placeholder="عنوان العقار" value="{{$property->address}}">
+                                                placeholder="عنوان الوحدة" value="{{$property->address}}">
                                         </div>
                                     </div>
                                 </div>
@@ -144,114 +144,6 @@
 
         </div>
     </div>
-    <div class="row match-height">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title" id="basic-layout-form">عقار جديد</h4>
-                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                    <div class="heading-elements">
-                        <ul class="list-inline mb-0">
-                            <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                            <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                            <li><a data-action="close"><i class="ft-x"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card-content collapse show">
-                    <div class="card-body">
-
-                        <form class="form" action="{{route('properties.store')}}" method="POST" name="le_form"
-                            enctype="multipart/form-data">
-                            @csrf
-                            <div class="form-body">
-                                <h4 class="form-section"><i class="ft-user"></i> بيانات العقار</h4>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="projectinput5">نوع العقار</label>
-                                            <select id="projectinput5" name="type" class="form-control">
-                                                <option value="none" selected="" disabled="">اختر نوع العقار</option>
-                                                <option value="apartment">شقة</option>
-                                                <option value="house">منزل</option>
-                                                <option value="room">غرفة</option>
-                                                <option value="basement">بدروم</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="projectinput1">رقم العقار</label>
-                                            <input type="number" name="number" id="projectinput1" class="form-control"
-                                                placeholder="اكتب رقم العقار" name="fname">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="projectinput4">سعر الايجار</label>
-                                            <input type="number" name="price" id="projectinput4" class="form-control"
-                                                placeholder="سعر الايجار">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="projectinput1">عدد الغرف</label>
-                                            <input type="number" name="rooms" id="projectinput1" class="form-control"
-                                                placeholder="اكتب عدد الغرف" name="fname">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="projectinput4"> عدد الحمامات</label>
-                                            <input type="number" name="baths" id="projectinput4" class="form-control"
-                                                placeholder=" عدد الحمامات">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="projectinput4">عنوان العقار</label>
-                                            <input type="text" name="address" id="projectinput4" class="form-control"
-                                                placeholder="عنوان العقار">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="projectinput5">حالة العقار</label>
-                                            <select id="projectinput5" name="status" class="form-control">
-                                                <option value="none" selected="" disabled="">اختر الحالة</option>
-                                                <option value="1">ساكن</option>
-                                                <option value="2">نظيف</option>
-                                                <option value="0">بحاجة تنضيف</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="projectinput8">ملاحظات /وصف</label>
-                                            <textarea id="projectinput8" rows="5" class="form-control"
-                                                name="description" placeholder="اكتب وصف عن العقار"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-actions">
-                                <button type="button" class="btn btn-warning mr-1">
-                                    <i class="ft-x"></i> Cancel
-                                </button>
-                                <input type="submit" class="btn btn-primary" value="حفظ" />
-
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 </section>
 @endsection

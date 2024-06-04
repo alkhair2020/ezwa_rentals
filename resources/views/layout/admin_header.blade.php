@@ -12,7 +12,7 @@
       </li>
       <li class=" nav-item {{ Request::is('admin/properties') ? 'active' : '' }}">
         <a class="dropdown-toggle nav-link " href="{{url('admin/properties')}}"><i class="la la-building"></i>
-          <span>العقارات</span>
+          <span>الوحدات</span>
         </a>
       </li>
       <li class=" nav-item {{ Request::is('admin/clients') ? 'active' : '' }}">

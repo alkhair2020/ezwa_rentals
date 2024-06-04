@@ -167,7 +167,7 @@
               </div>
               <div class="col-md-6 col-sm-12 text-center" style="color: #000; font-size: large;font-weight: bold;">
                     <p class="ml-5">
-                     اسم المسلتم
+                     اسم المستلم
                     </p>
                     <p class="ml-4">{{$users->name}}
                     </p>

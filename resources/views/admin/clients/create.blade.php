@@ -73,7 +73,7 @@
                                             <span id="typeError" class="error-message"></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <!-- <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="projectinput5">الجنسية</label>
                                             <select name="nationality" class="form-control" id="nationalityId">
@@ -83,7 +83,7 @@
                                             </select>
                                             <span id="nationalityError" class="error-message"></span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="projectinput4"> عدد الافراد</label>
@@ -98,9 +98,9 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="projectinput5">العقار / الشقة</label>
+                                            <label for="projectinput5">الوحدة</label>
                                             <select name="property_id" class="form-control" id="propertyId">
-                                                <option value="" selected="" disabled="">اختر العقار</option>
+                                                <option value="" selected="" disabled="">اختر الوحدة</option>
                                                 @foreach ($properties as $property)
                                                 <option value="{{$property->id}}">{{$property->number}}</option>
                                                 @endforeach
@@ -110,14 +110,27 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="issueinput3">بداية العقد</label>
-                                            <input type="date" name="start_date" id="start_dateId" class="form-control"
-                                                data-toggle="tooltip" data-trigger="hover" data-placement="top"
-                                                data-title="Date Opened">
-                                            <span id="start_dateError" class="error-message"></span>
+                                            <label for="projectinput5">نوع الإجار</label>
+                                            <select name="property_type" class="form-control" id="property_typeId">
+                                                <option value="" selected="" disabled="">اختر نوع الإجار</option>
+                                                <option value="monthly">شهري</option>
+                                                <option value="weekly">اسبوعي</option>
+                                                <option value="daily">يومي</option>
+                                            </select>
+                                            <span id="property_typeError" class="error-message"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="projectinput5">عدد (يوم  / اسبوع / شهر ) </label>
+                                            <input type="number" name="count_day" id="count_dayId" class="form-control"
+                                                data-toggle="tooltip" data-trigger="hover" data-placement="top"
+                                                data-title="Date Fixed">
+                                            <span id="count_dayError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="issueinput4">نهاية العقد</label>
                                             <input type="date" name="end_date" id="end_dateId" class="form-control"
@@ -125,18 +138,16 @@
                                                 data-title="Date Fixed">
                                             <span id="end_dateError" class="error-message"></span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="projectinput5">نوع الإجار</label>
-                                            <select name="property_type" class="form-control" id="property_typeId">
-                                                <option value="" selected="" disabled="">اختر نوع الإجار</option>
-                                                <option value="monthly">شهري</option>
-                                                <option value="weekly">اسبوعي</option>
-                                            </select>
-                                            <span id="property_typeError" class="error-message"></span>
+                                            <label for="issueinput3">بداية العقد</label>
+                                            <input type="date" name="start_date" id="start_dateId" class="form-control"
+                                                data-toggle="tooltip" data-trigger="hover" data-placement="top"
+                                                data-title="Date Opened">
+                                            <span id="start_dateError" class="error-message"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-4">

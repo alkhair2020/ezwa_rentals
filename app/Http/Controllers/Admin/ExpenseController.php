@@ -75,7 +75,6 @@ class ExpenseController extends Controller
         $add->user_id     = $user_id->id;
         $add->client_id     = $request->client_id;
         $add->amount    = $request->amount;
-        
        
         $add->save();
         return redirect()->back()->with("message", 'تم الإضافة بنجاح');

@@ -5,10 +5,12 @@ use App\Http\Controllers\Controller;
 use App\Client;
 use App\Property;
 use App\User;
+use App\Receipt;
 use Illuminate\Http\Request;
 use Mpdf\Mpdf;
 use App\Helpers\DateHelper;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon as Carbon;
 class ClientController extends Controller
 {
     public function print($id)
@@ -60,12 +62,14 @@ class ClientController extends Controller
     }
     public function index()
     {
-        $clients=Client::with('properties')->with('users')->get();
+        $clients=Client::with('properties')->with('users')->with('receipts')->with('expenses')->get();
+        
         return view('admin.clients.index',compact('clients'));
     }
     public function propertyClients($id)
     {
-        $clients=Client::where('property_id',$id)->with('properties')->with('users')->get();
+        $clients=Client::where('property_id',$id)->with('properties')->with('users')->with('receipts')->with('expenses')->get();
+        
         return view('admin.clients.index',compact('clients'));
     }
     public function create()
@@ -84,31 +88,46 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $user_id=Auth::user();
-        // dd($user_id);
-        $this->validate( $request,[
-                'property_id'=>'required',
-                'name'=>'required',
-            ],
-            [
-                'property_id.required'=>'يرجى ادخال نوع العقار',
-                'name.required'=>'يجب ادخال رقم العقار',
-            ]
-        );
+        
+        $now = Carbon::parse($request->start_date);
+        // $end_date = $now->addMonth($request->count_day)->toDateString();
+        // dd($end_date);
+        $datenow=Carbon::now()->format('Y-m-d');
+        if($request->property_type=='monthly'){
+            $end_date = $now->addMonth($request->count_day)->toDateString();
+        }elseif($request->property_type=='weekly'){
+            $end_date = $now->addWeeks($request->count_day)->toDateString();
+        }else{
+            $end_date = $now->addDays($request->count_day)->toDateString();
+        }
+        
+        
+       
+
+        // $futureDate->addWeeks(3);
+        // echo $end_date;
+
+
+        // dd($end_date);
         $property = Property::where('id',$request->property_id)->first();
         $add = new Client;
         $add->user_id     = $user_id->id;
         $add->property_id     = $request->property_id;
         $add->name    = $request->name;
         $add->type    = $request->type;
-        $add->nationality    = $request->nationality;
+        if($request->type ="national identity"){
+            $add->nationality    = 'سعودي';
+        }else{
+            $add->nationality    = 'مقيم';
+        }
+       
         $add->id_number    = $request->id_number;
         $add->phone    = $request->phone;
         $add->number_companions    = $request->number_companions;
-        
         $add->property_id    = $request->property_id;
-        // $add->client_id     = $add->id ;
+        $add->count_day    = $request->count_day;
         $add->start_date    = $request->start_date;
-        $add->end_date    = $request->end_date;
+        $add->end_date    = $end_date;
         $add->property_type    = $request->property_type;
         if(isset( $request->discount)){
             $add->discount    = $request->discount;
@@ -119,11 +138,26 @@ class ClientController extends Controller
         if(isset( $request->draft)){
              $add->draft    = $request->draft;
         }
-        $add->total    = $property->price - $request->discount;
-        
-       
+        if($request->property_type=='weekly'){
+            $price = $property->price / 4;
+            $add->total    = $price * $request->count_day - $request->discount;
+        }elseif($request->property_type=='daily'){
+            $price =$property->price / 30;
+            $add->total    = $price * $request->count_day - $request->discount;
+        }else{
+            $add->total    = $property->price - $request->discount;
+        }
+        // dd($add);
         $add->save();
-        return redirect()->back()->with("message", 'تم الإضافة بنجاح');
+
+        $datenow=Carbon::now()->format('Y-m-d');
+        $add_receipt = new Receipt;
+        $add_receipt->user_id     = $user_id->id;
+        $add_receipt->client_id     = $add->id;
+        $add_receipt->amount    = $request->insurance;
+        $add_receipt->date    = $datenow;
+        $add_receipt->save();
+        return redirect()->route('clients.index')->with("message", 'تم الإضافة بنجاح');
     }
 
     /**

@@ -43,6 +43,7 @@
                                     <th>اسم العميل</th>
                                     <th>المبلغ</th>
                                     <th> التاريخ</th>
+                                    <th class="text-center"> العمليات</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,7 +52,7 @@
                                     <td>{{$receipt->clients->name}}</td>
                                     <td>{{$receipt->amount}}</td>
                                     <td> {{$receipt->created_at->format('Y-m-d') }}</td>
-                                    <td>
+                                    <td class="text-center">
                                         <a class="btn btn-sm bg-success-light"
                                             href="{{ url('admin/receipts/print', $receipt->id) }}">
                                             <button type="button" class="btn btn-icon btn-info mr-1"><i
@@ -94,9 +95,8 @@
                                 <div class="form-group">
                                     <label>اسم العميل</label>
                                     @if(isset($client))
-                                    <input type="text"  name="name" class="form-control" value="{{$client->name}}"  disabled id="clientId">
+                                    <input type="text"  name="name" class="form-control" value="{{$client->name}}"  readonly id="clientId">
                                     <input type="hidden" name="client_id" class="form-control" value="{{$client->id}}"  >
-                                    <span id="clientError" class="error-message"></span>
                                     @else
                                         <select name="client_id" class="form-control" id="clientId">
                                             <option value="" selected="" disabled="">اختر العميل</option>
@@ -104,14 +104,31 @@
                                             <option value="{{$_item->id}}">{{$_item->name}}</option>
                                             @endforeach
                                         </select>
-                                        <span id="clientError" class="error-message"></span>
                                     @endif
+                                    <span id="clientError" class="error-message"></span>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6">
                                 <div class="form-group">
                                     <label> المبلغ</label>
-                                    <input type="text" name="amount" id="amountId" class="form-control" >
+                                    @if(isset($client))
+                                        <input type="text" name="amount" id="amountId" class="form-control" readonly value="{{$client->insurance}}">
+                                    @else
+                                        <input type="text" name="amount" id="amountId" class="form-control" >
+                                    @endif
+                                    <span id="amountError" class="error-message"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label> التاريخ</label>
+                                    @if(isset($client))
+                                        <input type="date" name="date" id="start_dateId" class="form-control"
+                                                data-toggle="tooltip" data-trigger="hover" data-placement="top" value="{{$client->start_date}}" readonly>
+                                    @else
+                                        <input type="date" name="date" id="start_dateId" class="form-control"
+                                                data-toggle="tooltip" data-trigger="hover" data-placement="top" >
+                                    @endif
                                     <span id="amountError" class="error-message"></span>
                                 </div>
                             </div>

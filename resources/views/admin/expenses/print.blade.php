@@ -115,6 +115,9 @@
                   <span class="text-muted">رقم السند :</span>
                 </p>
                 <p>
+                  <span class="text-muted">رقم سند القبض :</span>
+                </p>
+                <p>
                   <span class="text-muted">رقم العقد :</span>
                 </p>
 
@@ -122,6 +125,9 @@
               <div class="col-md-1 col-sm-12 ">
                 <p>
                   {{$expenses->id}}
+                </p>
+                <p>
+                  <span class="text-muted"></span> {{$clients->id}}
                 </p>
                 <p>
                   <span class="text-muted"></span> {{$clients->id}}
