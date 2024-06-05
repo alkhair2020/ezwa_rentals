@@ -144,7 +144,7 @@
                     <form action="{{route('expenses.store')}}" method="POST" name="le_form"
                         enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="client_id" id="cat_id" >
+                        <input type="hidden" name="client_id" id="cat_id">
                         <div class="row form-row">
                             <div class="col-12 col-sm-12">
                                 <div class="form-group">
@@ -234,8 +234,7 @@
             return false;
         }
         amountError.innerHTML = "";
-        // amountError.innerHTML = "  vvv";
-        // return false;
+       
 
     }
 </script>
