@@ -144,7 +144,7 @@
                     <form action="{{route('expenses.store')}}" method="POST" name="le_form"
                         enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="client_id" id="cat_id">
+                        <input type="hidden" name="client_id" id="cat_id" >
                         <div class="row form-row">
                             <div class="col-12 col-sm-12">
                                 <div class="form-group">
@@ -201,6 +201,7 @@
         var cat_id = button.data('catid')
         var insuranceid = button.data('insuranceid')
         var modal = $(this)
+        modal.find('.modal-body #cat_id').val(cat_id);
         modal.find('.modal-body #insurance_id').val(insuranceid);
     })
 

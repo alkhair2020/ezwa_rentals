@@ -69,13 +69,12 @@ class ExpenseController extends Controller
     public function store(Request $request)
     {
         $user_id=Auth::user();
-       
+        // dd($request->all());
         $property = Client::where('id',$request->client_id)->first();
         $add = new Expense;
         $add->user_id     = $user_id->id;
         $add->client_id     = $request->client_id;
         $add->amount    = $request->amount;
-       
         $add->save();
         return redirect()->back()->with("message", 'تم الإضافة بنجاح');
     }
