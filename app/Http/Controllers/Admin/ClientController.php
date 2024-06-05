@@ -139,7 +139,6 @@ class ClientController extends Controller
              $add->draft    = $request->draft;
         }
         $price_whith_percent= $property->price + ($property->price * $property->percentage) / 100;
-        // dd($price_whith_percent);
         if($request->property_type=='weekly'){
             $price = $price_whith_percent / 4;
             $add->total    = $price * $request->count_day - $request->discount;

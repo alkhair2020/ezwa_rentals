@@ -19,6 +19,85 @@
 
 </div>
 <div id="crypto-stats-3" class="row">
+  <div class="col-lg-2 col-md-6 col-sm-12">
+    <div class="card" >
+      <div class="card-body">
+        <div class="card-block text-center">
+          <div class="badge block  " style="border-right: 20px solid #DADADA;border-top: 3px solid #DADADA;  ">
+          <div class="p-1" style="background: #ff9149; margin-bottom: -5px;">
+              <a href="#" style="color: #fff;   ">502-501</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2 col-md-6 col-sm-12">
+    <div class="card" >
+      <div class="card-body">
+        <div class="card-block text-center">
+          <div class="badge block  " style="border-right: 20px solid #DADADA;border-top: 3px solid #DADADA;  ">
+          <div class="p-1" style="background: #aa342b; margin-bottom: -5px;">
+              <a href="#" style="color: #fff;   ">502-501</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2 col-md-6 col-sm-12">
+    <div class="card" >
+      <div class="card-body">
+        <div class="card-block text-center">
+          <div class="badge block  " style="border-right: 15px solid #2196F3;border-top: 3px solid #2196F3;  ">
+          <div class="p-1" style="background: #28D094; margin-bottom: -5px;">
+              <a href="#" style="color: #fff;   ">502-501</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2 col-md-6 col-sm-12">
+    <div class="card" >
+      <div class="card-body">
+        <div class="card-block text-center">
+          <div class="badge block  " style="border-right: 15px solid #2196F3;border-top: 3px solid #2196F3;  ">
+          <div class="p-1" style="background: #DADADA; margin-bottom: -5px;">
+              <a href="#" style="color: #fff;   ">502-501</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2 col-md-6 col-sm-12">
+    <div class="card" >
+      <div class="card-body">
+        <div class="card-block text-center">
+          <div class="badge block  " style="border-right: 15px solid #2196F3;border-top: 3px solid #2196F3;  ">
+          <div class="p-1" style="background: #aa342b; margin-bottom: -5px;">
+              <a href="#" style="color: #fff;   ">502-501</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2 col-md-6 col-sm-12">
+    <div class="card" >
+      <div class="card-body">
+        <div class="card-block text-center">
+          <div class="badge block  " style="border-right: 15px solid #2196F3;border-top: 3px solid #2196F3;  ">
+          <div class="p-1" style="background: #aa342b; margin-bottom: -5px;">
+              <a href="#" style="color: #fff;   ">502-501</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <div class="col-xl-4 col-12">
     <div class="card crypto-card-3 pull-up">
       <div class="card-content">
@@ -32,13 +111,13 @@
             </div>
             <div class="col-7 pl-2">
               <a href="#">
-                <h4>عدد العقارات</h4>
+                <h4>إجمالي الوحدات</h4>
                 <!-- <h6 class="text-muted"> عدد العقارات</h6> -->
               </a>
             </div>
             <div class="col-3 text-right">
               <a href="#">
-                <h5> {{$user_count}}</h5>
+                <h5> {{$totalCount}}</h5>
               </a>
               <!--<h6 class="success darken-4">31% <i class="la la-arrow-up"></i></h6>-->
             </div>
@@ -66,13 +145,13 @@
             </div>
             <div class="col-7 pl-2">
               <a href="#">
-                <h4>عدد العقارات الساكنه</h4>
+                <h4>  مؤجر</h4>
                 <!-- <h6 class="text-muted"> عدد العقارات الساكنة</h6> -->
               </a>
             </div>
             <div class="col-3 text-right">
               <a href="#">
-                <h5> {{$user_count}}</h5>
+                <h5> {{$rented_count}}</h5>
               </a>
               <!--<h6 class="success darken-4">31% <i class="la la-arrow-up"></i></h6>-->
             </div>
@@ -100,13 +179,13 @@
             </div>
             <div class="col-7 pl-2">
               <a href="#">
-                <h4>عدد العملاء</h4>
+                <h4>صيانة</h4>
                 <!-- <h6 class="text-muted"> عدد العملاء</h6> -->
               </a>
             </div>
             <div class="col-3 text-right">
               <a href="#">
-                <h5> {{$user_count}}</h5>
+                <h5> {{$maintenance_count}}</h5>
               </a>
               <!--<h6 class="success darken-4">31% <i class="la la-arrow-up"></i></h6>-->
             </div>
@@ -134,13 +213,13 @@
             </div>
             <div class="col-7 pl-2">
               <a href="#">
-                <h4>عدد سندات القبض</h4>
+                <h4>غير نظيف</h4>
                 <!-- <h6 class="text-muted"> عدد سندات</h6> -->
               </a>
             </div>
             <div class="col-3 text-right">
               <a href="#">
-                <h5> {{$user_count}}</h5>
+                <h5> {{$notclean_count}}</h5>
               </a>
               <!--<h6 class="success darken-4">31% <i class="la la-arrow-up"></i></h6>-->
             </div>
@@ -168,13 +247,13 @@
             </div>
             <div class="col-7 pl-2">
               <a href="#">
-                <h4>عدد سندات الصرف</h4>
+                <h4>إنتظار تسجيل الدخول </h4>
                 <!-- <h6 class="text-muted"> عدد سندات</h6> -->
               </a>
             </div>
             <div class="col-3 text-right">
               <a href="#">
-                <h5> {{$user_count}}</h5>
+                <h5> {{$waiting_count}}</h5>
               </a>
               <!--<h6 class="success darken-4">31% <i class="la la-arrow-up"></i></h6>-->
             </div>
@@ -202,13 +281,13 @@
             </div>
             <div class="col-7 pl-2">
               <a href="#">
-                <h4>عدد الموظفين</h4>
+                <h4>عدد العقود</h4>
                 <!-- <h6 class="text-muted"> عدد سندات</h6> -->
               </a>
             </div>
             <div class="col-3 text-right">
               <a href="#">
-                <h5> {{$user_count}}</h5>
+                <h5> {{$clientsCount}}</h5>
               </a>
               <!--<h6 class="success darken-4">31% <i class="la la-arrow-up"></i></h6>-->
             </div>
@@ -222,6 +301,8 @@
       </div>
     </div>
   </div>
-
+  
+  
+ 
 </div>
 @endsection

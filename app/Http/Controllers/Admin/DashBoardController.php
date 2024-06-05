@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Property;
+use App\Client;
 use App\User;
-
+use DB;
 class DashBoardController extends Controller
 {
        
@@ -20,9 +21,24 @@ class DashBoardController extends Controller
         
         // $courses=Course::where('status',1)->get();
         // $courses_count=count($courses);
-       
-        $user_count=User::count();
-        // dd($visit_sum);
+        $orders = Property::select(
+            DB::raw('COUNT(*) as total'),
+            DB::raw('(SELECT COUNT(*) FROM properties WHERE status = "rented") as rented_count'),
+            DB::raw('(SELECT COUNT(*) FROM properties WHERE status = "maintenance") as maintenance_count'),
+            DB::raw('(SELECT COUNT(*) FROM properties WHERE status = "notclean") as notclean_count'),
+            DB::raw('(SELECT COUNT(*) FROM properties WHERE status = "waiting") as waiting_count')
+        )->first();
+        
+        $totalCount = $orders->total;
+        $rented_count = $orders->rented_count;
+        $maintenance_count = $orders->maintenance_count;
+        $notclean_count = $orders->notclean_count;
+        $waiting_count = $orders->waiting_count;
+        
+        $clients = Client::select(
+            DB::raw('COUNT(*) as total'),
+        )->first();
+        $clientsCount = $clients->total;
         // $student_not_active_count=Instructor::where('type','student')->where('status',0)->count();
         
         // $instructor_count=Instructor::where('type','instructor')->count();
@@ -39,7 +55,7 @@ class DashBoardController extends Controller
         
         // $balance=Transaction::orderBy('id', 'DESC')->first();
     //   dd($user_count);
-        return view('admin.index_admin',compact('user_count'));
+        return view('admin.index_admin',compact('totalCount','rented_count','maintenance_count','notclean_count','waiting_count','clientsCount'));
     }
 
     // public function create()

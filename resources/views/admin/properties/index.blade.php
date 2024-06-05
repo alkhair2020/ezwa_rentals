@@ -48,8 +48,8 @@
                                     <th>السعر</th>
                                     <th>نسبة الزيادة</th>
                                     <th>الحالة</th>
-                                    <th>العنوان</th>
-                                    <th>الوصف</th>
+                                    <!-- <th>العنوان</th> -->
+                                    <!-- <th>الوصف</th> -->
                                     <th>العمليات</th>
                                 </tr>
                             </thead>
@@ -79,8 +79,8 @@
                                             إنتظار تسجيل الدخول 
                                         @endif
                                     </td>
-                                    <td>{{$property->address}}</td>
-                                    <td>{{$property->description}}</td>
+                                    <!-- <td>{{$property->address}}</td> -->
+                                    <!-- <td>{{$property->description}}</td> -->
                                     <td>
                                         <a class="btn btn-sm bg-success-light"
                                             href="{{ url('admin/property/clients', $property->id) }}">
