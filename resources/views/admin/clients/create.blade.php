@@ -153,7 +153,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="projectinput1">الخصم</label>
-                                            <input type="number" name="discount" id="discountId" class="form-control" value="0"
+                                            <input type="number" name="discount" id="discountId" class="form-control" 
                                                 placeholder="الخصم" name="fname">
                                             <span id="discountError" class="error-message"></span>
                                         </div>

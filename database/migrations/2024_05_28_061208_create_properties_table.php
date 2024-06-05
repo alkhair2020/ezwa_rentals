@@ -22,7 +22,8 @@ class CreatePropertiesTable extends Migration
             $table->integer('price');
             $table->string('address')->nullable();
             $table->longText('description')->nullable();
-            $table->integer('status')->default('0');
+            $table->string('status')->default('waiting');
+            $table->integer('percentage')->default(0);
             $table->timestamps();
         });
     }

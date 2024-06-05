@@ -115,9 +115,11 @@
                                         <label for="projectinput5">حالة العقار</label>
                                         <select id="projectinput5" name="status" class="form-control">
                                             <option value="none" selected="" disabled="">اختر الحالة</option>
-                                            <option value="1">ساكن</option>
-                                            <option value="2">نظيف</option>
-                                            <option value="0">بحاجة تنضيف</option>
+                                            <option value="rented">مؤجر</option>
+                                            <option value="maintenance">صيانة </option>
+                                            <option value="notclean"> غير نظيف </option>
+                                            <option value="waiting"> إنتظار تسجيل الدخول </option>
+                                            <option value="exit"> خروج اليوم </option>
                                         </select>
                                     </div>
                                 </div> -->

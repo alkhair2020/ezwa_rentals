@@ -150,7 +150,7 @@
                 </p>
                 
                 <p>
-                  <span class="text-muted"> التكلفة النهائية :</span>
+                  <span class="text-muted"> الخصم :</span>
                 </p>
                 <p>
                   <span class="text-muted"> المدفوع :</span>
@@ -172,13 +172,13 @@
                      يومي
                   @endif
                 </p>
-                <p>{{$clients->properties->price}}
+                <p>{{$clients->properties->price +  ($clients->properties->price * $clients->properties->percentage) / 100}}
                 </p>
                 
-                <p>  {{$clients->total}}
+                <p>  {{$clients->discount}}
                 </p>
                 <p>
-                  <span class="text-muted"></span>  {{$clients->total}}
+                  <span class="text-muted"></span>  {{$clients->total }}
                 </p>
               </div>
               <div class="col-md-3 col-sm-12 ">
@@ -194,9 +194,9 @@
                 <p>
                   <span class="text-muted">الايام :</span>
                 </p>
-                <p>
+                <!-- <p>
                   <span class="text-muted"> الخصم :</span>
-                </p>
+                </p> -->
                 <p>
                   <span class="text-muted">التأمين :</span>
                 </p>
@@ -223,9 +223,9 @@
                   @endif
                      
                 </p>
-                <p>
+                <!-- <p>
                   <span class="text-muted"> </span>{{$clients->discount}}
-                </p>
+                </p> -->
                 <p>
                   <span class="text-muted"></span>{{$clients->insurance}}
                 </p>

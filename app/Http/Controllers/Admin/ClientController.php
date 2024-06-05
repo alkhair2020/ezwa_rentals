@@ -138,14 +138,16 @@ class ClientController extends Controller
         if(isset( $request->draft)){
              $add->draft    = $request->draft;
         }
+        $price_whith_percent= $property->price + ($property->price * $property->percentage) / 100;
+        // dd($price_whith_percent);
         if($request->property_type=='weekly'){
-            $price = $property->price / 4;
+            $price = $price_whith_percent / 4;
             $add->total    = $price * $request->count_day - $request->discount;
         }elseif($request->property_type=='daily'){
-            $price =$property->price / 30;
+            $price =$price_whith_percent / 30;
             $add->total    = $price * $request->count_day - $request->discount;
         }else{
-            $add->total    = $property->price - $request->discount;
+            $add->total    =$price_whith_percent - $request->discount;
         }
         // dd($add);
         $add->save();

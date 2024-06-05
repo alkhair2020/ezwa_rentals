@@ -56,7 +56,7 @@
                             <div class="form-body">
                                 <h4 class="form-section"><i class="ft-user"></i> بيانات الوحدة</h4>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput5">نوع الوحدة</label>
                                             <select id="projectinput5" name="type" class="form-control">
@@ -68,7 +68,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput1">رقم الوحدة</label>
                                             <input type="number" name="number" id="projectinput1" class="form-control"
@@ -76,53 +76,63 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput4">سعر الايجار</label>
                                             <input type="number" name="price" id="projectinput4" class="form-control"
                                                 placeholder="سعر الايجار" value="{{$property->price}}">
                                         </div>
                                     </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput4"> نسبة مئوية</label>
+                                            <input type="number" name="percentage" id="projectinput4" class="form-control"
+                                                placeholder="نسبة الزيادة" value="{{ $property->percentage == 0 ? '' : $property->percentage }}">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput1">عدد الغرف</label>
                                             <input type="number" name="rooms" id="projectinput1" class="form-control"
                                                 placeholder="اكتب عدد الغرف" name="fname" value="{{$property->rooms}}">
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput4"> عدد الحمامات</label>
                                             <input type="number" name="baths" id="projectinput4" class="form-control"
                                                 placeholder=" عدد الحمامات" value="{{$property->baths}}">
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput4">عنوان الوحدة</label>
                                             <input type="text" name="address" id="projectinput4" class="form-control"
                                                 placeholder="عنوان الوحدة" value="{{$property->address}}">
                                         </div>
                                     </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput5">حالة الوحدة </label>
+                                            <select id="projectinput5" name="status" class="form-control">
+                                                <option value="" selected="" disabled="">اختر الحالة</option>
+                                                <option value="rented"  {{ $property->status == 'rented' ? "selected" : "" }}>مؤجر</option>
+                                                <option value="maintenance"  {{ $property->status == 'maintenance' ? "selected" : "" }}>صيانة </option>
+                                                <option value="notclean" {{ $property->status == 'notclean' ? "selected" : "" }}> غير نظيف </option>
+                                                <option value="waiting" {{ $property->status == 'waiting' ? "selected" : "" }}> إنتظار تسجيل الدخول </option>
+                                                <!-- <option value="exit"> خروج اليوم </option> -->
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
-                                    <!-- <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="projectinput5">حالة العقار</label>
-                                        <select id="projectinput5" name="status" class="form-control">
-                                            <option value="none" selected="" disabled="">اختر الحالة</option>
-                                            <option value="1">ساكن</option>
-                                            <option value="2">نظيف</option>
-                                            <option value="0">بحاجة تنضيف</option>
-                                        </select>
-                                    </div>
-                                </div> -->
+                                
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="projectinput8">ملاحظات /وصف</label>
-                                            <textarea id="projectinput8" rows="5" class="form-control"
+                                            <textarea id="projectinput8" rows="1" class="form-control"
                                                 name="description" placeholder="اكتب وصف عن العقار"> {{$property->description}}</textarea>
                                         </div>
                                     </div>

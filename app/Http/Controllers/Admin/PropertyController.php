@@ -24,7 +24,6 @@ class PropertyController extends Controller
 
     public function store(Request $request)
     {
-        // dd('fff');
         $this->validate( $request,[
                 'type'=>'required',
                 'number'=>'required',
@@ -40,13 +39,14 @@ class PropertyController extends Controller
         $add->rooms    = $request->rooms;
         $add->baths    = $request->baths;
         $add->price    = $request->price;
+       
         $add->address    = $request->address;
         $add->description    = $request->description;
-        $add->status    = $request->status;
+      
 
 
         $add->save();
-        return redirect()->back()->with("message", 'تم الإضافة بنجاح');
+        return redirect()->route('properties.index')->with("message", 'تم الإضافة بنجاح');
     }
 
 
@@ -71,6 +71,7 @@ class PropertyController extends Controller
         $edit->rooms    = $request->rooms;
         $edit->baths    = $request->baths;
         $edit->price    = $request->price;
+        $edit->percentage    = $request->percentage;
         $edit->address    = $request->address;
         $edit->description    = $request->description;
         $edit->status    = $request->status;

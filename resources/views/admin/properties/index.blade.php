@@ -46,9 +46,9 @@
                                     <th>عدد الغرف</th>
                                     <th>عدد الحمامات</th>
                                     <th>السعر</th>
+                                    <th>نسبة الزيادة</th>
                                     <th>الحالة</th>
                                     <th>العنوان</th>
-                                    
                                     <th>الوصف</th>
                                     <th>العمليات</th>
                                 </tr>
@@ -59,24 +59,28 @@
                                     <td>
                                         @if($property->type=="apartment")
                                            شقة
+                                        @else 
+                                            غرفة   
                                         @endif
                                     </td>
                                     <td>{{$property->number}}</td>
                                     <td>{{$property->rooms}}</td>
                                     <td>{{$property->baths}}</td>
                                     <td>{{$property->price}}</td>
+                                    <td>{{$property->percentage}}</td>
                                     <td>
-                                        @if($property->status=='1')
-                                            متاحة للسكن
-                                        @elseif($property->status=='2')
-                                            ساكنة
-                                        @elseif($property->status=='0')
-                                            تحتاج نظافة
+                                        @if($property->status=='rented')
+                                            مؤجر
+                                        @elseif($property->status=='maintenance')
+                                            صيانة 
+                                        @elseif($property->status=='notclean')
+                                            غير نظيف 
+                                            @elseif($property->status=='waiting')
+                                            إنتظار تسجيل الدخول 
                                         @endif
                                     </td>
                                     <td>{{$property->address}}</td>
                                     <td>{{$property->description}}</td>
-                                    
                                     <td>
                                         <a class="btn btn-sm bg-success-light"
                                             href="{{ url('admin/property/clients', $property->id) }}">
