@@ -214,7 +214,14 @@
                 </p>
                 <p>
                   <span class="text-muted"></span>
-                     {{$clients->count_day}}
+                  @if($clients->property_type=='monthly')
+                    {{$clients->count_day * 30}}
+                  @elseif($clients->property_type=='weekly')
+                    {{$clients->count_day * 7}}
+                  @else
+                    {{$clients->count_day}}
+                  @endif
+                     
                 </p>
                 <p>
                   <span class="text-muted"> </span>{{$clients->discount}}
