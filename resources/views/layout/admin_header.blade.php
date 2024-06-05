@@ -20,7 +20,7 @@
           <span>العقود</span>
         </a>
       </li>
-      <li class=" nav-item {{ Request::is('admin/receipts') ? 'active' : '' }}">
+      <!-- <li class=" nav-item {{ Request::is('admin/receipts') ? 'active' : '' }}">
         <a class="dropdown-toggle nav-link " href="{{url('admin/receipts')}}"><i class="la la-folder-open"></i>
           <span>سندات القبض</span>
         </a>
@@ -29,7 +29,7 @@
         <a class="dropdown-toggle nav-link " href="{{url('admin/expenses')}}"><i class="la la-folder-open"></i>
           <span>سندات الصرف</span>
         </a>
-      </li>
+      </li> -->
 
     </ul>
   </div>

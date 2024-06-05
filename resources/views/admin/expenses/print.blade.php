@@ -112,7 +112,7 @@
               </div>
               <div class="col-md-3 col-sm-12 ">
                 <p>
-                  <span class="text-muted">رقم السند :</span>
+                  <span class="text-muted">رقم سند الصرف :</span>
                 </p>
                 <p>
                   <span class="text-muted">رقم سند القبض :</span>
@@ -127,7 +127,7 @@
                   {{$expenses->id}}
                 </p>
                 <p>
-                  <span class="text-muted"></span> {{$clients->id}}
+                  <span class="text-muted"></span>{{$clients->receipts->id}} 
                 </p>
                 <p>
                   <span class="text-muted"></span> {{$clients->id}}

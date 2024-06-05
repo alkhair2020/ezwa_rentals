@@ -14,7 +14,7 @@ class ExpenseController extends Controller
     {
          // Fetch invoice data from the database
          $expenses = Expense::where('id',$id)->with('clients')->first();
-         $clients = Client::where('id',$expenses->client_id )->with('properties')->first();
+         $clients = Client::where('id',$expenses->client_id )->with('properties')->with('receipts')->first();
         $users = User::where('id',$expenses->user_id  )->first();
          // $gregorianDate = '2024-05-31'; // يمكنك أيضاً استلام هذا التاريخ كمدخل من المستخدم
          // $gregorianDate = $clients->start_date; 
