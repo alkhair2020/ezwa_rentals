@@ -21,12 +21,14 @@ class DashBoardController extends Controller
         
         // $courses=Course::where('status',1)->get();
         // $courses_count=count($courses);
+        $properties = Property::get();
         $orders = Property::select(
             DB::raw('COUNT(*) as total'),
             DB::raw('(SELECT COUNT(*) FROM properties WHERE status = "rented") as rented_count'),
             DB::raw('(SELECT COUNT(*) FROM properties WHERE status = "maintenance") as maintenance_count'),
             DB::raw('(SELECT COUNT(*) FROM properties WHERE status = "notclean") as notclean_count'),
-            DB::raw('(SELECT COUNT(*) FROM properties WHERE status = "waiting") as waiting_count')
+            DB::raw('(SELECT COUNT(*) FROM properties WHERE status = "waiting") as waiting_count'),
+            DB::raw('(SELECT COUNT(*) FROM properties WHERE status = "vacant") as vacant_count')
         )->first();
         
         $totalCount = $orders->total;
@@ -34,6 +36,7 @@ class DashBoardController extends Controller
         $maintenance_count = $orders->maintenance_count;
         $notclean_count = $orders->notclean_count;
         $waiting_count = $orders->waiting_count;
+        $vacant_count = $orders->vacant_count;
         
         $clients = Client::select(
             DB::raw('COUNT(*) as total'),
@@ -55,7 +58,7 @@ class DashBoardController extends Controller
         
         // $balance=Transaction::orderBy('id', 'DESC')->first();
     //   dd($user_count);
-        return view('admin.index_admin',compact('totalCount','rented_count','maintenance_count','notclean_count','waiting_count','clientsCount'));
+        return view('admin.index_admin',compact('totalCount','rented_count','maintenance_count','notclean_count','waiting_count','vacant_count','clientsCount','properties'));
     }
 
     // public function create()

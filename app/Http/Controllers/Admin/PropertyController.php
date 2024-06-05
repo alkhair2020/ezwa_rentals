@@ -71,7 +71,9 @@ class PropertyController extends Controller
         $edit->rooms    = $request->rooms;
         $edit->baths    = $request->baths;
         $edit->price    = $request->price;
-        $edit->percentage    = $request->percentage;
+        if(isset($request->percentage)){
+            $edit->percentage    = $request->percentage;
+        }
         $edit->address    = $request->address;
         $edit->description    = $request->description;
         $edit->status    = $request->status;
