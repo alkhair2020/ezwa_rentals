@@ -233,8 +233,8 @@
             return false;
         }
         amountError.innerHTML = "";
-        amountError.innerHTML = "  vvv";
-        return false;
+        // amountError.innerHTML = "  vvv";
+        // return false;
 
     }
 </script>
