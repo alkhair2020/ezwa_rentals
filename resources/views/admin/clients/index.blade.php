@@ -79,32 +79,42 @@
                                                     class="la la-print"></i></button>
                                         </a>
                                         @if($client->receipts)
-                                            <a class="btn btn-sm bg-success-light" href="{{ url('admin/receipts/print', $client->receipts->id) }}">
-                                                <button type="button" class="btn btn-icon btn-secondary mr-1"> <i class="la la-money"></i></button>
-                                            </a>
+                                        <a class="btn btn-sm bg-success-light"
+                                            href="{{ url('admin/receipts/print', $client->receipts->id) }}">
+                                            <button type="button" class="btn btn-icon btn-secondary mr-1"> <i
+                                                    class="la la-money"></i></button>
+                                        </a>
                                         @else
-                                            <a  class="btn btn-sm bg-success-light" data-toggle="modal"  data-target="#create_receipts">
+                                        <a class="btn btn-sm bg-success-light" data-toggle="modal"
+                                            data-target="#create_receipts">
                                             <!-- <a  class="btn btn-sm bg-success-light" href="{{ url('admin/clients/receipts', $client->id) }}"> -->
-                                                <button type="button" class="btn btn-icon btn-secondary mr-1"> <i class="la la-money"></i></button>
-                                            </a>
+                                            <button type="button" class="btn btn-icon btn-secondary mr-1"> <i
+                                                    class="la la-money"></i></button>
+                                        </a>
                                         @endif
                                         @if($client->expenses)
-                                            <a class="btn btn-sm bg-success-light" href="{{ url('admin/expenses/print', $client->expenses->id) }}">
-                                            <button type="button" class="btn btn-icon btn-light mr-1"><i class="la la-plug"></i></button>
-                                            </a>
+                                        <a class="btn btn-sm bg-success-light"
+                                            href="{{ url('admin/expenses/print', $client->expenses->id) }}">
+                                            <button type="button" class="btn btn-icon btn-light mr-1"><i
+                                                    class="la la-plug"></i></button>
+                                        </a>
                                         @else
-                                            <a  class="btn btn-sm bg-success-light" data-toggle="modal" data-catid="{{ $client->id }}"  data-target="#create_expenses">
+                                        <a class="btn btn-sm bg-success-light" data-toggle="modal"
+                                            data-catid="{{ $client->id }}" data-insuranceid="{{ $client->insurance }}"
+                                            data-target="#create_expenses">
                                             <!-- <a  class="btn btn-sm bg-success-light" href="{{ url('admin/clients/receipts', $client->id) }}"> -->
-                                            <button type="button" class="btn btn-icon btn-light mr-1"><i class="la la-plug"></i></button>
-                                            </a>
+                                            <button type="button" class="btn btn-icon btn-light mr-1"><i
+                                                    class="la la-plug"></i></button>
+                                        </a>
                                         @endif
                                         <!-- <a  class="btn btn-sm bg-success-light"
                                             href="{{ url('admin/clients/expenses', $client->id) }}">
                                             <button type="button" class="btn btn-icon btn-light mr-1"><i class="la la-plug"></i></button>
                                         </a> -->
-                                        <a class="btn btn-sm bg-success-light" href="{{ route('clients.edit', $client->id) }}">
+                                        <a class="btn btn-sm bg-success-light"
+                                            href="{{ route('clients.edit', $client->id) }}">
                                             <button type="button" class="btn btn-icon btn-success mr-1"><i
-                                                class="la la-edit"></i></button>
+                                                    class="la la-edit"></i></button>
                                         </a>
                                         <a data-toggle="modal" data-catid="{{ $client->id }}" data-target="#delete"
                                             class="delete-course">
@@ -122,7 +132,7 @@
         </div>
     </div>
     <div class="modal fade" id="create_expenses" aria-hidden="true" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document" >
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">اضافة سند صرف</h5>
@@ -131,20 +141,22 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('expenses.store')}}" method="POST" 
-                        name="le_form"  enctype="multipart/form-data">
+                    <form action="{{route('expenses.store')}}" method="POST" name="le_form"
+                        enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="client_id" id="cat_id">
                         <div class="row form-row">
                             <div class="col-12 col-sm-12">
                                 <div class="form-group">
                                     <label> المبلغ</label>
-                                    <input type="text" name="amount"  class="form-control" >
+                                    <input type="text" name="amount" class="form-control" id="amount_id">
+                                    <input type="hidden" name="insurance" id="insurance_id">
                                     <span id="amountError" class="error-message"></span>
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block" onclick="return Validateallinput()">حفظ</button>
+                        <button type="submit" class="btn btn-primary btn-block"
+                            onclick="return Validateallinput()">حفظ</button>
                     </form>
                 </div>
             </div>
@@ -185,10 +197,11 @@
 
     $('#create_expenses').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget)
-        
+
         var cat_id = button.data('catid')
+        var insuranceid = button.data('insuranceid')
         var modal = $(this)
-        modal.find('.modal-body #cat_id').val(cat_id);
+        modal.find('.modal-body #insurance_id').val(insuranceid);
     })
 
     $('#delete').on('show.bs.modal', function (event) {
@@ -201,15 +214,41 @@
 
 </script>
 
+<script>
+    function Validateallinput() {
 
+
+        var amount_id = document.getElementById("amount_id");
+        var amountError = document.getElementById("amountError");
+
+        var insurance_id = document.getElementById("insurance_id");
+
+        if (amount_id.value == "") {
+            amountError.innerHTML = "اكتب المبلغ";
+            return false;
+        }
+        amountError.innerHTML = "";
+        if (amount_id.value > insurance_id.value) {
+            amountError.innerHTML = "خطأ في المبلغ المصروف";
+            return false;
+        }
+        amountError.innerHTML = "";
+        amountError.innerHTML = "  vvv";
+        return false;
+
+    }
+</script>
 <style>
-    .btn-sm, .btn-group-sm > .btn {
-    padding: 0.1rem 0.1rem !important;
+    .btn-sm,
+    .btn-group-sm>.btn {
+        padding: 0.1rem 0.1rem !important;
     }
-    .table th, .table td {
+
+    .table th,
+    .table td {
         padding: 0.75rem 1rem;
-        text-align:center
+        text-align: center
     }
-  </style>
+</style>
 <!--/ Multi-column ordering table -->
 @endsection
