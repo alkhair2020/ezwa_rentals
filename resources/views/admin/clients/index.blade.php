@@ -234,8 +234,6 @@
             return false;
         }
         amountError.innerHTML = "";
-       
-
     }
 </script>
 <style>
