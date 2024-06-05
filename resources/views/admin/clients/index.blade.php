@@ -192,7 +192,6 @@
     </div>
 </section>
 <script src="{{asset('js/app.js')}}"></script>
-
 <script>
 
     $('#create_expenses').on('show.bs.modal', function (event) {
@@ -211,19 +210,13 @@
         var modal = $(this)
         modal.find('.modal-body #cat_id').val(cat_id);
     })
-
-
 </script>
 
 <script>
     function Validateallinput() {
-
-
-        var amount_id = document.getElementById("amount_id");
+         var amount_id = document.getElementById("amount_id");
         var amountError = document.getElementById("amountError");
-
         var insurance_id = document.getElementById("insurance_id");
-
         if (amount_id.value == "") {
             amountError.innerHTML = "اكتب المبلغ";
             return false;
@@ -248,5 +241,4 @@
         text-align: center
     }
 </style>
-<!--/ Multi-column ordering table -->
 @endsection
