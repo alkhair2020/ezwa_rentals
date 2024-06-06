@@ -42,7 +42,7 @@ class PropertyController extends Controller
        
         $add->address    = $request->address;
         $add->description    = $request->description;
-      
+        $add->tax_number    = $request->tax_number;
 
 
         $add->save();
@@ -77,6 +77,7 @@ class PropertyController extends Controller
         $edit->address    = $request->address;
         $edit->description    = $request->description;
         $edit->status    = $request->status;
+        $edit->tax_number    = $request->tax_number;
         $edit->save();
         return redirect()->route('properties.index')->with("message", 'تم التعديل بنجاح');
     }

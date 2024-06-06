@@ -99,10 +99,10 @@
               </div>
               <div class="col-md-3 col-sm-12 ">
                 <p>
-                  {{$receipts->created_at->format('Y-m-d') }}
+                  {{$receipts->created_at->format('Y-m-d') }} م
                 </p>
                 <p>
-                  <span class="text-muted"></span> {{$receipts->create_hijriDate}}
+                  <span class="text-muted"></span> {{$receipts->create_hijriDate}} هـ
                 </p>
               </div>
               <div class="col-md-3 col-sm-12 pt-2">

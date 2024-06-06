@@ -130,8 +130,13 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="projectinput4">الرقم الضريبي</label>
+                                            <input type="number" name="tax_number" id="projectinput4" class="form-control" placeholder="الرقم الضريبي" value="{{$property->tax_numberId}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="projectinput8">ملاحظات /وصف</label>
                                             <textarea id="projectinput8" rows="1" class="form-control"

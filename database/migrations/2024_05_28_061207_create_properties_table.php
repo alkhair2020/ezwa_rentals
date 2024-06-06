@@ -24,6 +24,7 @@ class CreatePropertiesTable extends Migration
             $table->longText('description')->nullable();
             $table->string('status')->default('waiting');
             $table->integer('percentage')->default(0);
+            $table->string('tax_number')->nullable();
             $table->timestamps();
         });
     }

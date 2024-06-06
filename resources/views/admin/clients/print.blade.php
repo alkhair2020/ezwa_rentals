@@ -99,10 +99,10 @@
               </div>
               <div class="col-md-3 col-sm-12 ">
                 <p>
-                  {{$clients->created_at->format('Y-m-d') }}
+                  {{$clients->created_at->format('Y-m-d') }} م
                 </p>
                 <p>
-                  <span class="text-muted"></span> {{$clients->create_hijriDate}}
+                  <span class="text-muted"></span> {{$clients->create_hijriDate}} هـ
                 </p>
               </div>
               <div class="col-md-1 col-sm-12 ">
@@ -158,9 +158,9 @@
               </div>
               <div class="col-md-4 col-sm-12 ">
                 <p>
-                  {{$clients->start_date}}
+                  {{$clients->start_date}} م
                 </p>
-                <p>{{$clients->start_hijriDate}}
+                <p>{{$clients->start_hijriDate}} هـ
                 </p>
                 <p>
                   
@@ -172,7 +172,7 @@
                      يومي
                   @endif
                 </p>
-                <p>{{$clients->properties->price +  ($clients->properties->price * $clients->properties->percentage) / 100}}
+                <p>{{$clients->property_price}}
                 </p>
                 
                 <p>  {{$clients->discount}}
@@ -204,10 +204,10 @@
 
               <div class="col-md-2 col-sm-12 ">
                 <p>
-                  {{$clients->end_date}}
+                  {{$clients->end_date}} م
                 </p>
                 <p>
-                  <span class="text-muted"></span> {{$clients->end_hijriDate}}
+                  <span class="text-muted"></span> {{$clients->end_hijriDate}} هـ
                 </p>
                 <p>
                   <span class="text-muted"></span>{{$clients->properties->number}}
@@ -237,12 +237,12 @@
               <div class="col-md-5 col-sm-12  ">
                
               </div>
-              <div class="col-md-12 col-sm-12  text-center">
+              <!-- <div class="col-md-12 col-sm-12  text-center">
                 <p>
                   <span class="text-muted">رسوم اشغال مرافق الايواء (%2,5) = ٠ ريال / ضريبة القيمة المضافة (%15) =
                     ٠ ريال</span>
                 </p>
-              </div>
+              </div> -->
               <!-- <div class="col-md-2 col-sm-12  ">
                 <p>
                   <span class="text-muted">كمبياله : </span> ٠ ريال

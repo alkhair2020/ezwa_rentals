@@ -122,7 +122,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="projectinput5">عدد (يوم  / اسبوع / شهر ) </label>
+                                            <label for="projectinput5">عدد (كم يوم  / كم اسبوع / كم شهر ) </label>
                                             <input type="number" name="count_day" id="count_dayId" class="form-control"
                                                 data-toggle="tooltip" data-trigger="hover" data-placement="top"
                                                 data-title="Date Fixed">
@@ -224,6 +224,9 @@
         var propertyId = document.getElementById("propertyId");
         var property_idError = document.getElementById("property_idError");
 
+        var count_dayId = document.getElementById("count_dayId");
+        var count_dayError = document.getElementById("count_dayError");
+
         var start_dateId = document.getElementById("start_dateId");
         var start_dateError = document.getElementById("start_dateError");
 
@@ -309,6 +312,36 @@
         if (property_typeId.value == "") {
             property_typeError.innerHTML = "اختر نوع الايجار";
             return false;
+        }
+        property_typeError.innerHTML = "";
+
+        if (count_dayId.value == "") {
+            count_dayError.innerHTML = "اكتب العدد";
+            return false;
+        }
+        count_dayError.innerHTML = "";
+        
+        if (property_typeId.value == "monthly") {
+            if (count_dayId.value.length >12) {
+                property_typeError.innerHTML = "نوع الايجار شهري لا يمكن كتابة اكثر من 12";
+                return false;
+            }
+        }
+        property_typeError.innerHTML = "";
+
+        if (property_typeId.value == "weekly") {
+            if (count_dayId.value.length >4) {
+                property_typeError.innerHTML = "نوع الايجار اسبوعي لا يمكن كتابة اكثر من 4";
+                return false;
+            }
+        }
+        property_typeError.innerHTML = "";
+
+        if (property_typeId.value == "daily") {
+            if (count_dayId.value.length >30) {
+                property_typeError.innerHTML = "نوع الايجار يومي لا يمكن كتابة اكثر من 30";
+                return false;
+            }
         }
         property_typeError.innerHTML = "";
 

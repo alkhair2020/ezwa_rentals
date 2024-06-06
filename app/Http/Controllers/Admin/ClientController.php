@@ -141,6 +141,16 @@ class ClientController extends Controller
         $price_whith_percent= $property->price + ($property->price * $property->percentage) / 100;
         if($request->property_type=='weekly'){
             $price = $price_whith_percent / 4;
+            $add->property_price    = $price * $request->count_day ;
+        }elseif($request->property_type=='daily'){
+            $price =$price_whith_percent / 30;
+            $add->property_price    = $price * $request->count_day;
+        }else{
+            $add->property_price    =$price_whith_percent;
+        }
+        
+        if($request->property_type=='weekly'){
+            $price = $price_whith_percent / 4;
             $add->total    = $price * $request->count_day - $request->discount;
         }elseif($request->property_type=='daily'){
             $price =$price_whith_percent / 30;
@@ -148,7 +158,8 @@ class ClientController extends Controller
         }else{
             $add->total    =$price_whith_percent - $request->discount;
         }
-        // dd($add);
+        
+        // dd($add);property_price
         $add->save();
 
         $datenow=Carbon::now()->format('Y-m-d');

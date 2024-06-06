@@ -82,30 +82,30 @@
                                         @if($client->receipts)
                                         <a class="btn btn-sm bg-success-light"
                                             href="{{ url('admin/receipts/print', $client->receipts->id) }}">
-                                            <button type="button" class="btn btn-icon btn-secondary mr-1"> <i
-                                                    class="la la-money"></i></button>
+                                            <button type="button" class="btn btn-icon btn-secondary mr-1"> قبض</button>
                                         </a>
                                         @else
                                         <a class="btn btn-sm bg-success-light" data-toggle="modal"
                                             data-target="#create_receipts">
                                             <!-- <a  class="btn btn-sm bg-success-light" href="{{ url('admin/clients/receipts', $client->id) }}"> -->
-                                            <button type="button" class="btn btn-icon btn-secondary mr-1"> <i
-                                                    class="la la-money"></i></button>
+                                            <button type="button" class="btn btn-icon btn-secondary mr-1"> قبض</button>
                                         </a>
                                         @endif
                                         @if($client->expenses)
                                         <a class="btn btn-sm bg-success-light"
                                             href="{{ url('admin/expenses/print', $client->expenses->id) }}">
-                                            <button type="button" class="btn btn-icon btn-light mr-1"><i
-                                                    class="la la-plug"></i></button>
+                                            <button type="button" class="btn btn-icon btn-light mr-1">
+                                               صرف
+                                            </button>
                                         </a>
                                         @else
                                         <a class="btn btn-sm bg-success-light" data-toggle="modal"
                                             data-catid="{{ $client->id }}" data-insuranceid="{{ $client->insurance }}"
                                             data-target="#create_expenses">
                                             <!-- <a  class="btn btn-sm bg-success-light" href="{{ url('admin/clients/receipts', $client->id) }}"> -->
-                                            <button type="button" class="btn btn-icon btn-light mr-1"><i
-                                                    class="la la-plug"></i></button>
+                                            <button type="button" class="btn btn-icon btn-light mr-1" style="background: #DADADA;">
+                                                صرف
+                                            </button>
                                         </a>
                                         @endif
                                         <!-- <a  class="btn btn-sm bg-success-light"

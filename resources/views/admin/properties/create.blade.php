@@ -123,10 +123,17 @@
                                         </select>
                                     </div>
                                 </div> -->
-                                <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="projectinput4"> الرقم الضريبي </label>
+                                        <input type="number" name="tax_number" id="tax_numberId" class="form-control" placeholder="الرقم الضريبي" >
+                                        <span id="tax_numberError" class="error-message"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="projectinput8">ملاحظات /وصف</label>
-                                        <textarea id="descriptionId" rows="5" class="form-control" name="description" placeholder="اكتب وصف عن العقار"></textarea>
+                                        <textarea id="descriptionId" rows="1" class="form-control" name="description" placeholder="اكتب وصف عن العقار"></textarea>
                                         <span id="descriptionError" class="error-message"></span>
                                     </div>
                                 </div>

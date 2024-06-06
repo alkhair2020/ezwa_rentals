@@ -31,6 +31,7 @@ class CreateClientsTable extends Migration
             $table->float('discount')->default('0');
             $table->float('insurance')->default('0');
             $table->float('draft')->default('0');
+            $table->float('property_price')->default('0');
             $table->float('total')->default('0');
             $table->timestamps();
         });
