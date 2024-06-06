@@ -244,6 +244,17 @@
         }
         idNumberError.innerHTML = "";
 
+        if (idNumberId.value.length >10 ) {
+            idNumberError.innerHTML = "رقم الهوية عشرة ارقام فقط";
+            return false;
+        }
+
+        if (idNumberId.value.length <10 ) {
+            idNumberError.innerHTML = "رقم الهوية لا يقل عن عشرة ارقام";
+            return false;
+        }
+        idNumberError.innerHTML = "";
+
         if (nameId.value == "") {
             nameError.innerHTML = "اكتب اسم العميل";
             return false;
@@ -263,20 +274,20 @@
         }
         typeError.innerHTML = "";
 
-        if (nationalityId.value == "") {
-            nationalityError.innerHTML = "اختر الجنسية";
-            // titleid.focus();
-            return false;
-        }
-        nationalityError.innerHTML = "";
-
+        // if (nationalityId.value == "") {
+        //     nationalityError.innerHTML = "اختر الجنسية";
+        //     // titleid.focus();
+        //     return false;
+        // }
+        // nationalityError.innerHTML = "";
+       
         if (number_companionsId.value == "") {
             number_companionsError.innerHTML = "اكتب عدد الافراد";
             // titleid.focus();
             return false;
         }
         number_companionsError.innerHTML = "";
-
+       
         if (propertyId.value == "") {
             property_idError.innerHTML = "اختر رقم العقار";
             return false;
