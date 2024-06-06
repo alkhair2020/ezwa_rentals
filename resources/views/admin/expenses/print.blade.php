@@ -165,7 +165,7 @@
                 <p>تأمين شقة رقم {{$clients->properties->number}}
                 </p>
               </div>
-              <div class="col-md-6 col-sm-12 ">
+              <div class="col-md-5 col-sm-12 ">
                 <p>
                   <span class="text-muted"> ملاحظات :</span>
                 </p>

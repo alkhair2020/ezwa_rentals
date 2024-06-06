@@ -159,7 +159,6 @@
                                 <div class="form-group">
                                     <label>ملاحظة </label>
                                     <input type="text" name="notes" class="form-control">
-                                    <span id="amountError" class="error-message"></span>
                                 </div>
                             </div>
                         </div>
