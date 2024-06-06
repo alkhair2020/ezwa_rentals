@@ -18,7 +18,7 @@ class CreateExpensesTable extends Migration
             $table->integer('user_id')->index('user_id');
             $table->integer('client_id')->index('client_id');
             $table->float('amount')->default('0');
-            // $table->string('date');
+            $table->string('notes')->nullable();
             $table->timestamps();
         });
     }

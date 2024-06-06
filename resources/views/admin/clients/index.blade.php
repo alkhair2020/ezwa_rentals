@@ -66,7 +66,8 @@
                                     <td>{{$client->properties->number}}</td>
                                     <td>{{$client->start_date}}</td>
                                     <td>{{$client->end_date}}</td>
-                                    <td>{{$client->properties->price  +  ($client->properties->price * $client->properties->percentage) / 100}}</td>
+                                    <td>{{$client->properties->price + ($client->properties->price *
+                                        $client->properties->percentage) / 100}}</td>
                                     <td>{{$client->discount}}</td>
                                     <td>{{$client->total}}</td>
                                     <td>{{$client->insurance}}</td>
@@ -154,6 +155,13 @@
                                     <span id="amountError" class="error-message"></span>
                                 </div>
                             </div>
+                            <div class="col-12 col-sm-12">
+                                <div class="form-group">
+                                    <label>ملاحظة </label>
+                                    <input type="text" name="notes" class="form-control">
+                                    <span id="amountError" class="error-message"></span>
+                                </div>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block"
                             onclick="return Validateallinput()">حفظ</button>
@@ -214,7 +222,7 @@
 
 <script>
     function Validateallinput() {
-         var amount_id = document.getElementById("amount_id");
+        var amount_id = document.getElementById("amount_id");
         var amountError = document.getElementById("amountError");
         var insurance_id = document.getElementById("insurance_id");
         if (amount_id.value == "") {

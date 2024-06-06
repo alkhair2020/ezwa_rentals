@@ -127,7 +127,7 @@
                   {{$expenses->id}}
                 </p>
                 <p>
-                  <span class="text-muted"></span>{{$clients->receipts->id}} 
+                  <span class="text-muted"></span>{{$clients->receipts->id}}
                 </p>
                 <p>
                   <span class="text-muted"></span> {{$clients->id}}
@@ -142,19 +142,19 @@
               style="color: #000;font-size: large;">
               <div class="col-md-3 col-sm-12 mt-2">
                 <p>
-                    <span class="text-muted"> تم صرف مبلغ :</span>
+                  <span class="text-muted"> تم صرف مبلغ :</span>
                 </p>
                 <p>
-                  <span class="text-muted">لأمر السيد  / السادة  :</span>
+                  <span class="text-muted">لأمر السيد / السادة :</span>
                 </p>
                 <p>
-                  <span class="text-muted">طريقة الدفع  :</span>
+                  <span class="text-muted">طريقة الدفع :</span>
                 </p>
                 <p>
-                  <span class="text-muted">وذلك من أجل  :</span>
+                  <span class="text-muted">وذلك من أجل :</span>
                 </p>
               </div>
-             
+
               <div class="col-md-5 col-sm-12 text-center mt-2">
                 <p>{{$expenses->amount}} ريال
                 </p>
@@ -165,33 +165,39 @@
                 <p>تأمين شقة رقم {{$clients->properties->number}}
                 </p>
               </div>
-              <div class="col-md-12 col-sm-12 ">
+              <div class="col-md-6 col-sm-12 ">
                 <p>
-                  <span class="text-muted"> ملاحظات  :</span> 
+                  <span class="text-muted"> ملاحظات :</span>
+                </p>
+              </div>
+              <div class="col-md-6 col-sm-12 ">
+                <p>
+                  @if($expenses->notes)
+                  {{$expenses->notes}}
+                  @endif
+                </p>
+              </div>
+              <div class="col-md-6 col-sm-12 text-center" style="color: #000; font-size: large;font-weight: bold;">
+                <p class="ml-5">
+                  توقيع المستلم
+                </p>
+                <p class="ml-4">
                 </p>
 
               </div>
-              <div class="col-md-6 col-sm-12 text-center" style="color: #000; font-size: large;font-weight: bold;">
-                    <p class="ml-5">
-                     توقيع المستلم
-                    </p>
-                    <p class="ml-4">
-                    </p>
-                   
-                </div>
-                <div class="col-md-5 col-sm-12 text-center" style="color: #000; font-size: large;font-weight: bold;">
-                    <p>  الموظف المسئول
-                    </p>
-                    <h2 class="ml-2">{{$users->name}}
-                    </h2>
-                </div>
+              <div class="col-md-5 col-sm-12 text-center" style="color: #000; font-size: large;font-weight: bold;">
+                <p> الموظف المسئول
+                </p>
+                <h2 class="ml-2">{{$users->name}}
+                </h2>
+              </div>
               <div class="col-md-3 col-sm-12 ">
-                
+
 
               </div>
             </div>
             <!-- /////////////////// -->
-           
+
 
 
           </div>
@@ -232,7 +238,7 @@
       direction: rtl;
     }
 
-    
+
 
     p {
       margin-top: 0;
