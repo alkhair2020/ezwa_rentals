@@ -120,8 +120,10 @@
                                                 <option value="" selected="" disabled="">اختر الحالة</option>
                                                 <option value="rented"  {{ $property->status == 'rented' ? "selected" : "" }}>مؤجر</option>
                                                 <option value="maintenance"  {{ $property->status == 'maintenance' ? "selected" : "" }}>صيانة </option>
-                                                <option value="notclean" {{ $property->status == 'notclean' ? "selected" : "" }}> غير نظيف </option>
+                                                <option value="notclean_rented" {{ $property->status == 'notclean_rented' ? "selected" : "" }}>(مؤجر) غير نظيف </option>
+                                                <option value="notclean" {{ $property->status == 'notclean' ? "selected" : "" }}>(شاغر) غير نظيف </option>
                                                 <option value="waiting" {{ $property->status == 'waiting' ? "selected" : "" }}> إنتظار تسجيل الدخول </option>
+                                                <option value="vacant" {{ $property->status == 'vacant' ? "selected" : "" }}>  شاغر</option>
                                                 <!-- <option value="exit"> خروج اليوم </option> -->
                                             </select>
                                         </div>

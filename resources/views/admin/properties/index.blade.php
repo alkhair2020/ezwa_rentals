@@ -74,9 +74,13 @@
                                         @elseif($property->status=='maintenance')
                                             صيانة 
                                         @elseif($property->status=='notclean')
-                                            غير نظيف 
-                                            @elseif($property->status=='waiting')
+                                        <span>غير نظيف </span>  (شاغر) 
+                                        @elseif($property->status=='notclean_rented')
+                                        <span>غير نظيف </span> (مؤجر) 
+                                        @elseif($property->status=='waiting')
                                             إنتظار تسجيل الدخول 
+                                        @elseif($property->status=='vacant')
+                                            شاغر 
                                         @endif
                                     </td>
                                     <!-- <td>{{$property->address}}</td> -->

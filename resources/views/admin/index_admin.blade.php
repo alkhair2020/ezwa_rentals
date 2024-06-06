@@ -19,15 +19,242 @@
 
 </div>
 <div id="crypto-stats-3" class="row">
+
+  <!-- <div class="col-lg-2 col-md-6 col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-block text-center">
+          <div class="" style="border-top: 3px solid #DADADA;  ">
+            <div class="media align-items-stretch  text-white rounded">
+              <div class="  " style="background: #DADADA; border-radius: 0px 1px 7px 0px; ">
+                <img src="{{asset('img/Mop.png')}}" width="20" height="28" alt="Mop" style="margin-top: 5px;padding: 2px;">
+              </div>
+              <div class="badge block   " style="background: #28D094; margin: 3px !important;">
+                <h4 class="text-white">84,695</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  
+  <div class="col-xl-1 col-lg-6 col-12">
+    <div class="card">
+      <div class="card-content">
+        <div class="card-body">
+          <div class="media d-flex">
+            <div class="media-body text-left">
+              <h3 class="info">{{$rented_count}}</h3>
+              <span>مؤجر</span>
+            </div>
+            <div class="align-self-center">
+              <i class="icon-book-open info font-large-2 float-right"></i>
+            </div>
+          </div>
+          <div class="progress mt-1 mb-0" style="height: 7px;background: #DADADA;">
+            <div class="progress-bar " role="progressbar" style="background: #aa342b; width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-1 col-lg-6 col-12">
+    <div class="card">
+      <div class="card-content">
+        <div class="card-body">
+          <div class="media d-flex">
+            <div class="media-body text-left">
+              <h3 class="info">{{$vacant_count}}</h3>
+              <span>الشاغر</span>
+            </div>
+            <div class="align-self-center">
+              <i class="icon-book-open info font-large-2 float-right"></i>
+            </div>
+          </div>
+          <div class="progress mt-1 mb-0" style="height: 7px;background: #DADADA;">
+            <div class="progress-bar " role="progressbar" style="background: #28D094;width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-1 col-lg-6 col-12">
+    <div class="card">
+      <div class="card-content">
+        <div class="card-body">
+          <div class="media d-flex">
+            <div class="media-body text-left">
+              <h3 class="info">{{$maintenance_count}}</h3>
+              <span>صيانة</span>
+            </div>
+            <div class="align-self-center">
+              <i class="icon-book-open info font-large-2 float-right"></i>
+            </div>
+          </div>
+          <div class="progress mt-1 mb-0" style="height: 7px;background: #DADADA;">
+            <div class="progress-bar " role="progressbar" style="background: #DADADA;width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-xl-1 col-lg-6 col-12">
+    <div class="card">
+      <div class="card-content">
+        <div class="card-body">
+          <div class="media d-flex">
+            <div class="media-body text-left">
+              <h3 class="info">{{$notclean_count}}</h3>
+              <span>غير نظيف</span>
+            </div>
+            <div class="align-self-center">
+              <i class="icon-book-open info font-large-2 float-right"></i>
+            </div>
+          </div>
+          <div class="progress mt-1 mb-0" style="height: 7px;background: #DADADA;">
+            <div class="progress-bar" role="progressbar" style="background: #ff9149;width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-2 col-lg-6 col-12">
+    <div class="card">
+      <div class="card-content">
+        <div class="card-body">
+          <div class="media d-flex">
+            <div class="media-body text-left">
+              <h3 class="info">{{$waiting_count}}</h3>
+              <span>إنتظار تسجيل الدخول </span>
+            </div>
+            <div class="align-self-center">
+              <i class="icon-book-open info font-large-2 float-right"></i>
+            </div>
+          </div>
+          <div class="progress mt-1 mb-0" style="height: 7px;background: #28D094;">
+            <div class="progress-bar" role="progressbar" style="background: #aa342b;width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-2 col-lg-6 col-12">
+    <div class="card">
+      <div class="card-content">
+        <div class="card-body">
+          <div class="media d-flex">
+            <div class="media-body text-left">
+              <h3 class="info">{{$notclean_rented_count}}</h3>
+              <span><span>غير نظيف </span> (مؤجر)</span>
+            </div>
+            <div class="align-self-center">
+              <i class="icon-book-open info font-large-2 float-right"></i>
+            </div>
+          </div>
+          <div class="progress mt-1 mb-0" style="height: 7px;background: #DADADA;">
+            <div class="progress-bar" role="progressbar" style="background: #aa342b;width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-xl-2 col-lg-6 col-12">
+    <div class="card">
+      <div class="card-content">
+        <div class="card-body">
+          <div class="media d-flex">
+            <div class="media-body text-left">
+              <h3 class="info">{{$totalCount}}</h3>
+              <span>عدد الوحدات</span>
+            </div>
+            <div class="align-self-center">
+              <i class="icon-book-open info font-large-2 float-right"></i>
+            </div>
+          </div>
+          <!-- <div class="progress mt-1 mb-0" style="height: 7px;">
+            <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-2 col-lg-6 col-12">
+    <div class="card">
+      <div class="card-content">
+        <div class="card-body">
+          <div class="media d-flex">
+            <div class="media-body text-left">
+              <h3 class="info">{{$clientsCount}}</h3>
+              <span>عدد العقود </span>
+            </div>
+            <div class="align-self-center">
+              <i class="icon-book-open info font-large-2 float-right"></i>
+            </div>
+          </div>
+          <!-- <div class="progress mt-1 mb-0" style="height: 7px;">
+            <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
   @foreach ($properties as $property)
   <div class="col-lg-2 col-md-6 col-sm-12">
     <div class="card">
       <div class="card-body">
         <div class="card-block text-center">
-          <div
-            class="badge block  {{ $property->status == 'rented' ? 'rented-border' : '' }} {{ $property->status == 'waiting' ? 'waiting-border' : '' }} {{ $property->status == 'maintenance' ? 'maintenance-border' : '' }}{{ $property->status == 'notclean' ? 'notclean-border' : '' }}{{ $property->status == 'vacant' ? 'vacant-border' : '' }}">
-            <div
-              class="p-1 {{ $property->status == 'rented' ? 'rented-back' : '' }} {{ $property->status == 'waiting' ? 'rented-back' : '' }}{{ $property->status == 'maintenance' ? 'maintenance-back' : '' }} {{ $property->status == 'notclean' ? 'notclean-back' : '' }} {{ $property->status == 'vacant' ? 'vacant-back' : '' }}">
+          <div class="{{ $property->status == 'rented' ? 'rented-border' : '' }} {{ $property->status == 'waiting' ? 'waiting-border' : '' }} 
+                                   {{ $property->status == 'maintenance' ? 'maintenance-border' : '' }}
+                                   {{ $property->status == 'notclean' ? 'notclean-border' : '' }}{{ $property->status == 'vacant' ? 'vacant-border' : '' }}
+                                   {{ $property->status == 'notclean_rented' ? 'notclean_rented-border' : '' }}" >
+            <div class="media align-items-stretch  text-white rounded">
+              <div class="{{ $property->status == 'rented' ? 'rented-color' : '' }} {{ $property->status == 'waiting' ? 'waiting-color' : '' }} 
+                                   {{ $property->status == 'maintenance' ? 'maintenance-color' : '' }}
+                                   {{ $property->status == 'notclean' ? 'notclean-color' : '' }}{{ $property->status == 'vacant' ? 'vacant-color' : '' }}
+                                   {{ $property->status == 'notclean_rented' ? 'notclean_rented-color' : '' }}" style=" border-radius: 0px 1px 7px 0px; ">
+                  @if($property->status=='notclean' || $property->status=='notclean_rented')
+                    <img src="{{asset('img/Mop.png')}}" width="20" height="28" alt="Mop" style="margin-top: 5px;padding: 2px;">
+                  @else
+                    &nbsp; &nbsp; &nbsp;
+                  @endif
+              </div>
+              <div class="badge block   {{ $property->status == 'rented' ? 'rented-back' : '' }} {{ $property->status == 'waiting' ? 'rented-back' : '' }}{{ $property->status == 'maintenance' ? 'maintenance-back' : '' }} {{ $property->status == 'notclean' ? 'notclean-back' : '' }} {{ $property->status == 'vacant' ? 'vacant-back' : '' }} {{ $property->status == 'notclean_rented' ? 'notclean_rented-back' : '' }}" style=" margin: 3px !important;">
+                <h4 class="text-white">
+                @if($property->status=='rented')
+                مؤجر
+                @elseif($property->status=='waiting')
+                إنتظار تسجيل الدخول
+                @elseif($property->status=='maintenance')
+                صيانة
+                @elseif($property->status=='notclean')
+                <span>غير نظيف </span> (شاغر)
+                @elseif($property->status=='notclean_rented')
+                <span>غير نظيف </span> (مؤجر)
+                @elseif($property->status=='vacant')
+                شاغر
+                @endif
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  @endforeach
+  <!-- @foreach ($properties as $property)
+  <div class="col-lg-2 col-md-6 col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-block text-center">
+          <div class="badge block  {{ $property->status == 'rented' ? 'rented-border' : '' }} {{ $property->status == 'waiting' ? 'waiting-border' : '' }} 
+                                   {{ $property->status == 'maintenance' ? 'maintenance-border' : '' }}
+                                   {{ $property->status == 'notclean' ? 'notclean-border' : '' }}{{ $property->status == 'vacant' ? 'vacant-border' : '' }}
+                                   {{ $property->status == 'notclean_rented' ? 'notclean_rented-border' : '' }}">
+            <div class="p-1 {{ $property->status == 'rented' ? 'rented-back' : '' }} {{ $property->status == 'waiting' ? 'rented-back' : '' }}{{ $property->status == 'maintenance' ? 'maintenance-back' : '' }} {{ $property->status == 'notclean' ? 'notclean-back' : '' }} {{ $property->status == 'vacant' ? 'vacant-back' : '' }} {{ $property->status == 'notclean_rented' ? 'notclean_rented-back' : '' }}">
               <a href="#" style="color: #fff;">
                 @if($property->status=='rented')
                 مؤجر
@@ -36,7 +263,9 @@
                 @elseif($property->status=='maintenance')
                 صيانة
                 @elseif($property->status=='notclean')
-                غير نظيف
+                <span>غير نظيف </span> (شاغر)
+                @elseif($property->status=='notclean_rented')
+                <span>غير نظيف </span> (مؤجر)
                 @elseif($property->status=='vacant')
                 شاغر
                 @endif
@@ -47,7 +276,7 @@
       </div>
     </div>
   </div>
-  @endforeach
+  @endforeach -->
   <!-- <div class="col-lg-2 col-md-6 col-sm-12">
     <div class="card">
       <div class="card-body">
@@ -128,214 +357,12 @@
   </div> -->
 
 
-  <div class="col-xl-4 col-12">
-    <div class="card crypto-card-3 pull-up">
-      <div class="card-content">
-        <div class="card-body pb-0">
-          <div class="row">
-            <div class="col-2"><a href="#">
-                <h1 style="color: white; border-radius: 30px;background-color: #aa342b !important;">
-                  <i class="la la-table"></i>
-                </h1>
-              </a>
-            </div>
-            <div class="col-7 pl-2">
-              <a href="#">
-                <h4> مؤجر</h4>
-                <!-- <h6 class="text-muted"> عدد العقارات الساكنة</h6> -->
-              </a>
-            </div>
-            <div class="col-3 text-right">
-              <a href="#">
-                <h5> {{$rented_count}}</h5>
-              </a>
-              <!--<h6 class="success darken-4">31% <i class="la la-arrow-up"></i></h6>-->
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <div class="col-xl-4 col-12">
-    <div class="card crypto-card-3 pull-up">
-      <div class="card-content">
-        <div class="card-body pb-0">
-          <div class="row">
-            <div class="col-2"><a href="#">
-                <h1 style="color: white; border-radius: 30px;background-color: #DADADA !important;">
-                  <i class="la la-folder-open"></i>
-                </h1>
-              </a>
-            </div>
-            <div class="col-7 pl-2">
-              <a href="#">
-                <h4>صيانة</h4>
-                <!-- <h6 class="text-muted"> عدد العملاء</h6> -->
-              </a>
-            </div>
-            <div class="col-3 text-right">
-              <a href="#">
-                <h5> {{$maintenance_count}}</h5>
-              </a>
-              <!--<h6 class="success darken-4">31% <i class="la la-arrow-up"></i></h6>-->
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <div class="col-xl-4 col-12">
-    <div class="card crypto-card-3 pull-up">
-      <div class="card-content">
-        <div class="card-body pb-0">
-          <div class="row">
-            <div class="col-2"><a href="#">
-                <h1 style="color: white; border-radius: 30px;background-color: #FF9149 !important;">
-                  <i class="la la-folder-open"></i>
-                </h1>
-              </a>
-            </div>
-            <div class="col-7 pl-2">
-              <a href="#">
-                <h4>غير نظيف</h4>
-                <!-- <h6 class="text-muted"> عدد سندات</h6> -->
-              </a>
-            </div>
-            <div class="col-3 text-right">
-              <a href="#">
-                <h5> {{$notclean_count}}</h5>
-              </a>
-              <!--<h6 class="success darken-4">31% <i class="la la-arrow-up"></i></h6>-->
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <div class="col-xl-4 col-12">
-    <div class="card crypto-card-3 pull-up">
-      <div class="card-content">
-        <div class="card-body pb-0">
-          <div class="row">
-            <div class="col-2"><a href="#">
-                <h1 style="color: white; border-radius: 30px;background-color: #28D094 !important;">
-                  <i class="la la-folder-open"></i>
-                </h1>
-              </a>
-            </div>
-            <div class="col-7 pl-2">
-              <a href="#">
-                <h4>إنتظار تسجيل الدخول </h4>
-                <!-- <h6 class="text-muted"> عدد سندات</h6> -->
-              </a>
-            </div>
-            <div class="col-3 text-right">
-              <a href="#">
-                <h5> {{$waiting_count}}</h5>
-              </a>
-              <!--<h6 class="success darken-4">31% <i class="la la-arrow-up"></i></h6>-->
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <div class="col-xl-4 col-12">
-    <div class="card crypto-card-3 pull-up">
-      <div class="card-content">
-        <div class="card-body pb-0">
-          <div class="row">
-            <div class="col-2"><a href="#">
-                <h1 style="color: white; border-radius: 30px;background-color: #28D094 !important;">
-                  <i class="la la-folder-open"></i>
-                </h1>
-              </a>
-            </div>
-            <div class="col-7 pl-2">
-              <a href="#">
-                <h4>عدد الشاغر</h4>
-                <!-- <h6 class="text-muted"> عدد سندات</h6> -->
-              </a>
-            </div>
-            <div class="col-3 text-right">
-              <a href="#">
-                <h5> {{$vacant_count}}</h5>
-              </a>
-              <!--<h6 class="success darken-4">31% <i class="la la-arrow-up"></i></h6>-->
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <div class="col-xl-4 col-12">
-    <div class="card crypto-card-3 pull-up">
-      <div class="card-content">
-        <div class="card-body pb-0">
-          <div class="row">
-            <div class="col-2"><a href="#">
-                <h1 style="color: white; border-radius: 30px;background-color: #FF9149 !important;">
-                  B</h1>
-              </a>
-            </div>
-            <div class="col-7 pl-2">
-              <a href="#">
-                <h4>إجمالي الوحدات</h4>
-                <!-- <h6 class="text-muted"> عدد العقارات</h6> -->
-              </a>
-            </div>
-            <div class="col-3 text-right">
-              <a href="#">
-                <h5> {{$totalCount}}</h5>
-              </a>
-              <!--<h6 class="success darken-4">31% <i class="la la-arrow-up"></i></h6>-->
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <div class="col-xl-4 col-12">
-    <div class="card crypto-card-3 pull-up">
-      <div class="card-content">
-        <div class="card-body pb-0">
-          <div class="row">
-            <div class="col-2"><a href="#">
-                <h1
-                  style="color: white; border-radius: 30px;padding: 6px 14px 6px 31px;background-color: #FF9149 !important;">
-                  <i class="la la-folder-open"></i>
-                </h1>
-              </a>
-            </div>
-            <div class="col-7 pl-2">
-              <a href="#">
-                <h4>عدد العقود</h4>
-                <!-- <h6 class="text-muted"> عدد سندات</h6> -->
-              </a>
-            </div>
-            <div class="col-3 text-right">
-              <a href="#">
-                <h5> {{$clientsCount}}</h5>
-              </a>
-              <!--<h6 class="success darken-4">31% <i class="la la-arrow-up"></i></h6>-->
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
+  
 </div>
+
 <style>
-  .rented-border {
-    border-right: 15px solid #DADADA;
-    border-top: 3px solid #DADADA;
+  .rented-color {
+    background: #DADADA;
   }
 
   .rented-back {
@@ -343,14 +370,12 @@
     margin-bottom: -5px;
   }
 
-  .waiting-border {
-    border-right: 15px solid #28D094;
-    border-top: 3px solid #28D094;
+  .waiting-color {
+    background: #28D094;
   }
 
-  .maintenance-border {
-    border-right: 15px solid #DADADA;
-    border-top: 3px solid #DADADA;
+  .maintenance-color {
+    background: #DADADA;
   }
 
   .maintenance-back {
@@ -363,9 +388,8 @@
     margin-bottom: -5px;
   }
 
-  .notclean-border {
-    border-right: 15px solid #DADADA;
-    border-top: 3px solid #DADADA;
+  .notclean-color {
+    background: #DADADA;
   }
 
   .vacant-back {
@@ -373,8 +397,38 @@
     margin-bottom: -5px;
   }
 
+  .vacant-color {
+    background: #DADADA;
+  }
+  .notclean_rented-color{
+    background: #DADADA;
+  }
+  .notclean_rented-back {
+    background: #aa342b;
+    margin-bottom: -5px;
+  }
+</style>
+<style>
+  .rented-border {
+    border-top: 3px solid #DADADA;
+  }
+
+  .waiting-border {
+    border-top: 3px solid #28D094;
+  }
+
+  .maintenance-border {
+    border-top: 3px solid #DADADA;
+  }
+
+  .notclean-border {
+    border-top: 3px solid #DADADA;
+  }
+
   .vacant-border {
-    border-right: 15px solid #DADADA;
+    border-top: 3px solid #DADADA;
+  }
+  .notclean_rented-border{
     border-top: 3px solid #DADADA;
   }
 </style>
