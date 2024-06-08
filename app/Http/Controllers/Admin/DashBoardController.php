@@ -62,11 +62,13 @@ class DashBoardController extends Controller
             $properties = Property::whereHas('clients', function ($query) use ($today) {
                 $query->whereDate('end_date', $today);
             })->get();
-            $exit_today_count = count($properties);
+            
         }else{
             $properties = Property::where('status',$status)->get();
         }
-       
+        $exit_today_count = Property::whereHas('clients', function ($query) use ($today) {
+            $query->whereDate('end_date', $today);
+        })->count();
         $orders = Property::select(
             DB::raw('COUNT(*) as total'),
             DB::raw('(SELECT COUNT(*) FROM properties WHERE status = "rented") as rented_count'),
