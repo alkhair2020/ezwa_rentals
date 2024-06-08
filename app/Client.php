@@ -20,4 +20,6 @@ class Client extends Model
     public function expenses(){
         return $this->hasOne(Expense::class,'client_id','id');
     }
+
+    
 }

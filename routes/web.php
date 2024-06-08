@@ -23,3 +23,4 @@ Auth::routes();
 Route::get('/', 'Admin\DashBoardController@index');
 
 Route::get('home', 'Admin\DashBoardController@index');
+Route::get('property/{status}', 'Admin\DashBoardController@property');

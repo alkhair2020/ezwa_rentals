@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Client;
 use App\User;
 use App\Expense;
+use App\Property;
 use Illuminate\Http\Request;
 use Mpdf\Mpdf;
 use App\Helpers\DateHelper;
@@ -68,9 +69,16 @@ class ExpenseController extends Controller
 
     public function store(Request $request)
     {
-        $user_id=Auth::user();
+        $user_id=Auth::user();  
         // dd($request->all());
-        $property = Client::where('id',$request->client_id)->first();
+        $client = Client::where('id',$request->client_id)->first();
+        $client->status=0;
+        $client->save();
+        
+        $property = Property::findOrFail($client->property_id);
+        $property->status="notclean";
+        $property->save();
+
         $add = new Expense;
         $add->user_id     = $user_id->id;
         $add->client_id     = $request->client_id;
@@ -79,7 +87,7 @@ class ExpenseController extends Controller
              $add->notes    = $request->notes;
         }
         $add->save();
-        return redirect()->back()->with("message", 'تم الإضافة بنجاح');
+        return redirect()->back()->with("message", 'تم إنهاء العقد ويمكنك طباعة مستند الصرف');
     }
 
     /**

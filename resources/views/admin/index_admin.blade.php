@@ -40,9 +40,34 @@
   </div> -->
   
   <div class="col-xl-1 col-lg-6 col-12">
+    <a href="{{url('property/exit_today')}}">
     <div class="card">
       <div class="card-content">
         <div class="card-body">
+        
+          <div class="media d-flex">
+            <div class="media-body text-left">
+              <h3 class="info">{{$exit_today_count}}</h3>
+              <span>خروج اليوم</span>
+            </div>
+            <div class="align-self-center">
+              <i class="icon-book-open info font-large-2 float-right"></i>
+            </div>
+          </div>
+          <div class="progress mt-1 mb-0" style="height: 7px;background: #DADADA;">
+            <div class="progress-bar " role="progressbar" style="background: #aa342b; width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </a>
+  </div>
+  <div class="col-xl-1 col-lg-6 col-12">
+    <a href="{{url('property/rented')}}">
+    <div class="card">
+      <div class="card-content">
+        <div class="card-body">
+        
           <div class="media d-flex">
             <div class="media-body text-left">
               <h3 class="info">{{$rented_count}}</h3>
@@ -58,8 +83,10 @@
         </div>
       </div>
     </div>
+    </a>
   </div>
   <div class="col-xl-1 col-lg-6 col-12">
+    <a href="{{url('property/vacant')}}">
     <div class="card">
       <div class="card-content">
         <div class="card-body">
@@ -78,9 +105,13 @@
         </div>
       </div>
     </div>
+    </a>
   </div>
+
   <div class="col-xl-1 col-lg-6 col-12">
+  <a href="{{url('property/maintenance')}}">
     <div class="card">
+   
       <div class="card-content">
         <div class="card-body">
           <div class="media d-flex">
@@ -98,9 +129,11 @@
         </div>
       </div>
     </div>
+    </a>
   </div>
   
   <div class="col-xl-1 col-lg-6 col-12">
+  <a href="{{url('property/notclean')}}">
     <div class="card">
       <div class="card-content">
         <div class="card-body">
@@ -119,8 +152,10 @@
         </div>
       </div>
     </div>
+    </a>
   </div>
   <div class="col-xl-2 col-lg-6 col-12">
+    <a href="{{url('property/waiting')}}">
     <div class="card">
       <div class="card-content">
         <div class="card-body">
@@ -139,8 +174,10 @@
         </div>
       </div>
     </div>
+    </a>
   </div>
   <div class="col-xl-2 col-lg-6 col-12">
+    <a href="{{url('property/notclean_rented')}}">
     <div class="card">
       <div class="card-content">
         <div class="card-body">
@@ -159,9 +196,10 @@
         </div>
       </div>
     </div>
+    </a>
   </div>
   
-  <div class="col-xl-2 col-lg-6 col-12">
+  <div class="col-xl-1 col-lg-6 col-12">
     <div class="card">
       <div class="card-content">
         <div class="card-body">

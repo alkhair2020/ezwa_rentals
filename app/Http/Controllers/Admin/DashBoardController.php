@@ -7,6 +7,7 @@ use App\Property;
 use App\Client;
 use App\User;
 use DB;
+use Illuminate\Support\Carbon as Carbon;
 class DashBoardController extends Controller
 {
        
@@ -18,10 +19,54 @@ class DashBoardController extends Controller
    
     public function index()
     {
-        
-        // $courses=Course::where('status',1)->get();
-        // $courses_count=count($courses);
         $properties = Property::get();
+        $today = Carbon::today()->toDateString();
+
+        // $properties = Property::whereHas('clients', function ($query) use ($today) {
+        //     $query->whereDate('end_date', $today);
+        // })->get();
+
+        $orders = Property::select(
+            DB::raw('COUNT(*) as total'),
+            DB::raw('(SELECT COUNT(*) FROM properties WHERE status = "rented") as rented_count'),
+            DB::raw('(SELECT COUNT(*) FROM properties WHERE status = "maintenance") as maintenance_count'),
+            DB::raw('(SELECT COUNT(*) FROM properties WHERE status = "notclean") as notclean_count'),
+            DB::raw('(SELECT COUNT(*) FROM properties WHERE status = "notclean_rented") as notclean_rented'),
+            DB::raw('(SELECT COUNT(*) FROM properties WHERE status = "waiting") as waiting_count'),
+            DB::raw('(SELECT COUNT(*) FROM properties WHERE status = "vacant") as vacant_count')
+        )->first();
+        
+        $exit_today_count = Property::whereHas('clients', function ($query) use ($today) {
+            $query->whereDate('end_date', $today);
+        })->count();
+
+        $totalCount = $orders->total;
+        $rented_count = $orders->rented_count;
+        $maintenance_count = $orders->maintenance_count;
+        $notclean_count = $orders->notclean_count;
+        $notclean_rented_count = $orders->notclean_rented;
+        $waiting_count = $orders->waiting_count;
+        $vacant_count = $orders->vacant_count;
+        
+        $clients = Client::select(
+            DB::raw('COUNT(*) as total'),
+        )->first();
+        $clientsCount = $clients->total;
+        
+        return view('admin.index_admin',compact('totalCount','rented_count','maintenance_count','notclean_count','waiting_count','vacant_count','notclean_rented_count','exit_today_count','clientsCount','properties'));
+    }
+    public function property($status)
+    {
+        $today = Carbon::today()->toDateString();
+        if($status=='exit_today'){
+            $properties = Property::whereHas('clients', function ($query) use ($today) {
+                $query->whereDate('end_date', $today);
+            })->get();
+            $exit_today_count = count($properties);
+        }else{
+            $properties = Property::where('status',$status)->get();
+        }
+       
         $orders = Property::select(
             DB::raw('COUNT(*) as total'),
             DB::raw('(SELECT COUNT(*) FROM properties WHERE status = "rented") as rented_count'),
@@ -60,8 +105,9 @@ class DashBoardController extends Controller
         
         // $balance=Transaction::orderBy('id', 'DESC')->first();
     //   dd($user_count);
-        return view('admin.index_admin',compact('totalCount','rented_count','maintenance_count','notclean_count','waiting_count','vacant_count','notclean_rented_count','clientsCount','properties'));
+        return view('admin.index_admin',compact('totalCount','rented_count','maintenance_count','notclean_count','waiting_count','vacant_count','notclean_rented_count','exit_today_count','clientsCount','properties'));
     }
+    
 
     // public function create()
     // {

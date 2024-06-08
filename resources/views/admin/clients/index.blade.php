@@ -52,6 +52,7 @@
                                     <th>الخصم</th>
                                     <th>الاجمالي</th>
                                     <th>التأمين</th>
+                                    <th>حالة العقد</th>
                                     <th>العمليات</th>
                                 </tr>
                             </thead>
@@ -71,6 +72,13 @@
                                     <td>{{$client->discount}}</td>
                                     <td>{{$client->total}}</td>
                                     <td>{{$client->insurance}}</td>
+                                    <td>
+                                        @if($client->status==0)
+                                            منتهي
+                                        @else
+                                            ساري    
+                                        @endif
+                                    </td>
 
 
                                     <td>
