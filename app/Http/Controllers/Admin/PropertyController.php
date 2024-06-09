@@ -66,20 +66,38 @@ class PropertyController extends Controller
         // );
 
         $edit = Property::findOrFail($property->id);
-        $edit->type    = $request->type;
-        $edit->number    = $request->number;
-        $edit->rooms    = $request->rooms;
-        $edit->baths    = $request->baths;
-        $edit->price    = $request->price;
+        if(isset($request->type)){
+            $edit->type    = $request->type;
+        }
+        if(isset($request->number)){
+            $edit->number    = $request->number;
+        }
+        if(isset($request->rooms)){
+            $edit->rooms    = $request->rooms;
+        }
+        if(isset($request->baths)){
+            $edit->baths    = $request->baths;
+        }
+        if(isset($request->price)){
+            $edit->price    = $request->price;
+        }
         if(isset($request->percentage)){
             $edit->percentage    = $request->percentage;
         }
-        $edit->address    = $request->address;
-        $edit->description    = $request->description;
-        $edit->status    = $request->status;
-        $edit->tax_number    = $request->tax_number;
+        if(isset($request->address)){
+            $edit->address    = $request->address;
+        }
+        if(isset($request->description)){
+            $edit->description    = $request->description;
+        }
+        if(isset($request->status)){
+            $edit->status    = $request->status;
+        }
+        if(isset($request->tax_number)){
+            $edit->tax_number    = $request->tax_number;
+        }
         $edit->save();
-        return redirect()->route('properties.index')->with("message", 'تم التعديل بنجاح');
+        return redirect()->back()->with("message", 'تم التعديل بنجاح');
     }
 
     public function destroy(Request $request )

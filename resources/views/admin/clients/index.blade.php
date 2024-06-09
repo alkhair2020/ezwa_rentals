@@ -136,7 +136,7 @@
                                         </a>
                                         @endcan
                                         @can('client-delete')
-                                        <a data-toggle="modal" data-catid="{{ $client->id }}" data-target="#delete"
+                                        <a data-toggle="modal" data-catid="{{ $client->id }}"  data-target="#delete"
                                             class="delete-course">
                                             <button type="button" class="btn btn-icon btn-danger mr-1"><i
                                                     class="la la-trash"></i></button>

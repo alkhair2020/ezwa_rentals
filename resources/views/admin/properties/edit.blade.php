@@ -50,7 +50,7 @@
                 <div class="card-content collapse show">
                     <div class="card-body">
 
-                        <form  method="post" action=" {{route('properties.update',$property->id)}}" enctype="multipart/form-data" class="form" name="le_form">
+                        <form  method="post" action="{{route('properties.update',$property->id)}}" enctype="multipart/form-data" class="form" name="le_form">
                             @csrf
                             @method('put')
                             <div class="form-body">

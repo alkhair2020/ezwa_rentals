@@ -279,10 +279,59 @@
               </div>
             </div>
           </div>
+          <a class="btn btn-sm bg-success-light edit-course" data-toggle="modal"
+								data-title_ar ="{{ $property->title_ar }}"data-catid="{{ $property->id }}"data-target="#edit{{$property->id}}">
+                <i class="la la-edit"></i>
+              </a>
         </div>
       </div>
     </div>
   </div>
+
+
+
+
+  <!-- Edit Details Modal -->
+    <div class="modal fade" id="edit{{$property->id}}" aria-hidden="true" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document" >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">تعديل المقال</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form  method="post" action="{{route('properties.update',$property->id)}}" enctype="multipart/form-data">
+                @csrf
+                @method('put')          
+              <div class="row form-row">
+                <!-- <input type="hidden" name="id" value="{{$property->id}}" >
+                <input type="hidden" name="author" value=" {{Auth::user()->name}}" > -->
+                <div class="col-md-12">
+                  <div class="form-group">
+                      <label for="projectinput5">حالة الوحدة </label>
+                      <select id="projectinput5" name="status" class="form-control">
+                          <option value="" selected="" disabled="">اختر الحالة</option>
+                          <option value="rented"  {{ $property->status == 'rented' ? "selected" : "" }}>مؤجر</option>
+                          <option value="maintenance"  {{ $property->status == 'maintenance' ? "selected" : "" }}>صيانة </option>
+                          <option value="notclean_rented" {{ $property->status == 'notclean_rented' ? "selected" : "" }}>(مؤجر) غير نظيف </option>
+                          <option value="notclean" {{ $property->status == 'notclean' ? "selected" : "" }}>(شاغر) غير نظيف </option>
+                          <option value="waiting" {{ $property->status == 'waiting' ? "selected" : "" }}> إنتظار تسجيل الدخول </option>
+                          <option value="vacant" {{ $property->status == 'vacant' ? "selected" : "" }}>  شاغر</option>
+                          <!-- <option value="exit"> خروج اليوم </option> -->
+                      </select>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">حفظ التغيير</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- /Edit Details Modal -->
+
   @endforeach
   <!-- @foreach ($properties as $property)
   <div class="col-lg-2 col-md-6 col-sm-12">
