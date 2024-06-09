@@ -24,10 +24,16 @@
 			           
 			          </div>
 			        </div>
-			        
-			        @if (session('success'))
+					@if(session('error'))
+                        <div class="alert alert-danger">
+                            <ul>
+                                {{ session('error') }}
+                            </ul>
+                        </div>
+                    @endif
+			        @if (session('message'))
 			            <div class="alert alert-success">
-			                {{ session('success') }}
+			                {{ session('message') }}
 			            </div>
 			        @endif
 
@@ -59,7 +65,8 @@
 								<div class="row align-items-center">
 									<div class="col-auto profile-image">
 										<a href="#">
-											<img class="rounded-circle" alt="User Image" src="{{asset('img/users/'.$users->photo) }}" width="120px">
+											<!-- <img class="rounded-circle" alt="User Image" src="{{asset('img/users/'.$users->photo) }}" width="120px"> -->
+											<img class="rounded-circle" alt="User Image" src="{{asset('img/avatar-s-19.png')}}" width="50px">
 										</a>
 									</div>
 									<div class="col ml-md-n2 profile-user-info">
@@ -80,9 +87,9 @@
 									<li class="nav-item">
 										<a class="nav-link active" data-toggle="tab" href="#per_details_tab">من أنا</a>
 									</li>
-									<!-- <li class="nav-item">
+									<li class="nav-item">
 										<a class="nav-link" data-toggle="tab" href="#password_tab">كلمة المرور</a>
-									</li> -->
+									</li>
 								</ul>
 							</div>	
 							<div class="tab-content profile-tab-cont">
@@ -97,7 +104,7 @@
 												<div class="card-body">
 													<h5 class="card-title d-flex justify-content-between">
 														<span>البيانات الشخصية	</span> 
-														<a class="edit-link" data-toggle="modal" href="#edit_personal_details"><i class="fa fa-edit mr-1"></i>تعديل</a>
+														<!-- <a class="edit-link" data-toggle="modal" href="#edit_personal_details"><i class="fa fa-edit mr-1"></i>تعديل</a> -->
 													</h5>
 													<div class="row">
 														<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">الاسم</p>

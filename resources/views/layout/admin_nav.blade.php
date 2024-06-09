@@ -44,7 +44,7 @@
                 <img src="{{asset('img/avatar-s-19.png')}}" alt="avatar"><i></i></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="#"><i class="ft-user"></i>
+              <a class="dropdown-item" href="{{url('admin/profile')}}"><i class="ft-user"></i>
                 تعديل بياناتي</a>
 
               <div class="dropdown-divider"></div>

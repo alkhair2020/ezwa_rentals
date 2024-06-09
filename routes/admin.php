@@ -55,7 +55,7 @@ Route::get('expenses/print/{id}', 'ExpenseController@print');
     Route::post('settings/contactdata','ProfileController@updateContactData');
     Route::get('profile', 'SettingController@index');
     Route::post('profile/update','SettingController@updateProfile');
-    Route::post('user/changepassword', 'ProfileController@changePassword')->name('user.changepassword');
+    Route::post('user/changepassword', 'SettingController@changePassword')->name('user.changepassword');
     //      Route::post('user/changepassword', 'ProfileController@instructorChangePassword')->name('instructor.changepassword');    
    
 }); 
