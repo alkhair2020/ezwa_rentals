@@ -261,18 +261,19 @@
               </div>
               <div class="badge block   {{ $property->status == 'rented' ? 'rented-back' : '' }} {{ $property->status == 'waiting' ? 'rented-back' : '' }}{{ $property->status == 'maintenance' ? 'maintenance-back' : '' }} {{ $property->status == 'notclean' ? 'notclean-back' : '' }} {{ $property->status == 'vacant' ? 'vacant-back' : '' }} {{ $property->status == 'notclean_rented' ? 'notclean_rented-back' : '' }}" style=" margin: 3px !important;">
                 <h4 class="text-white">
+                {{$property->number}}  
                 @if($property->status=='rented')
-                مؤجر
+                 <!-- مؤجر -->
                 @elseif($property->status=='waiting')
-                إنتظار تسجيل الدخول
+                <!-- إنتظار تسجيل الدخول -->
                 @elseif($property->status=='maintenance')
-                صيانة
+                <!-- صيانة -->
                 @elseif($property->status=='notclean')
-                <span>غير نظيف </span> (شاغر)
+                <!-- <span>غير نظيف </span> (شاغر) -->
                 @elseif($property->status=='notclean_rented')
-                <span>غير نظيف </span> (مؤجر)
+                <!-- <span>غير نظيف </span> (مؤجر) -->
                 @elseif($property->status=='vacant')
-                شاغر
+                <!-- شاغر -->
                 @endif
                 </h4>
               </div>
