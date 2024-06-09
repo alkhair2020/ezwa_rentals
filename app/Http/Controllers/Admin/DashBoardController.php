@@ -52,7 +52,6 @@ class DashBoardController extends Controller
             DB::raw('COUNT(*) as total'),
         )->first();
         $clientsCount = $clients->total;
-        
         return view('admin.index_admin',compact('totalCount','rented_count','maintenance_count','notclean_count','waiting_count','vacant_count','notclean_rented_count','exit_today_count','clientsCount','properties'));
     }
     public function property($status)
