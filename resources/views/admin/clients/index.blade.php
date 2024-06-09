@@ -82,11 +82,15 @@
 
 
                                     <td>
+                                        @can('client-print')
                                         <a class="btn btn-sm bg-success-light"
                                             href="{{ url('admin/clients/print', $client->id) }}">
                                             <button type="button" class="btn btn-icon btn-info mr-1"><i
                                                     class="la la-print"></i></button>
                                         </a>
+                                        @endcan
+
+                                        @can('receipt-print')
                                         @if($client->receipts)
                                         <a class="btn btn-sm bg-success-light"
                                             href="{{ url('admin/receipts/print', $client->receipts->id) }}">
@@ -99,6 +103,9 @@
                                             <button type="button" class="btn btn-icon btn-secondary mr-1"> قبض</button>
                                         </a>
                                         @endif
+                                        @endcan
+
+                                        @can('expense-print')
                                         @if($client->expenses)
                                         <a class="btn btn-sm bg-success-light"
                                             href="{{ url('admin/expenses/print', $client->expenses->id) }}">
@@ -116,20 +123,25 @@
                                             </button>
                                         </a>
                                         @endif
+                                        @endcan
                                         <!-- <a  class="btn btn-sm bg-success-light"
                                             href="{{ url('admin/clients/expenses', $client->id) }}">
                                             <button type="button" class="btn btn-icon btn-light mr-1"><i class="la la-plug"></i></button>
                                         </a> -->
+                                        @can('client-edit')
                                         <a class="btn btn-sm bg-success-light"
                                             href="{{ route('clients.edit', $client->id) }}">
                                             <button type="button" class="btn btn-icon btn-success mr-1"><i
                                                     class="la la-edit"></i></button>
                                         </a>
+                                        @endcan
+                                        @can('client-delete')
                                         <a data-toggle="modal" data-catid="{{ $client->id }}" data-target="#delete"
                                             class="delete-course">
                                             <button type="button" class="btn btn-icon btn-danger mr-1"><i
                                                     class="la la-trash"></i></button>
                                         </a>
+                                        @endcan
                                     </td>
                                 </tr>
                                 @endforeach

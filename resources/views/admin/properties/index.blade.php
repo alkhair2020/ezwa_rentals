@@ -12,11 +12,13 @@
             </dive> -->
         @include('admin.includes.alerts.success')
         @endif
+        @can('property-create')
         <div class="col-md-12 col-12">
             <div class="dropdown float-md-right">
                 <a href="{{route('properties.create')}}" class="btn btn-primary float-right mb-2">اضافة وحدة</a>
             </div>
         </div>
+        @endcan
     </div>
 
     <div class="row">
@@ -86,20 +88,26 @@
                                     <!-- <td>{{$property->address}}</td> -->
                                     <!-- <td>{{$property->description}}</td> -->
                                     <td>
+                                        @can('client-list')
                                         <a class="btn btn-sm bg-success-light"
                                             href="{{ url('admin/property/clients', $property->id) }}">
                                             <button type="button" class="btn btn-icon btn-info mr-1"><i
                                                 class="la la-users"></i></button>
                                         </a>
+                                        @endcan
+                                        @can('property-edit')
                                         <a class="btn btn-sm bg-success-light" href="{{ route('properties.edit', $property->id) }}">
                                             <button type="button" class="btn btn-icon btn-success mr-1"><i
                                                 class="la la-edit"></i></button>
                                         </a>
+                                        @endcan
+                                        @can('property-delete')
                                         <a data-toggle="modal" data-catid="{{ $property->id }}" data-target="#delete"
                                             class="delete-course">
                                             <button type="button" class="btn btn-icon btn-danger mr-1"><i
                                                     class="la la-trash"></i></button>
                                         </a>
+                                        @endcan
                                     </td>
                                 </tr>
                                 @endforeach

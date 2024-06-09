@@ -4,14 +4,14 @@
 
     <div class="content-header row">
         <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
-          <h3 class="content-header-title mb-0 d-inline-block">المستخدمين</h3><br>
+          <h3 class="content-header-title mb-0 d-inline-block">الصلاحيات</h3><br>
           <div class="row breadcrumbs-top d-inline-block">
             <div class="breadcrumb-wrapper col-12">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a>
                 </li>
                 
-                <li class="breadcrumb-item active">المستخدمين
+                <li class="breadcrumb-item active">الصلاحيات
                 </li>
               </ol> 
             </div>
@@ -19,8 +19,8 @@
         </div>
         <div class="content-header-right col-md-6 col-12">
           <div class="dropdown float-md-right">
-            @can('اضافة صلاحية')
-                <a href="{{ route('roles.create') }}" class="btn btn-primary float-right mt-2">أضافة صلاحية</a>
+            @can('role-create')
+                <a href="{{ route('roles.create') }}" class="btn btn-primary float-right mt-2">اضافة صلاحية</a>
             @endcan
           </div>
         </div>
@@ -94,18 +94,18 @@
                                                         <td>{{ ++$i }}</td>
                                                         <td>{{ $role->name }}</td>
                                                         <td>
-                                                            @can('عرض صلاحية')
+                                                            @can('role-list')
                                                                 <a class="btn btn-success btn-sm"
                                                                     href="{{ route('roles.show', $role->id) }}">عرض</a>
                                                             @endcan
                                                             
-                                                            @can('تعديل صلاحية')
+                                                            @can('role-edit')
                                                                 <a class="btn btn-primary btn-sm"
                                                                     href="{{ route('roles.edit', $role->id) }}">تعديل</a>
                                                             @endcan
 
                                                             @if ($role->name !== 'owner')
-                                                                @can('حذف صلاحية')
+                                                                @can('role-delete')
                                                                     {!! Form::open(['method' => 'DELETE', 'route' => ['roles.destroy',
                                                                     $role->id], 'style' => 'display:inline']) !!}
                                                                     {!! Form::submit('حذف', ['class' => 'btn btn-danger btn-sm']) !!}

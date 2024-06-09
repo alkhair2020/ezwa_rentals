@@ -20,7 +20,7 @@
         </div>
         <div class="content-header-right col-md-6 col-12">
           <div class="dropdown float-md-right">
-            @can('اضافة مستخدم')
+            @can('user-create')
                 <a  class="btn btn-primary float-right " href="{{ route('users.create') }}">اضافة مستخدم</a>
             @endcan
           </div>
@@ -93,12 +93,12 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @can('تعديل مستخدم')                            
+                                        @can('user-edit')                            
                                             <a href="{{ route('users.edit', $user->id) }}"  class="btn btn-sm bg-success-light"  >
                                                 <i class="fe fe-pencil"></i> تعديل
                                             </a>
                                         @endcan
-                                        @can('حذف مستخدم')
+                                        @can('user-delete')
                                         <a class="btn btn-sm bg-danger-light" data-effect="effect-scale"
                                                                         data-user_id="{{ $user->id }}" data-username="{{ $user->name }}"
                                                                         data-toggle="modal" href="#delete" title="حذف">
