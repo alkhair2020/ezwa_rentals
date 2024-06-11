@@ -117,14 +117,14 @@ class ClientController extends Controller
         if($request->property_type=='monthly'){
             // إذا دخل النزيل قبل الساعة 6 صباحًا، يغادر عند الساعة 12 ظهرًا في اليوم الثاني
             if ($now->hour < 6) {
-                $end_date = $now->copy()->addMonth($request->count_day - 1)->setTime(12, 0, 0);
+                $end_date = $now->copy()->addMonth($request->count_day)->subDay(1)->setTime(12, 0, 0);
             }else{
                 $end_date = $now->copy()->addMonth($request->count_day)->setTime(12, 0, 0);
             }
         }elseif($request->property_type=='weekly'){
             // إذا دخل النزيل قبل الساعة 6 صباحًا، يغادر عند الساعة 12 ظهرًا في اليوم الثاني
             if ($now->hour < 6) {
-                $end_date = $now->copy()->addWeeks($request->count_day - 1)->setTime(12, 0, 0);
+                $end_date = $now->copy()->addWeeks($request->count_day)->subDay(1)->setTime(12, 0, 0);
             }else{
                 $end_date = $now->copy()->addWeeks($request->count_day)->setTime(12, 0, 0);
             }

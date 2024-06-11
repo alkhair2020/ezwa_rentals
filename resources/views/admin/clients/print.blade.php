@@ -285,7 +285,7 @@
                   @elseif($clients->type=='accommodation')
                   هوية وطنية
                   @else
-                 زائر
+                  زائر
                   @endif
                 </p>
                 <p>
