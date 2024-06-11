@@ -283,8 +283,10 @@
                   
                   @if($clients->type=='accommodation')
                   إقامة
-                  @else
+                  @elseif($clients->type=='accommodation')
                   هوية وطنية
+                  @else
+                 زائر
                   @endif
                 </p>
                 <p>

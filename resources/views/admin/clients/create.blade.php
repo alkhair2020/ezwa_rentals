@@ -39,7 +39,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="projectinput4">رقم الهوية</label>
-                                            <input type="number" name="id_number" id="id_numberId" class="form-control"
+                                            <input type="text" name="id_number" id="id_numberId" class="form-control"
                                                 placeholder="رقم الهوية">
                                             <span id="id_numberError" class="error-message"></span>
                                         </div>
@@ -69,6 +69,7 @@
                                                 <option value="" selected="" disabled="">اختر نوع الهوية</option>
                                                 <option value="national identity">هوية وطنية</option>
                                                 <option value="accommodation">إقامة</option>
+                                                <option value="visitor">زائر</option>
                                             </select>
                                             <span id="typeError" class="error-message"></span>
                                         </div>
@@ -247,7 +248,7 @@
         }
         idNumberError.innerHTML = "";
 
-        if (idNumberId.value.length >10 ) {
+        /**if (idNumberId.value.length >10 ) {
             idNumberError.innerHTML = "رقم الهوية عشرة ارقام فقط";
             return false;
         }
@@ -256,7 +257,7 @@
             idNumberError.innerHTML = "رقم الهوية لا يقل عن عشرة ارقام";
             return false;
         }
-        idNumberError.innerHTML = "";
+        idNumberError.innerHTML = "";*/
 
         if (nameId.value == "") {
             nameError.innerHTML = "اكتب اسم العميل";
