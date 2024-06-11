@@ -135,7 +135,7 @@
               <!-- <div class="col-sm-12 text-center text-md-left">
                 <p class="text-muted">التاريخ</p>
               </div> -->
-              <div class="col-md-3 col-sm-12 ">
+              <div class="col-md-2 col-sm-12 ">
                 <p>
                   <span class="text-muted">بداية العقد :</span>
                 </p>
@@ -146,7 +146,7 @@
                   <span class="text-muted">نوع الاإيجار :</span>
                 </p>
                 <p>
-                  <span class="text-muted">الإيجار شهري :</span>
+                  <span class="text-muted"> سعر الايجار:</span>
                 </p>
                 
                 <p>
@@ -157,13 +157,10 @@
                 </p>
               </div>
               <div class="col-md-4 col-sm-12 ">
-                <p>
-                  {{$clients->start_date}} م
-                </p>
+                <p {{$clients->start_date}} م  </p>
                 <p>{{$clients->start_hijriDate}} هـ
                 </p>
                 <p>
-                  
                   @if($clients->property_type=='monthly')
                      شهري
                   @elseif($clients->property_type=='weekly')
@@ -172,11 +169,9 @@
                      يومي
                   @endif
                 </p>
-                <p>{{$clients->property_price}}
-                </p>
+                <p>{{$clients->property_price}}</p>
                 
-                <p>  {{$clients->discount}}
-                </p>
+                <p>  {{$clients->discount}}</p>
                 <p>
                   <span class="text-muted"></span>  {{$clients->total }}
                 </p>
@@ -202,10 +197,9 @@
                 </p>
               </div>
 
-              <div class="col-md-2 col-sm-12 ">
+              <div class="col-md-3 col-sm-12 ">
                 <p>
-                  {{$clients->end_date}} م
-                </p>
+                  {{$clients->end_date}} م   &nbsp;&nbsp;{{ $clients->time}}</p>
                 <p>
                   <span class="text-muted"></span> {{$clients->end_hijriDate}} هـ
                 </p>

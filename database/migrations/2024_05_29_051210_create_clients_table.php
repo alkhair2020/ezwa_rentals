@@ -25,6 +25,7 @@ class CreateClientsTable extends Migration
             $table->integer('number_companions');
             $table->string('age')->nullable();
             $table->string('start_date');
+            $table->string('time');
             $table->string('end_date');
             $table->string('property_type');
             $table->string('count_day');

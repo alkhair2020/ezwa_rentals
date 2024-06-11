@@ -47,7 +47,7 @@
                                     <th>رقم الوحدة</th>
                                     <th>عدد الغرف</th>
                                     <th>عدد الحمامات</th>
-                                    <th>السعر</th>
+                                    <!-- <th>السعر</th> -->
                                     <th>نسبة الزيادة</th>
                                     <th>الحالة</th>
                                     <!-- <th>العنوان</th> -->
@@ -68,7 +68,7 @@
                                     <td>{{$property->number}}</td>
                                     <td>{{$property->rooms}}</td>
                                     <td>{{$property->baths}}</td>
-                                    <td>{{$property->price}}</td>
+                                    <!-- <td>{{$property->price}}</td> -->
                                     <td>{{$property->percentage}}</td>
                                     <td>
                                         @if($property->status=='rented')

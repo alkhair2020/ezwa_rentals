@@ -89,26 +89,54 @@ class ClientController extends Controller
     {
         $user_id=Auth::user();
         
-        $now = Carbon::parse($request->start_date);
-        // $end_date = $now->addMonth($request->count_day)->toDateString();
-        // dd($end_date);
-        $datenow=Carbon::now()->format('Y-m-d');
+        // $now = Carbon::parse($request->start_date);
+        // $datenow=Carbon::now()->format('Y-m-d');
+        // if($request->property_type=='monthly'){
+        //     $end_date = $now->addMonth($request->count_day)->toDateString();
+        // }elseif($request->property_type=='weekly'){
+        //     $end_date = $now->addWeeks($request->count_day)->toDateString();
+        // }else{
+        //     $end_date = $now->addDays($request->count_day)->toDateString();
+        // }
+
+        // $arrivalDateTime = Carbon::parse('2024-06-01 05:00:00');
+        // // عدد الليالي المطلوبة 
+        // $numberOfNights = 1;
+        // // حساب تاريخ المغادرة
+        // $departureDateTime = $arrivalDateTime->copy()->addDays($numberOfNights)->setTime(12, 0, 0);
+        // // إذا دخل النزيل قبل الساعة 6 صباحًا، يغادر عند الساعة 12 ظهرًا في اليوم الثاني
+        // if ($arrivalDateTime->hour < 6) {
+        //     $departureDateTime = $arrivalDateTime->copy()->addDays($numberOfNights - 1)->setTime(12, 0, 0);
+        // }
+        // // عرض تاريخ المغادرة بتنسيق 12 ساعة
+        // echo "Departure Date: " . $departureDateTime->format('Y-m-d h:i A');
+        // echo "Departure Date: " . $arrivalDateTime->format('Y-m-d h:i A');
+        // // dd($numberOfNights);
+        
+        $now = Carbon::parse($request->start_date.''.$request->time);
         if($request->property_type=='monthly'){
-            $end_date = $now->addMonth($request->count_day)->toDateString();
+            // إذا دخل النزيل قبل الساعة 6 صباحًا، يغادر عند الساعة 12 ظهرًا في اليوم الثاني
+            if ($now->hour < 6) {
+                $end_date = $now->copy()->addMonth($request->count_day - 1)->setTime(12, 0, 0);
+            }else{
+                $end_date = $now->copy()->addMonth($request->count_day)->setTime(12, 0, 0);
+            }
         }elseif($request->property_type=='weekly'){
-            $end_date = $now->addWeeks($request->count_day)->toDateString();
+            // إذا دخل النزيل قبل الساعة 6 صباحًا، يغادر عند الساعة 12 ظهرًا في اليوم الثاني
+            if ($now->hour < 6) {
+                $end_date = $now->copy()->addWeeks($request->count_day - 1)->setTime(12, 0, 0);
+            }else{
+                $end_date = $now->copy()->addWeeks($request->count_day)->setTime(12, 0, 0);
+            }
         }else{
-            $end_date = $now->addDays($request->count_day)->toDateString();
+            if ($now->hour < 6) {
+                $end_date = $now->copy()->addDays($request->count_day - 1)->setTime(12, 0, 0);
+            }else{
+                $end_date = $now->copy()->addDays($request->count_day)->setTime(12, 0, 0);
+            }
         }
         
-        
        
-
-        // $futureDate->addWeeks(3);
-        // echo $end_date;
-
-
-        // dd($end_date);
         $property = Property::where('id',$request->property_id)->first();
         $add = new Client;
         $add->user_id     = $user_id->id;
@@ -117,8 +145,10 @@ class ClientController extends Controller
         $add->type    = $request->type;
         if($request->type ="national identity"){
             $add->nationality    = 'سعودي';
-        }else{
+        }elseif($request->type ="accommodation"){
             $add->nationality    = 'مقيم';
+        }else{
+            $add->nationality    = 'زائر';
         }
        
         $add->id_number    = $request->id_number;
@@ -127,7 +157,8 @@ class ClientController extends Controller
         $add->property_id    = $request->property_id;
         $add->count_day    = $request->count_day;
         $add->start_date    = $request->start_date;
-        $add->end_date    = $end_date;
+        $add->time    =$end_date->format('h:i A');
+        $add->end_date    = $end_date->format('Y-m-d');
         $add->property_type    = $request->property_type;
         if(isset( $request->discount)){
             $add->discount    = $request->discount;
@@ -138,28 +169,22 @@ class ClientController extends Controller
         if(isset( $request->draft)){
              $add->draft    = $request->draft;
         }
-        $price_whith_percent= $property->price + ($property->price * $property->percentage) / 100;
+        // $price_whith_percent= $property->price + ($property->price * $property->percentage) / 100;
         if($request->property_type=='weekly'){
-            $price = $price_whith_percent / 4;
-            $add->property_price    = $price * $request->count_day ;
+            $price_whith_percent= $property->price_week + ($property->price_week * $property->percentage) / 100;
+            $add->property_price    = $price_whith_percent * $request->count_day ;
+            $add->total    = $price_whith_percent * $request->count_day - $request->discount;
         }elseif($request->property_type=='daily'){
-            $price =$price_whith_percent / 30;
-            $add->property_price    = $price * $request->count_day;
+            $price_whith_percent= $property->price_day + ($property->price_day * $property->percentage) / 100;
+            $add->property_price    = $price_whith_percent * $request->count_day;
+            $add->total    = $price_whith_percent * $request->count_day - $request->discount;
         }else{
+            $price_whith_percent= $property->price_month + ($property->price_month * $property->percentage) / 100;
             $add->property_price    =$price_whith_percent;
-        }
-        
-        if($request->property_type=='weekly'){
-            $price = $price_whith_percent / 4;
-            $add->total    = $price * $request->count_day - $request->discount;
-        }elseif($request->property_type=='daily'){
-            $price =$price_whith_percent / 30;
-            $add->total    = $price * $request->count_day - $request->discount;
-        }else{
             $add->total    =$price_whith_percent - $request->discount;
         }
         
-        // dd($add);property_price
+       
         $add->save();
 
         $datenow=Carbon::now()->format('Y-m-d');

@@ -38,8 +38,9 @@ class PropertyController extends Controller
         $add->number    = $request->number;
         $add->rooms    = $request->rooms;
         $add->baths    = $request->baths;
-        $add->price    = $request->price;
-       
+        $add->price_day    = $request->price_day;
+        $add->price_week    = $request->price_week;
+        $add->price_month    = $request->price_month;
         $add->address    = $request->address;
         $add->description    = $request->description;
         $add->tax_number    = $request->tax_number;
@@ -78,8 +79,14 @@ class PropertyController extends Controller
         if(isset($request->baths)){
             $edit->baths    = $request->baths;
         }
-        if(isset($request->price)){
-            $edit->price    = $request->price;
+        if(isset($request->price_day)){
+            $edit->price_day    = $request->price_day;
+        }
+        if(isset($request->price_week)){
+            $edit->price_week    = $request->price_week;
+        }
+        if(isset($request->price_month)){
+            $edit->price_month    = $request->price_month;
         }
         if(isset($request->percentage)){
             $edit->percentage    = $request->percentage;

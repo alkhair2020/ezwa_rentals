@@ -55,7 +55,7 @@
                         <div class="form-body">
                             <h4 class="form-section"><i class="ft-user"></i> بيانات الوحدة</h4>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="projectinput5">نوع الوحدة</label>
                                         <select id="typeId" name="type" class="form-control">
@@ -68,7 +68,7 @@
                                         <span id="typeError" class="error-message"></span>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="projectinput1">رقم الوحدة</label>
                                         <input type="number" name="number" id="numberId" class="form-control" placeholder="اكتب رقم الوحدة"
@@ -79,9 +79,23 @@
                                 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="projectinput4">سعر الايجار</label>
-                                        <input type="number" name="price" id="priceId" class="form-control" placeholder="سعر الايجار" >
-                                        <span id="priceError" class="error-message"></span>
+                                        <label for="projectinput4">سعر اليوم</label>
+                                        <input type="number" name="price_day" id="price_dayId" class="form-control" placeholder="سعر اليوم" >
+                                        <span id="price_dayError" class="error-message"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="projectinput4">سعر الاسبوع</label>
+                                        <input type="number" name="price_week" id="price_weekId" class="form-control" placeholder="سعر الاسبوع" >
+                                        <span id="price_weekError" class="error-message"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="projectinput4">سعر الشهر</label>
+                                        <input type="number" name="price_month" id="price_monthId" class="form-control" placeholder="سعر الشهر" >
+                                        <span id="price_monthError" class="error-message"></span>
                                     </div>
                                 </div>
                             </div>

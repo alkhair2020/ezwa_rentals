@@ -19,7 +19,9 @@ class CreatePropertiesTable extends Migration
             $table->integer('number');
             $table->integer('rooms');
             $table->integer('baths');
-            $table->integer('price');
+            $table->float('price_day');
+            $table->float('price_week');
+            $table->float('price_month');
             $table->string('address')->nullable();
             $table->longText('description')->nullable();
             $table->string('status')->default('waiting');

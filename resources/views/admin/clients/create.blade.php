@@ -38,6 +38,18 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
+                                            <label for="projectinput5">نوع الإثبات</label>
+                                            <select name="type" class="form-control" id="typeId">
+                                                <option value="" selected="" disabled="">اختر نوع الهوية</option>
+                                                <option value="national identity">هوية وطنية</option>
+                                                <option value="accommodation">إقامة</option>
+                                                <option value="visitor">زائر</option>
+                                            </select>
+                                            <span id="typeError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
                                             <label for="projectinput4">رقم الهوية</label>
                                             <input type="text" name="id_number" id="id_numberId" class="form-control"
                                                 placeholder="رقم الهوية">
@@ -52,26 +64,15 @@
                                             <span id="nameError" class="error-message"></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                   
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="projectinput4">رقم الجوال</label>
                                             <input type="number" name="phone" id="phoneId" class="form-control"
                                                 placeholder="رقم الجوال">
                                             <span id="phoneError" class="error-message"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="projectinput5">نوع الإثبات</label>
-                                            <select name="type" class="form-control" id="typeId">
-                                                <option value="" selected="" disabled="">اختر نوع الهوية</option>
-                                                <option value="national identity">هوية وطنية</option>
-                                                <option value="accommodation">إقامة</option>
-                                                <option value="visitor">زائر</option>
-                                            </select>
-                                            <span id="typeError" class="error-message"></span>
                                         </div>
                                     </div>
                                     <!-- <div class="col-md-4">
@@ -85,7 +86,7 @@
                                             <span id="nationalityError" class="error-message"></span>
                                         </div>
                                     </div> -->
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="projectinput4"> عدد الافراد</label>
                                             <input type="number" name="number_companions" id="number_companionsId"
@@ -130,6 +131,13 @@
                                             <span id="count_dayError" class="error-message"></span>
                                         </div>
                                     </div>
+                                    <!-- <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput4">سعر الايجار</label>
+                                            <input type="number" name="price" id="priceId" class="form-control" placeholder="سعر الايجار" >
+                                            <span id="priceError" class="error-message"></span>
+                                        </div>
+                                    </div> -->
                                     
                                     <!-- <div class="col-md-4">
                                         <div class="form-group">
@@ -142,16 +150,25 @@
                                     </div> -->
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="issueinput3">بداية العقد</label>
+                                            <label for="issueinput3">بداية تاريخ العقد</label>
                                             <input type="date" name="start_date" id="start_dateId" class="form-control"
                                                 data-toggle="tooltip" data-trigger="hover" data-placement="top"
                                                 data-title="Date Opened">
                                             <span id="start_dateError" class="error-message"></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="issueinput3">بداية الوقت للعقد</label>
+                                            <input type="time" name="time" id="timeId" class="form-control"
+                                                data-toggle="tooltip" data-trigger="hover" data-placement="top"
+                                                data-title="Date Opened">
+                                            <span id="start_dateError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput1">الخصم</label>
                                             <input type="number" name="discount" id="discountId" class="form-control" 
@@ -159,7 +176,7 @@
                                             <span id="discountError" class="error-message"></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput1">التأمين</label>
                                             <input type="number" name="insurance" id="insuranceId" class="form-control"
