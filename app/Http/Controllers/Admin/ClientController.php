@@ -136,16 +136,16 @@ class ClientController extends Controller
             }
         }
         
-       
+        // dd($request->all());
         $property = Property::where('id',$request->property_id)->first();
         $add = new Client;
         $add->user_id     = $user_id->id;
         $add->property_id     = $request->property_id;
         $add->name    = $request->name;
         $add->type    = $request->type;
-        if($request->type ="national identity"){
+        if($request->type =="national identity"){
             $add->nationality    = 'سعودي';
-        }elseif($request->type ="accommodation"){
+        }elseif($request->type =="accommodation"){
             $add->nationality    = 'مقيم';
         }else{
             $add->nationality    = 'زائر';

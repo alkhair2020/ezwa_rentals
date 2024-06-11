@@ -156,7 +156,7 @@
                   <span class="text-muted"> المدفوع :</span>
                 </p>
               </div>
-              <div class="col-md-4 col-sm-12 ">
+              <div class="col-md-3 col-sm-12 ">
                 <p>
                   {{$clients->start_date}} م 
                 </p>
@@ -189,7 +189,7 @@
                   <span class="text-muted">الموافق :</span>
                 </p>
                 <p>
-                  <span class="text-muted"> رقم العقار:</span>
+                  <span class="text-muted"> رقم الشقة:</span>
                 </p>
                 <p>
                   <span class="text-muted">الايام :</span>
@@ -202,7 +202,7 @@
                 </p>
               </div>
 
-              <div class="col-md-2 col-sm-12 ">
+              <div class="col-md-3 col-sm-12 ">
                 <p>
                 {{$clients->end_date}} م   &nbsp;&nbsp;{{ $clients->time}}</p>
                 <p>
