@@ -88,6 +88,7 @@ class PropertyController extends Controller
         if(isset($request->price_month)){
             $edit->price_month    = $request->price_month;
         }
+        
         if(isset($request->percentage)){
             $edit->percentage    = $request->percentage;
         }

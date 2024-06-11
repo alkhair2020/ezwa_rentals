@@ -78,9 +78,23 @@
 
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="projectinput4">سعر الايجار</label>
-                                            <input type="number" name="price" id="projectinput4" class="form-control"
-                                                placeholder="سعر الايجار" value="{{$property->price}}">
+                                            <label for="projectinput4">سعر اليوم</label>
+                                            <input type="number" name="price_day" id="projectinput4" class="form-control"
+                                                placeholder="سعر اليوم" value="{{$property->price_day}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput4">سعر الاسبوع</label>
+                                            <input type="number" name="price_week" id="projectinput4" class="form-control"
+                                                placeholder="سعر الاسبوع" value="{{$property->price_week}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput4">سعر الشهر</label>
+                                            <input type="number" name="price_month" id="projectinput4" class="form-control"
+                                                placeholder="سعر الشهر" value="{{$property->price_month}}">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
