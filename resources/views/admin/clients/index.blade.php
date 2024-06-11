@@ -67,8 +67,7 @@
                                     <td>{{$client->properties->number}}</td>
                                     <td>{{$client->start_date}}</td>
                                     <td>{{$client->end_date}}</td>
-                                    <td>{{$client->properties->price + ($client->properties->price *
-                                        $client->properties->percentage) / 100}}</td>
+                                    <td>{{$client->property_price}}</td>
                                     <td>{{$client->discount}}</td>
                                     <td>{{$client->total}}</td>
                                     <td>{{$client->insurance}}</td>
