@@ -30,8 +30,8 @@ class CreateClientsTable extends Migration
             $table->string('property_type');
             $table->string('count_day');
             $table->float('discount')->default('0');
-            $table->float('insurance')->default('0');
-            $table->float('draft')->default('0');
+            // $table->float('insurance')->default('0');
+            // $table->float('draft')->default('0');
             $table->float('property_price')->default('0');
             $table->float('total')->default('0');
             $table->integer('status')->default('1');

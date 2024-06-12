@@ -98,7 +98,7 @@
 
                                 <h4 class="form-section"><i class="la la-paperclip"></i> بيانات العقد</h4>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput5">الوحدة</label>
                                             <select name="property_id" class="form-control" id="propertyId">
@@ -110,7 +110,7 @@
                                             <span id="property_idError" class="error-message"></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput5">نوع الإجار</label>
                                             <select name="property_type" class="form-control" id="property_typeId">
@@ -122,7 +122,7 @@
                                             <span id="property_typeError" class="error-message"></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput5">عدد (كم يوم  / كم اسبوع / كم شهر ) </label>
                                             <input type="number" name="count_day" id="count_dayId" class="form-control"
@@ -131,13 +131,19 @@
                                             <span id="count_dayError" class="error-message"></span>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-md-3">
+                                    <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="projectinput4">سعر الايجار</label>
-                                            <input type="number" name="price" id="priceId" class="form-control" placeholder="سعر الايجار" >
-                                            <span id="priceError" class="error-message"></span>
+                                            <label for="projectinput5">طريقة الدفع</label>
+                                            <select name="payment_way" class="form-control" id="payment_wayId">
+                                                <option value="" selected="" disabled="">اختر طريقة الدفع</option>
+                                                <option value="bank transfer">تحويل بنكي</option>
+                                                <option value="network">شبكة</option>
+                                                <option value="cash">نقدي</option>
+                                            </select>
+                                            <span id="payment_wayError" class="error-message"></span>
                                         </div>
-                                    </div> -->
+                                    </div>
+                                    
                                     
                                     <!-- <div class="col-md-4">
                                         <div class="form-group">

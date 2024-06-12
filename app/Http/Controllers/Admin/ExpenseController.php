@@ -5,6 +5,7 @@ use App\Client;
 use App\User;
 use App\Expense;
 use App\Property;
+use App\Report;
 use Illuminate\Http\Request;
 use Mpdf\Mpdf;
 use App\Helpers\DateHelper;
@@ -87,6 +88,19 @@ class ExpenseController extends Controller
              $add->notes    = $request->notes;
         }
         $add->save();
+
+
+        $add_report = new Report;
+        $add_report->user_id     = $user_id->id;
+        $add_report->property_id     = $client->property_id;
+        $add_report->client_id     =  $request->client_id;
+        $add_report->expense_id    = $add->id;
+        $add_report->payment_way    = "cash";
+        $add_report->status    = 0;
+        $add_report->worker_checked    =$request->worker_checked;
+        $add_report->cleaner    = $request->cleaner;
+        $add_report->status_door_card    = $request->status_door_card;
+        $add_report->save();
         return redirect()->back()->with("message", 'تم إنهاء العقد ويمكنك طباعة مستند الصرف');
     }
 

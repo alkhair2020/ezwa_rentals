@@ -6,6 +6,7 @@ use App\Client;
 use App\Property;
 use App\User;
 use App\Receipt;
+use App\Report;
 use Illuminate\Http\Request;
 use Mpdf\Mpdf;
 use App\Helpers\DateHelper;
@@ -77,13 +78,6 @@ class ClientController extends Controller
         $properties=Property::get();
         return view('admin.clients.create',compact('properties'));
     }
-    // public function clientAdd($id)
-    // {
-
-    //     return view('admin.clients.create');
-    // }
-        
-    
 
     public function store(Request $request)
     {
@@ -163,12 +157,12 @@ class ClientController extends Controller
         if(isset( $request->discount)){
             $add->discount    = $request->discount;
         }
-        if(isset( $request->insurance)){
-            $add->insurance = $request->insurance;
-        }
-        if(isset( $request->draft)){
-             $add->draft    = $request->draft;
-        }
+        // if(isset( $request->insurance)){
+        //     $add->insurance = $request->insurance;
+        // }
+        // if(isset( $request->draft)){
+        //      $add->draft    = $request->draft;
+        // }
         // $price_whith_percent= $property->price + ($property->price * $property->percentage) / 100;
         if($request->property_type=='weekly'){
             $price_whith_percent= $property->price_week + ($property->price_week * $property->percentage) / 100;
@@ -194,6 +188,17 @@ class ClientController extends Controller
         $add_receipt->amount    = $request->insurance;
         $add_receipt->date    = $datenow;
         $add_receipt->save();
+
+        $add_report = new Report;
+        $add_report->user_id     = $user_id->id;
+        $add_report->property_id     = $request->property_id;
+        $add_report->client_id     = $add->id;
+        $add_report->receipt_id    = $add_receipt->id;
+        $add_report->payment_way    = $request->payment_way;
+        
+        $add_report->save();
+        
+
         return redirect()->route('clients.index')->with("message", 'تم الإضافة بنجاح');
     }
 

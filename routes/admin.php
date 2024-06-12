@@ -19,10 +19,14 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin','prefix' => 'admin'
    Route::get('clients/receipts/{id}', 'ReceiptController@clientReceipts');
    Route::get('receipts/print/{id}', 'ReceiptController@print');
 
-   Route::resource('expenses','ExpenseController');
-   Route::get('clients/expenses/{id}', 'ExpenseController@clientExpenses');
-Route::get('expenses/print/{id}', 'ExpenseController@print');
- 
+    Route::resource('expenses','ExpenseController');
+    Route::get('clients/expenses/{id}', 'ExpenseController@clientExpenses');
+    Route::get('expenses/print/{id}', 'ExpenseController@print');
+
+    Route::resource('reports','ReportController');
+    Route::get('reports/print/{id}', 'ReportController@print');
+
+
 
     Route::get('/convert-date', function () {
         $gregorianDate = '2024-05-31'; // يمكنك أيضاً استلام هذا التاريخ كمدخل من المستخدم

@@ -166,18 +166,48 @@
                         @csrf
                         <input type="hidden" name="client_id" id="cat_id">
                         <div class="row form-row">
-                            <div class="col-12 col-sm-12">
+                            <div class="col-12 col-sm-6">
                                 <div class="form-group">
                                     <label> المبلغ</label>
                                     <input type="text" name="amount" class="form-control" id="amount_id">
-                                    <input type="hidden" name="insurance" id="insurance_id">
+                                    <!-- <input type="hidden" name="insurance" id="insurance_id"> -->
                                     <span id="amountError" class="error-message"></span>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-12">
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>العامل المشيك على الغرفة</label>
+                                    <input type="text" name="worker_checked" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>عامل النظافة </label>
+                                    <input type="text" name="cleaner" class="form-control">
+                                </div>
+                            </div>
+                           
+                            <div class="col-12 col-sm-6">
                                 <div class="form-group">
                                     <label>ملاحظة </label>
                                     <input type="text" name="notes" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <h5>
+                                    <strong>كارت الباب</strong>
+                                    <span class="required">*</span>
+                                    </h5>
+                                    <div class="controls">
+                                    <div class="skin skin-square">
+                                        <input type="radio" value="1" name="status_door_card" required id="radio1">
+                                        <label for="radio1">استلمت</label>
+                                    </div>
+                                    <div class="skin skin-square">
+                                        <input type="radio" value="0" name="status_door_card" id="radio2">
+                                        <label for="radio2">لم استلم</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
