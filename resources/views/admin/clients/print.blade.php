@@ -282,7 +282,7 @@
                   
                   @if($clients->type=='accommodation')
                   إقامة
-                  @elseif($clients->type=='accommodation')
+                  @elseif($clients->type=='national identity')
                   هوية وطنية
                   @else
                   زائر
