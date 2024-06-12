@@ -144,7 +144,7 @@ class ClientController extends Controller
         }else{
             $add->nationality    = 'زائر';
         }
-       dd($add);
+       
         $add->id_number    = $request->id_number;
         $add->phone    = $request->phone;
         $add->number_companions    = $request->number_companions;
