@@ -70,7 +70,7 @@
                                     <td>{{$client->property_price}}</td>
                                     <td>{{$client->discount}}</td>
                                     <td>{{$client->total}}</td>
-                                    <td>{{$client->insurance}}</td>
+                                    <td>{{$client->receipts->amount}}</td>
                                     <td>
                                         @if($client->status==0)
                                             منتهي
@@ -114,7 +114,7 @@
                                         </a>
                                         @else
                                         <a class="btn btn-sm bg-success-light" data-toggle="modal"
-                                            data-catid="{{ $client->id }}" data-insuranceid="{{ $client->insurance }}"
+                                            data-catid="{{ $client->id }}" data-insuranceid="{{ $client->receipts->amount }}"
                                             data-target="#create_expenses">
                                             <!-- <a  class="btn btn-sm bg-success-light" href="{{ url('admin/clients/receipts', $client->id) }}"> -->
                                             <button type="button" class="btn btn-icon btn-light mr-1" style="background: #DADADA;">

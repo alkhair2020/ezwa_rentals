@@ -17,7 +17,7 @@ class ClientController extends Controller
     public function print($id)
     {
         // Fetch invoice data from the database
-        $clients = Client::where('id',$id)->with('properties')->first();
+        $clients = Client::where('id',$id)->with('properties')->with('receipts')->first();
         $users = User::where('id',$clients->user_id)->first();
         // $gregorianDate = '2024-05-31'; // يمكنك أيضاً استلام هذا التاريخ كمدخل من المستخدم
         // $gregorianDate = $clients->start_date; 

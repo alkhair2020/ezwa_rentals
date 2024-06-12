@@ -226,7 +226,7 @@
                   <span class="text-muted"> </span>{{$clients->discount}}
                 </p> -->
                 <p>
-                  <span class="text-muted"></span>{{$clients->insurance}}
+                  <span class="text-muted"></span>{{$clients->receipts->amount}}
                 </p>
               </div>
              
