@@ -24,8 +24,8 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin','prefix' => 'admin'
     Route::get('expenses/print/{id}', 'ExpenseController@print');
 
     Route::resource('reports','ReportController');
-    Route::get('reports/print/{id}', 'ReportController@print');
-
+    Route::get('report/print', 'ReportController@index')->name('report.print');
+    // Route::get('report-search', 'ReportController@print')->name('report.search');
 
 
     Route::get('/convert-date', function () {

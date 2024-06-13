@@ -60,30 +60,69 @@
 
     <div class="app-content content">
         <div class="content-wrapper">
+            <div class="content-header row" id="search-form">
+                <div class="content-header-left col-md-6 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="breadcrumb-wrapper col-12">
+                            <form action="{{ route('report.print') }}" method="GET"">
+                                
+                                <input type="hidden" name="client_id" id="cat_id">
+                                <div class="row form-row">
+                                    <div class="col-12 col-sm-3">
+                                        <div class="form-group">
+                                            <label> من تاريخ </label>
+                                            <input type="date" name="from" class="form-control" id="amount_id">
+                                            <span id="amountError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-3">
+                                        <div class="form-group">
+                                            <label>الي تاريخ </label>
+                                            <input type="date" name="to" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-2 m-1 p-1">
+                                        <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-block">بحث</button>
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-header-right col-md-6 col-12">
+                    <div class="media width-250 float-right">
+                        <!-- <button id="printButton">Print this page</button> -->
+                        <button id="printButton" type="button" class="btn btn-icon btn-info mr-1 mt-2"><i class="la la-print"></i></button>
+                    </div>
+                </div>
+            </div>
             <div class="content-body">
                 <section class="card">
                     
                     <div id="invoice-items-details" class="pt-2">
                         <div class="row">
                             <div class="table-responsive col-sm-12">
-                            <table class="table">
+                            <table class="table table-bordered mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-right">م استقبال</th>
-                                        <th class="text-right">رقم الغرفة</th>
-                                        <th class="text-right">اسم النزيل</th>
-                                        <th class="text-right">دخول</th>
-                                        <th class="text-right">خروج</th>
-                                        <th class="text-right">تحويل</th>
-                                        <th class="text-right">شبكة </th>
-                                        <th class="text-right">نقدي </th>
-                                        <th class="text-right">تأمين دخول </th>
-                                        <th class="text-right">تأمين خروج </th>
-                                        <th class="text-right">كارت الباب </th>
-                                        <th class="text-right">م استلام</th>
-                                        <th class="text-right">م نظافة</th>
-                                        <th class="text-right">طلبات</th>
-                                        <th class="text-right">ملاحظة</th>
+                                        <th>م استقبال</th>
+                                        <th >رقم الغرفة</th>
+                                        <th >اسم النزيل</th>
+                                        <th >دخول</th>
+                                        <th >خروج</th>
+                                        <th >تحويل</th>
+                                        <th >شبكة </th>
+                                        <th >نقدي </th>
+                                        <th >تأمين دخول </th>
+                                        <th >تأمين خروج </th>
+                                        <th >كارت الباب </th>
+                                        <th >م استلام</th>
+                                        <th >م نظافة</th>
+                                        <th >طلبات</th>
+                                        <th>ملاحظة</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -96,16 +135,16 @@
                                 ?>
                                 @foreach ($reports as $report)
                                     <tr>
-                                        <td><p>@if($report->users){{$report->users->name}}@endif</p></td>
+                                        <td><p>@if($report->users){{$report->users->name}}@endif {{$report->id}}</p></td>
                                         <td><p>@if($report->properties){{$report->properties->number}}@endif</p></td>
                                         <td><p>@if($report->clients){{$report->clients->name}}@endif</p></td>
-                                        <td class="text-right">@if($report->status==1)
+                                        <td >@if($report->status==1)
                                                 ✓
                                             @endif</td>
-                                        <td class="text-right">@if($report->status==0)
+                                        <td >@if($report->status==0)
                                                 ✓
                                             @endif</td>
-                                        <td class="text-right">
+                                        <td >
                                             @if($report->status==1)
                                                 @if($report->payment_way=="bank transfer")
                                                     @if($report->clients)
@@ -115,7 +154,7 @@
                                                 @endif
                                             @endif
                                         </td>
-                                        <td class="text-right">
+                                        <td >
                                             @if($report->status==1)
                                                 @if($report->payment_way=="network")
                                                     @if($report->clients)
@@ -125,7 +164,7 @@
                                                 @endif
                                             @endif
                                         </td>
-                                        <td class="text-right">
+                                        <td >
                                             @if($report->status==1)
                                                 @if($report->payment_way=="cash")
                                                     @if($report->clients)
@@ -135,37 +174,56 @@
                                                 @endif
                                             @endif
                                         </td>
-                                        <td class="text-right">
+                                        <td ">
                                             @if($report->receipts)
                                             <?php $receipts+=$report->receipts->amount ;?>
                                             {{$report->receipts->amount}}
                                             @endif</td>
-                                        <td class="text-right">
+                                        <td >
                                             @if($report->expenses)
                                                 <?php $expenses+=$report->expenses->amount ;?>
                                                 {{$report->expenses->amount}}
                                             @endif
                                         </td>
-                                        <td class="text-right">@if($report->status_door_card==1)
+                                        <td >@if($report->status_door_card==1)
                                             ✓
                                             @endif</td>
-                                        <td class="text-right">@if($report->worker_checked)
+                                        <td>@if($report->worker_checked)
                                             {{$report->worker_checked}}
                                         @endif</td>
-                                        <td class="text-right">@if($report->cleaner)
+                                        <td >@if($report->cleaner)
                                             {{$report->cleaner}}
                                         @endif</td>
-                                        <td class="text-right"></td>
-                                        <td class="text-right">@if($report->expenses)
+                                        <td ></td>
+                                        <td >@if($report->expenses)
                                         {{$report->expenses->notes}}
                                         @endif</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th rowspan="1" colspan="1"></th>
+                                        <th rowspan="1" colspan="1"></th>
+                                        <th rowspan="1" colspan="1"> </th>
+                                        <th rowspan="1" colspan="1"></th>
+                                        <th rowspan="1" colspan="1"></th>
+                                        <th rowspan="1" colspan="1">{{$transfer}}</th>
+                                        <th rowspan="1" colspan="1">{{$network}}</th>
+                                        <th rowspan="1" colspan="1">{{$cash}}</th>
+                                        <th rowspan="1" colspan="1">{{$receipts}}</th>
+                                        <th rowspan="1" colspan="1">{{$expenses}}</th>
+                                        <th rowspan="1" colspan="1"> </th>
+                                        <th rowspan="1" colspan="1"></th>
+                                        <th rowspan="1" colspan="1"></th>
+                                        <th rowspan="1" colspan="1"> </th>
+                                        <th rowspan="1" colspan="1"></th>
+                                    </tr>
+                                </tfoot>
                             </table>
                             </div>
                         </div>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-md-7 col-sm-12 text-center text-md-left">
                                 <p class="lead">&nbsp;  اجمالي المدفوعات  </p>
                                 <div class="row">
@@ -197,43 +255,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="col-md-5 col-sm-12">
-                                <p class="lead">Total due</p>
-                                <div class="table-responsive">
-                                    <table class="table">
-                                    <tbody>
-                                        <tr>
-                                        <td>Sub Total</td>
-                                        <td class="text-right">$ 14,900.00</td>
-                                        </tr>
-                                        <tr>
-                                        <td>TAX (12%)</td>
-                                        <td class="text-right">$ 1,788.00</td>
-                                        </tr>
-                                        <tr>
-                                        <td class="text-bold-800">Total</td>
-                                        <td class="text-bold-800 text-right"> $ 16,688.00</td>
-                                        </tr>
-                                        <tr>
-                                        <td>Payment Made</td>
-                                        <td class="pink text-right">(-) $ 4,688.00</td>
-                                        </tr>
-                                        <tr class="bg-grey bg-lighten-4">
-                                        <td class="text-bold-800">Balance Due</td>
-                                        <td class="text-bold-800 text-right">$ 12,000.00</td>
-                                        </tr>
-                                    </tbody>
-                                    </table>
-                                </div>
-                                <div class="text-center">
-                                    <p>Authorized person</p>
-                                    <img src="../../../app-assets/images/pages/signature-scan.png" alt="signature" class="height-100"
-                                    />
-                                    <h6>Amanda Orton</h6>
-                                    <p class="text-muted">Managing Director</p>
-                                </div>
-                            </div> -->
-                        </div>
+                        </div> -->
                     </div>
                 </section>
             </div>
@@ -261,14 +283,27 @@
   <script src="{{asset('admin/vendors/js/tables/datatable/datatables.min.js')}}" type="text/javascript"></script>
   <script src="{{asset('admin/js/scripts/tables/datatables/datatable-basic.js')}}" type="text/javascript"></script>
   <!-- END table datatable-->
+
+  <style>
+        @media print {
+            #printButton {
+                display: none;
+            }
+            #search-form{
+                display: none;
+            }
+        }
+    </style>
   <script>
-    window.print();
+    document.getElementById('printButton').addEventListener('click', function() {
+        window.print();
+    });
+    // window.print();
   </script>
 
   <style>
     html body {
       height: 100%;
-      background-color: #fff !important;
       direction: rtl;
     }
 

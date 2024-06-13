@@ -5,25 +5,26 @@ use App\Http\Controllers\Controller;
 
 use App\Report;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Carbon as Carbon;
 class ReportController extends Controller
 {
-    public function print($id)
+    public function index(Request $request)
     {
-        $reports = Report::with('users')->with('clients')->with('properties')->with('receipts')->with('expenses')->get();
-        // dd($reports);
-       return view('admin.reports.print', compact('reports'));
-    }
-    public function index()
-    {
-        //
+       
+        
+        if ($request->from && $request->to) {
+            $from = Carbon::createFromFormat('Y-m-d', $request->from)->startOfDay();
+            $to = Carbon::createFromFormat('Y-m-d', $request->to)->endOfDay();
+            // $reports = Report::whereBetween('created_at', [$from, $to])->get();
+            $reports = Report::whereBetween('created_at', [$from, $to])->with('users')->with('clients')->with('properties')->with('receipts')->with('expenses')->get();
+        }elseif($request->from){
+            $reports = Report::whereDate('created_at', $request->from)->with('users')->with('clients')->with('properties')->with('receipts')->with('expenses')->get();
+        }else{
+            $reports = Report::with('users')->with('clients')->with('properties')->with('receipts')->with('expenses')->get();
+        }
+        return view('admin.reports.print', compact('reports'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
