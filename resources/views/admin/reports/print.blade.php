@@ -57,7 +57,6 @@
 <body class="horizontal-layout horizontal-menu 2-columns   menu-expanded" data-open="hover" data-menu="horizontal-menu"
   data-col="2-columns">
   <!-- fixed-top-->
-
     <div class="app-content content">
         <div class="content-wrapper">
             <div class="content-header row" id="search-form">
@@ -104,7 +103,8 @@
                     
                     <div id="invoice-items-details" class="pt-2">
                         <div class="row">
-                            <div class="table-responsive col-sm-12">
+                        <!-- table-responsive -->
+                            <div class=" col-sm-12">
                             <table class="table table-bordered mb-0">
                                 <thead>
                                     <tr>
@@ -135,7 +135,7 @@
                                 ?>
                                 @foreach ($reports as $report)
                                     <tr>
-                                        <td><p>@if($report->users){{$report->users->name}}@endif {{$report->id}}</p></td>
+                                        <td><p>@if($report->users){{$report->users->name}}@endif </p></td>
                                         <td><p>@if($report->properties){{$report->properties->number}}@endif</p></td>
                                         <td><p>@if($report->clients){{$report->clients->name}}@endif</p></td>
                                         <td >@if($report->status==1)

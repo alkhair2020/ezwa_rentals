@@ -39,6 +39,11 @@
         </a>
       </li>
       @endcan
+      <li class=" nav-item {{ Request::is('admin/reports') ? 'active' : '' }}">
+        <a class="dropdown-toggle nav-link " href="{{url('admin/reports')}}"><i class="la la-folder-open"></i>
+          <span>التقارير</span>
+        </a>
+      </li>
       <!-- <li class=" nav-item {{ Request::is('admin/receipts') ? 'active' : '' }}">
         <a class="dropdown-toggle nav-link " href="{{url('admin/receipts')}}"><i class="la la-folder-open"></i>
           <span>سندات القبض</span>
