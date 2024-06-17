@@ -25,6 +25,11 @@
         </a>
       </li>
       @endcan
+      <li class=" nav-item {{ Request::is('admin/client/closed') ? 'active' : '' }}">
+        <a class="dropdown-toggle nav-link " href="{{url('admin/client/closed')}}"><i class="la la-folder-open"></i>
+          <span>عقود منتهية</span>
+        </a>
+      </li>
       @can('role-list')
       <li class=" nav-item {{ Request::is('admin/roles') ? 'active' : '' }}">
         <a class="dropdown-toggle nav-link " href="{{url('admin/roles')}}"><i class="la la-folder-open"></i>

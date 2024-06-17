@@ -40,9 +40,9 @@
                         <table class="table table-striped table-bordered multi-ordering">
                             <thead>
                                 <tr>
-                                    <th>الموظف المسئول</th>
+                                    <th>#</th>
+                                    <th>الموظف</th>
                                     <th>اسم العميل</th>
-                                    <!-- <th>الجنسية</th> -->
                                     <th> الهوية</th>
                                     <th> رقم الهاتف</th>
                                     <th>رقم العقار</th>
@@ -57,13 +57,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($clients as $client)
+                                @foreach ($clients as  $key =>$client)
                                 <tr>
+                                    <td>{{$key}}</td>
                                     <td>{{$client->users->name}}</td>
                                     <td>{{$client->name}}</td>
-                                    <!-- <td>{{$client->nationality}}</td> -->
                                     <td>{{$client->id_number}}</td>
-                                    <td>{{$client->phone}}</td>
+                                    <?php 
+                                        $phone="966".$client->phone;
+                                        $whatsappUrl = "https://api.whatsapp.com/send?phone={$phone}&text=مرحباً، أود ان احيطكم علماً انه سوف يتم انتهاء العقد اليوم ، اذا كنتم ترغبون  تجديد العقد التوجه للاستقبال";
+                                    ?>
+                                    <td><a href="{{$whatsappUrl}}" class="float" target="_blank">{{$client->phone}}</a></td>
                                     <td>{{$client->properties->number}}</td>
                                     <td>{{$client->start_date}}</td>
                                     <td>{{$client->end_date}}</td>
@@ -285,6 +289,21 @@
         amountError.innerHTML = "";
     }
 </script>
+<script>
+    function redirectToWhatsApp(phone,date) {
+        // Your phone number in international format
+        var phoneNumber = "1234567890";
+        // Pre-filled message
+        
+        var message = "مرحباً، أود ان احيطكم علماً انه سوف يتم انتهاء العقد ${phone} ، اذا كنتم ترغبون  تجديد العقد التوجه للاستقبال";
+        // Encode the message to be URL-safe
+        var encodedMessage = encodeURIComponent(message);
+        // WhatsApp URL
+        var whatsappUrl = "https://api.whatsapp.com/send?phone=" + phone + "&text=" + encodedMessage;
+        // Redirect to WhatsApp
+        window.location.href = whatsappUrl;
+    }
+</script>
 <style>
     .btn-sm,
     .btn-group-sm>.btn {
@@ -297,4 +316,5 @@
         text-align: center
     }
 </style>
+
 @endsection

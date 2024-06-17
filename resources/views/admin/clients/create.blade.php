@@ -171,7 +171,7 @@
                                             <input type="time" name="time" id="timeId" class="form-control"
                                                 data-toggle="tooltip" data-trigger="hover" data-placement="top"
                                                 data-title="Date Opened">
-                                            <span id="start_dateError" class="error-message"></span>
+                                            <span id="timeError" class="error-message"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -225,7 +225,6 @@
 <script>
     function Validateallinput() {
 
-
         var idNumberId = document.getElementById("id_numberId");
         var idNumberError = document.getElementById("id_numberError");
 
@@ -234,7 +233,6 @@
 
         var phoneId = document.getElementById("phoneId");
         var phoneError = document.getElementById("phoneError");
-
 
         var typeId = document.getElementById("typeId");
         var typeError = document.getElementById("typeError");
@@ -254,8 +252,8 @@
         var start_dateId = document.getElementById("start_dateId");
         var start_dateError = document.getElementById("start_dateError");
 
-        var end_dateId = document.getElementById("end_dateId");
-        var end_dateError = document.getElementById("end_dateError");
+        var timeId = document.getElementById("timeId");
+        var timeIdError = document.getElementById("timeError");
 
         var property_typeId = document.getElementById("property_typeId");
         var property_typeError = document.getElementById("property_typeError");
@@ -263,14 +261,22 @@
         var insuranceId = document.getElementById("insuranceId");
         var insuranceError = document.getElementById("insuranceError");
 
-
+        var payment_wayId = document.getElementById("payment_wayId");
+        var payment_wayError = document.getElementById("payment_wayError");
+       
+        if (typeId.value == "") {
+            typeError.innerHTML = "اختر نوع الاثبات";
+            // titleid.focus();
+            return false;
+        }
+        typeError.innerHTML = "";
 
         if (idNumberId.value == "") {
             idNumberError.innerHTML = "اكتب رقم الهوية";
             return false;
         }
         idNumberError.innerHTML = "";
-
+        
         /**if (idNumberId.value.length >10 ) {
             idNumberError.innerHTML = "رقم الهوية عشرة ارقام فقط";
             return false;
@@ -294,13 +300,7 @@
         }
         phoneError.innerHTML = "";
 
-        if (typeId.value == "") {
-            typeError.innerHTML = "اختر نوع الاثبات";
-            // titleid.focus();
-            return false;
-        }
-        typeError.innerHTML = "";
-
+       
         // if (nationalityId.value == "") {
         //     nationalityError.innerHTML = "اختر الجنسية";
         //     // titleid.focus();
@@ -320,19 +320,7 @@
             return false;
         }
         property_idError.innerHTML = "";
-
-        if (start_dateId.value == "") {
-            start_dateError.innerHTML = "حدد تاريخ بداية العقد";
-            return false;
-        }
-        start_dateError.innerHTML = "";
-
-        if (end_dateId.value == "") {
-            end_dateError.innerHTML = "حدد تاريخ نهاية العقد";
-            return false;
-        }
-        end_dateError.innerHTML = "";
-
+        
         if (property_typeId.value == "") {
             property_typeError.innerHTML = "اختر نوع الايجار";
             return false;
@@ -346,28 +334,54 @@
         count_dayError.innerHTML = "";
         
         if (property_typeId.value == "monthly") {
-            if (count_dayId.value.length >12) {
-                property_typeError.innerHTML = "نوع الايجار شهري لا يمكن كتابة اكثر من 12";
+            if (count_dayId.value >12) {
+                count_dayError.innerHTML = "نوع الايجار شهري لا يمكن كتابة اكثر من 12";
                 return false;
             }
         }
-        property_typeError.innerHTML = "";
+        count_dayError.innerHTML = "";
 
+        // var inputValue = Number(inputElement.value);
         if (property_typeId.value == "weekly") {
-            if (count_dayId.value.length >4) {
-                property_typeError.innerHTML = "نوع الايجار اسبوعي لا يمكن كتابة اكثر من 4";
+            if (count_dayId.value >4) {
+                count_dayError.innerHTML = "نوع الايجار اسبوعي لا يمكن كتابة اكثر من 4";
                 return false;
             }
         }
-        property_typeError.innerHTML = "";
+        count_dayError.innerHTML = "";
+
+        // property_typeError.innerHTML =count_dayId.value.length;
+        // return false;
 
         if (property_typeId.value == "daily") {
-            if (count_dayId.value.length >30) {
-                property_typeError.innerHTML = "نوع الايجار يومي لا يمكن كتابة اكثر من 30";
+            if (count_dayId.value >30) {
+                count_dayError.innerHTML = "نوع الايجار يومي لا يمكن كتابة اكثر من 30";
                 return false;
             }
         }
-        property_typeError.innerHTML = "";
+        count_dayError.innerHTML = "";
+
+        if (payment_wayId.value == "") {
+            payment_wayError.innerHTML = "حدد  طريقة الدفع";
+            return false;
+        }
+        payment_wayError.innerHTML = "";
+
+        if (start_dateId.value == "") {
+            start_dateError.innerHTML = "حدد تاريخ بداية العقد";
+            return false;
+        }
+        start_dateError.innerHTML = "";
+
+        if (timeId.value == "") {
+            timeError.innerHTML = "حدد وقت الدخول ومسائي ام صباحي";
+            return false;
+        }
+        timeError.innerHTML = "";
+
+       
+
+        
 
         if (insuranceId.value == "") {
             insuranceError.innerHTML = "اكتب مبلغ التأمين";

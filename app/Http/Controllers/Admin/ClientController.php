@@ -63,10 +63,18 @@ class ClientController extends Controller
     }
     public function index()
     {
-        $clients=Client::with('properties')->with('users')->with('receipts')->with('expenses')->get();
+        $clients=Client::with('properties')->with('users')->with('receipts')->with('expenses')->where('status','1')->orderBy('id', 'DESC')->get();
         
         return view('admin.clients.index',compact('clients'));
     }
+    public function clientClosed()
+    {
+        // dd('sfsgsf');
+        $clients=Client::with('properties')->with('users')->with('receipts')->with('expenses')->where('status','0')->orderBy('id', 'DESC')->get();
+       
+        return view('admin.clients.index',compact('clients'));
+    }
+    
     public function propertyClients($id)
     {
         $clients=Client::where('property_id',$id)->with('properties')->with('users')->with('receipts')->with('expenses')->get();

@@ -10,8 +10,6 @@ class ReportController extends Controller
 {
     public function index(Request $request)
     {
-       
-        
         if ($request->from && $request->to) {
             $from = Carbon::createFromFormat('Y-m-d', $request->from)->startOfDay();
             $to = Carbon::createFromFormat('Y-m-d', $request->to)->endOfDay();
@@ -22,6 +20,7 @@ class ReportController extends Controller
         }else{
             $reports = Report::with('users')->with('clients')->with('properties')->with('receipts')->with('expenses')->get();
         }
+        // dd($reports);
         return view('admin.reports.print', compact('reports'));
     }
 

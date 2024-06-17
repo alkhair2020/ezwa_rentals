@@ -20,7 +20,7 @@ class CreateClientsTable extends Migration
             $table->string('name');
             $table->string('type');
             $table->string('nationality');
-            $table->integer('id_number');
+            $table->string('id_number');
             $table->string('phone');
             $table->integer('number_companions');
             $table->string('age')->nullable();
