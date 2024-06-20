@@ -65,7 +65,7 @@
                                     <td>{{$client->id_number}}</td>
                                     <?php 
                                         $phone="966".$client->phone;
-                                        $whatsappUrl = "https://api.whatsapp.com/send?phone={$phone}&text=مرحباً، أود ان احيطكم علماً انه سوف يتم انتهاء العقد اليوم ، اذا كنتم ترغبون  تجديد العقد التوجه للاستقبال";
+                                        $whatsappUrl = "https://api.whatsapp.com/send?phone={$phone}&text=ضيفنا الكريم نشعركم بموعد خروجكم وعند الرغبه في التجديد";
                                     ?>
                                     <td><a href="{{$whatsappUrl}}" class="float" target="_blank">{{$client->phone}}</a></td>
                                     <td>{{$client->properties->number}}</td>
