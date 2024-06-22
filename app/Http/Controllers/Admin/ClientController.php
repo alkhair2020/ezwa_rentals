@@ -156,7 +156,7 @@ class ClientController extends Controller
         $add->id_number    = $request->id_number;
         $add->phone    = $request->phone;
         $add->number_companions    = $request->number_companions;
-        $add->property_id    = $request->property_id;
+        // $add->property_id    = $request->property_id;
         $add->count_day    = $request->count_day;
         $add->start_date    = $request->start_date;
         $add->time    =$end_date->format('h:i A');
@@ -165,13 +165,7 @@ class ClientController extends Controller
         if(isset( $request->discount)){
             $add->discount    = $request->discount;
         }
-        // if(isset( $request->insurance)){
-        //     $add->insurance = $request->insurance;
-        // }
-        // if(isset( $request->draft)){
-        //      $add->draft    = $request->draft;
-        // }
-        // $price_whith_percent= $property->price + ($property->price * $property->percentage) / 100;
+        
         if($request->property_type=='weekly'){
             $price_whith_percent= $property->price_week + ($property->price_week * $property->percentage) / 100;
             $add->property_price    = $price_whith_percent * $request->count_day ;
@@ -185,8 +179,6 @@ class ClientController extends Controller
             $add->property_price    =$price_whith_percent;
             $add->total    =$price_whith_percent - $request->discount;
         }
-        
-       
         $add->save();
 
         $datenow=Carbon::now()->format('Y-m-d');
@@ -203,30 +195,108 @@ class ClientController extends Controller
         $add_report->client_id     = $add->id;
         $add_report->receipt_id    = $add_receipt->id;
         $add_report->payment_way    = $request->payment_way;
-        
         $add_report->save();
+        
+
+        $property->status="rented";
+        $property->save();
+
+        return redirect()->route('clients.index')->with("message", 'تم الإضافة بنجاح');
+    }
+
+    public function clientRenew(Request $request)
+    {
+        // dd('cvb');
+        $user_id=Auth::user();
+        
+        $now = Carbon::parse($request->start_date.''.$request->time);
+        if($request->property_type=='monthly'){
+            if ($now->hour < 6) {
+                $end_date = $now->copy()->addMonth($request->count_day)->subDay(1)->setTime(12, 0, 0);
+            }else{
+                $end_date = $now->copy()->addMonth($request->count_day)->setTime(12, 0, 0);
+            }
+        }elseif($request->property_type=='weekly'){
+            if ($now->hour < 6) {
+                $end_date = $now->copy()->addWeeks($request->count_day)->subDay(1)->setTime(12, 0, 0);
+            }else{
+                $end_date = $now->copy()->addWeeks($request->count_day)->setTime(12, 0, 0);
+            }
+        }else{
+            if ($now->hour < 6) {
+                $end_date = $now->copy()->addDays($request->count_day - 1)->setTime(12, 0, 0);
+            }else{
+                $end_date = $now->copy()->addDays($request->count_day)->setTime(12, 0, 0);
+            }
+        }
+        
+        // dd($request->all());
+        $client = Client::where('id',$request->client_id)->first();
+        $receipt = Receipt::where('client_id',$client->id)->first();
+        $property = Property::where('id',$client->property_id)->first();
+        $add = new Client;
+        $add->user_id     = $user_id->id;
+        $add->property_id     = $client->property_id;
+        $add->name    = $client->name;
+        $add->type    = $client->type;
+        $add->nationality    =$client->nationality;
+        $add->id_number    = $client->id_number;
+        $add->phone    = $client->phone;
+        $add->number_companions    = $client->number_companions;
+        // $add->property_id    = $client->property_id;
+        $add->property_type    = $request->property_type;
+        $add->count_day    = $request->count_day;
+        $add->start_date    = $request->start_date;
+        $add->time    =$end_date->format('h:i A');
+        $add->end_date    = $end_date->format('Y-m-d');
+        
+        
+        if($request->property_type=='weekly'){
+            $price_whith_percent= $property->price_week + ($property->price_week * $property->percentage) / 100;
+            $add->property_price    = $price_whith_percent * $request->count_day ;
+            $add->total    = $price_whith_percent * $request->count_day - $request->discount;
+        }elseif($request->property_type=='daily'){
+            $price_whith_percent= $property->price_day + ($property->price_day * $property->percentage) / 100;
+            $add->property_price    = $price_whith_percent * $request->count_day;
+            $add->total    = $price_whith_percent * $request->count_day - $request->discount;
+        }else{
+            $price_whith_percent= $property->price_month + ($property->price_month * $property->percentage) / 100;
+            $add->property_price    =$price_whith_percent;
+            $add->total    =$price_whith_percent - $request->discount;
+        }
+        $add->save();
+
+        $datenow=Carbon::now()->format('Y-m-d');
+        $add_receipt = new Receipt;
+        $add_receipt->user_id     = $user_id->id;
+        $add_receipt->client_id     = $add->id;
+        $add_receipt->amount    = $receipt->amount;
+        $add_receipt->date    = $datenow;
+        $add_receipt->save();
+
+        $add_report = new Report;
+        $add_report->user_id     = $user_id->id;
+        $add_report->property_id     = $client->property_id;
+        $add_report->client_id     = $add->id;
+        $add_report->receipt_id    = $add_receipt->id;
+        $add_report->payment_way    = $request->payment_way;
+        $add_report->status    = 2;
+        $add_report->save();
+        
+
+        $client->status="0";
+        $client->save();
         
 
         return redirect()->route('clients.index')->with("message", 'تم الإضافة بنجاح');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Feature  $feature
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show(Feature $feature)
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Feature  $feature
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit(Client $client)
     {
         $properties=Property::get();

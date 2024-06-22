@@ -138,14 +138,17 @@
                                         <td><p>@if($report->users){{$report->users->name}}@endif </p></td>
                                         <td><p>@if($report->properties){{$report->properties->number}}@endif</p></td>
                                         <td><p>@if($report->clients){{$report->clients->name}}@endif</p></td>
-                                        <td >@if($report->status==1)
+                                        <td >
+                                            @if($report->status==1)
                                                 ✓
+                                            @elseif($report->status==2)
+                                                تجديد
                                             @endif</td>
                                         <td >@if($report->status==0)
                                                 ✓
                                             @endif</td>
                                         <td >
-                                            @if($report->status==1)
+                                            @if($report->status !=0)
                                                 @if($report->payment_way=="bank transfer")
                                                     @if($report->clients)
                                                         <?php $transfer+=$report->clients->total ;?>
@@ -155,7 +158,7 @@
                                             @endif
                                         </td>
                                         <td >
-                                            @if($report->status==1)
+                                            @if($report->status !=0)
                                                 @if($report->payment_way=="network")
                                                     @if($report->clients)
                                                         <?php $network+=$report->clients->total ;?>
@@ -165,7 +168,7 @@
                                             @endif
                                         </td>
                                         <td >
-                                            @if($report->status==1)
+                                            @if($report->status !=0)
                                                 @if($report->payment_way=="cash")
                                                     @if($report->clients)
                                                         <?php $cash+=$report->clients->total ;?>
