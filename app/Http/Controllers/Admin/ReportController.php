@@ -14,11 +14,11 @@ class ReportController extends Controller
             $from = Carbon::createFromFormat('Y-m-d', $request->from)->startOfDay();
             $to = Carbon::createFromFormat('Y-m-d', $request->to)->endOfDay();
             // $reports = Report::whereBetween('created_at', [$from, $to])->get();
-            $reports = Report::whereBetween('created_at', [$from, $to])->with('users')->with('clients')->with('properties')->with('receipts')->with('expenses')->get();
+            $reports = Report::whereBetween('created_at', [$from, $to])->with('users')->with('clients')->with('properties')->with('receipts')->with('expenses')->orderBy('id', 'DESC')->get();
         }elseif($request->from){
-            $reports = Report::whereDate('created_at', $request->from)->with('users')->with('clients')->with('properties')->with('receipts')->with('expenses')->get();
+            $reports = Report::whereDate('created_at', $request->from)->with('users')->with('clients')->with('properties')->with('receipts')->with('expenses')->orderBy('id', 'DESC')->get();
         }else{
-            $reports = Report::with('users')->with('clients')->with('properties')->with('receipts')->with('expenses')->get();
+            $reports = Report::with('users')->with('clients')->with('properties')->with('receipts')->with('expenses')->orderBy('id', 'DESC')->get();
         }
         // dd($reports);
         return view('admin.reports.print', compact('reports'));
