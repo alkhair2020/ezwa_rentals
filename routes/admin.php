@@ -23,7 +23,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin','prefix' => 'admin'
 
     Route::resource('expenses','ExpenseController');
     Route::get('clients/expenses/{id}', 'ExpenseController@clientExpenses');
-    Route::get('expenses/print/{id}', 'ExpenseController@print');
+    Route::get('expenses/print/{id}', 'ExpenseController@print')->name('expenses.print');
 
     Route::resource('reports','ReportController');
     Route::get('report/print', 'ReportController@index')->name('report.print');

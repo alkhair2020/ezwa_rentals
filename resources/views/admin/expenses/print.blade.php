@@ -161,7 +161,8 @@
                 </p>
                 <p>نقدي
                 </p>
-                <p>تأمين شقة رقم {{$clients->properties->number}}
+                <p>
+                  بدل تأمين شقة رقم  {{$clients->properties->number}}
                 </p>
               </div>
               <div class="col-md-5 col-sm-12 ">
