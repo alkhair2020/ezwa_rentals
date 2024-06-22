@@ -12,6 +12,7 @@ use Mpdf\Mpdf;
 use App\Helpers\DateHelper;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon as Carbon;
+use App\Expense;
 class ClientController extends Controller
 {
     public function print($id)
@@ -340,8 +341,21 @@ class ClientController extends Controller
     public function destroy(Request $request )
     {
         
-            $delete = Client::findOrFail($request->id);
-            $delete->delete();
+            $client = Client::findOrFail($request->id);
+            if($client){
+                $receipt = Receipt::where('client_id',$client->id)->first();
+                if($receipt)
+                    $receipt->delete();
+                $expense = Expense::where('client_id',$client->id)->first();
+                if($expense)
+                    $expense->delete();
+                $report = Report::where('client_id',$client->id)->first();
+                if($report)
+                    $report->delete();
+                $client->delete();
+            }
+            
+            
             // dd($request->id);
             return back()->with("success",'تم الحذف بنجاح'); 
               
