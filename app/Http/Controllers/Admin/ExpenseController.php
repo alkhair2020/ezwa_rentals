@@ -101,6 +101,8 @@ class ExpenseController extends Controller
         $add_report->cleaner    = $request->cleaner;
         $add_report->status_door_card    = $request->status_door_card;
         $add_report->save();
+        
+        return redirect()->route('expenses.print', ['id' => $add->id]);
         return redirect()->back()->with("message", 'تم إنهاء العقد ويمكنك طباعة مستند الصرف');
     }
 

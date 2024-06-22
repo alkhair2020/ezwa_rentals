@@ -13,7 +13,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin','prefix' => 'admin'
    Route::resource('clients','ClientController'); 
    
    Route::get('property/clients/{id}', 'ClientController@propertyClients');
-   Route::get('clients/print/{id}', 'ClientController@print');
+   Route::get('clients/print/{id}', 'ClientController@print')->name('clients.print');
    Route::get('client/closed', 'ClientController@clientClosed');
    Route::post('client/renew', 'ClientController@clientRenew')->name('client.renew');
 

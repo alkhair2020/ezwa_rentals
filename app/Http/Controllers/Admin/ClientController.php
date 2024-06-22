@@ -200,8 +200,8 @@ class ClientController extends Controller
 
         $property->status="rented";
         $property->save();
-
-        return redirect()->route('clients.index')->with("message", 'تم الإضافة بنجاح');
+        return redirect()->route('clients.print', ['id' => $add->id]);
+        // return redirect()->route('clients.index')->with("message", 'تم الإضافة بنجاح');
     }
 
     public function clientRenew(Request $request)
@@ -287,8 +287,8 @@ class ClientController extends Controller
         $client->status="0";
         $client->save();
         
-
-        return redirect()->route('clients.index')->with("message", 'تم الإضافة بنجاح');
+        return redirect()->route('clients.print', ['id' => $add->id]);
+        // return redirect()->route('clients.index')->with("message", 'تم الإضافة بنجاح');
     }
 
    

@@ -107,11 +107,13 @@
                                         </a>
                                         @endif
                                         @endcan
+                                        @can('client-renew')
                                         <a class="" data-toggle="modal"
-                                                    data-catid="{{ $client->id }}" data-insuranceid="{{ $client->receipts->amount }}"
+                                                    data-catid="{{ $client->id }}" 
                                                     data-target="#client_renew">
                                                     <button type="button" class="btn btn-icon btn-primary">تجديد</button>
                                             </a>
+                                        @endcan
                                         @can('expense-print')
                                         @if($client->expenses)
                                         <a class="btn btn-sm bg-success-light"
@@ -339,10 +341,8 @@
         var button = $(event.relatedTarget)
 
         var cat_id = button.data('catid')
-        var insuranceid = button.data('insuranceid')
         var modal = $(this)
         modal.find('.modal-body #cat_id').val(cat_id);
-        modal.find('.modal-body #insurance_id').val(insuranceid);
     })
     $('#create_expenses').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget)
