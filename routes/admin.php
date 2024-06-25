@@ -6,6 +6,12 @@ use Illuminate\Support\Facades\Route;
 // Auth::routes();
 use App\Helpers\DateHelper;
  Route::get('admin-login', 'Auth\LoginController@LoginAdmin')->name('admin-login');
+
+
+
+ Route::resource('admin/visas','Admin\VisaController');
+ Route::resource('admin/tickets','Admin\TicketController');
+
 Route::group(['middleware' => 'auth', 'namespace' => 'Admin','prefix' => 'admin'], function () {        
    Route::resource('roles','RoleController');
    Route::resource('users','UserController');
