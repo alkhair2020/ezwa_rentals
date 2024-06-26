@@ -17,7 +17,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin','prefix' => 'admin'
    Route::resource('users','UserController');
    Route::resource('properties','PropertyController');
    Route::resource('clients','ClientController'); 
-   
+   Route::resource('losses','LostController'); 
    Route::get('property/clients/{id}', 'ClientController@propertyClients');
    Route::get('clients/print/{id}', 'ClientController@print')->name('clients.print');
    Route::get('client/closed', 'ClientController@clientClosed');

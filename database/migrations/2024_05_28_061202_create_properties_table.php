@@ -24,7 +24,7 @@ class CreatePropertiesTable extends Migration
             $table->float('price_month');
             $table->string('address')->nullable();
             $table->longText('description')->nullable();
-            $table->string('status')->default('waiting');
+            $table->string('status')->default('waiting')->comment('rented,maintenance,notclean_rented,notclean,waiting,vacant');
             $table->integer('percentage')->default(0);
             $table->string('tax_number')->nullable();
             $table->timestamps();

@@ -17,7 +17,6 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
-      
         $tomorrow = Carbon::tomorrow()->format('Y-m-d');
         $datenow=Carbon::now()->format('Y-m-d');
 

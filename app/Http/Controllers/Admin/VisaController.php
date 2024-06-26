@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 class VisaController extends Controller
 {
    
-     public function index()
+    public function index()
     {
-        $properties=Property::all();
-        return view('admin.visas.index',compact('properties'));
+        // $properties=Property::all();
+        return view('admin.visas.index');
     }
 
     public function create()

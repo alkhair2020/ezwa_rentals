@@ -30,7 +30,7 @@
 
 	<!-- nav -->
 
-@if(!Route::is(['admin-login','register','forgot-password','lock-screen','error-404','error-500','visas.create','tickets.create']))
+@if(!Route::is(['admin-login','register','forgot-password','lock-screen','error-404','error-500','visas.create','visas.index','tickets.create','tickets.index']))
 	<body class="horizontal-layout horizontal-menu 2-columns   menu-expanded" data-open="hover" data-menu="horizontal-menu" data-col="2-columns">
 		@include('layout.admin_nav')
 		@include('layout.admin_header')

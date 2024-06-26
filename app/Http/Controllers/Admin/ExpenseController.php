@@ -6,6 +6,7 @@ use App\User;
 use App\Expense;
 use App\Property;
 use App\Report;
+use App\Country;
 use Illuminate\Http\Request;
 use Mpdf\Mpdf;
 use App\Helpers\DateHelper;
@@ -42,6 +43,24 @@ class ExpenseController extends Controller
     
     public function index()
     {
+
+        $properties=Country::get();
+        foreach($properties as $property){
+            $add = new Property;
+            $add->type    = $property->type;
+            $add->number    = $property->number;
+            $add->rooms    = $property->rooms;
+            $add->baths    = $property->baths;
+            $add->price_day    = $property->price_day;
+            $add->price_week    = $property->price_week;
+            $add->price_month    = $property->price_month;
+            $add->address    = $property->address;
+            $add->description    = $property->description;
+            $add->tax_number    = $property->tax_number;
+            $add->save();
+        }
+        dd('ff');
+
         $clients=Client::get();
         $expenses=Expense::with('clients')->get();
         return view('admin.expenses.index',compact('expenses','clients'));  

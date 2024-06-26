@@ -20,11 +20,11 @@ class CreateReportsTable extends Migration
             $table->integer('property_id')->nullable();
             $table->integer('receipt_id')->nullable();
             $table->integer('expense_id')->nullable();
-            $table->integer('status')->default('1');
+            $table->integer('status')->default('1')->comment('0=exit, 1=enter , 2=renew');
             $table->string('payment_way')->nullable();
             $table->string('cleaner')->nullable();
             $table->string('worker_checked')->nullable();
-            $table->integer('status_door_card')->default('0');
+            $table->integer('status_door_card')->default('0')->comment('0=not received, 1=received');
             $table->timestamps();
         });
     }

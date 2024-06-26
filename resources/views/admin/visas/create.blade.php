@@ -60,7 +60,7 @@
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="projectinput1">اسم العميل</label>
+                                                <label for="projectinput1"> اسم العميل</label>
                                                 <input type="number" name="number" id="numberId" class="form-control" placeholder="اكتب رقم الوحدة"
                                                 name="fname">
                                                 <span id="numberError" class="error-message"></span>
@@ -68,7 +68,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="projectinput1">اسم المندوب</label>
+                                                <label for="projectinput1"> اسم المندوب</label>
                                                 <input type="number" name="number" id="numberId" class="form-control" placeholder="اكتب رقم الوحدة"
                                                 name="fname">
                                                 <span id="numberError" class="error-message"></span>
@@ -76,7 +76,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="projectinput5">نوع التأشيرة</label>
+                                                <label for="projectinput5"> نوع التأشيرة</label>
                                                 <select id="typeId" name="type" class="form-control">
                                                     <option value="" selected="" disabled="">اختر نوع التأشيرة</option>
                                                     <option value="apartment">زيارة عائلية </option>
@@ -94,7 +94,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="issueinput3">التاريخ</label>
+                                                <label for="issueinput3"> التاريخ</label>
                                                 <input type="date" name="start_date" id="start_dateId" class="form-control"
                                                     data-toggle="tooltip" data-trigger="hover" data-placement="top"
                                                     data-title="Date Opened">
@@ -103,7 +103,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="projectinput1">الباركود</label>
+                                                <label for="projectinput1"> الباركود</label>
                                                 <input type="text" name="number" id="numberId" class="form-control" placeholder="  "
                                                 name="fname">
                                                 <span id="numberError" class="error-message"></span>
@@ -112,14 +112,14 @@
                                         
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="projectinput4">رقم الجواز</label>
+                                                <label for="projectinput4"> رقم الجواز</label>
                                                 <input type="فثءف" name="price_day" id="price_dayId" class="form-control" placeholder=" " >
                                                 <span id="price_dayError" class="error-message"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="issueinput3">تاريخ البصمة</label>
+                                                <label for="issueinput3"> تاريخ البصمة</label>
                                                 <input type="date" name="start_date" id="start_dateId" class="form-control"
                                                     data-toggle="tooltip" data-trigger="hover" data-placement="top"
                                                     data-title="Date Opened">
@@ -128,7 +128,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="issueinput3">تاريخ إصدار التأشيرة</label>
+                                                <label for="issueinput3"> تاريخ إصدار التأشيرة</label>
                                                 <input type="date" name="start_date" id="start_dateId" class="form-control"
                                                     data-toggle="tooltip" data-trigger="hover" data-placement="top"
                                                     data-title="Date Opened">
@@ -137,14 +137,14 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="projectinput4">نوع حجز تساهيل</label>
+                                                <label for="projectinput4"> نوع حجز تساهيل</label>
                                                 <input type="text" name="price_week" id="price_weekId" class="form-control" placeholder=" " >
                                                 <span id="price_weekError" class="error-message"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="projectinput4">الشركة المنفذة</label>
+                                                <label for="projectinput4"> الشركة المنفذة</label>
                                                 <input type="text" name="price_month" id="price_monthId" class="form-control" placeholder=" " >
                                                 <span id="price_monthError" class="error-message"></span>
                                             </div>
