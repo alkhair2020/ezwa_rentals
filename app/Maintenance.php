@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Lost extends Model
+class Maintenance extends Model
 {
-    protected $table = "losses";
+    // protected $table = "maintenances";
     public function clients()
     {
         return $this->belongsTo(Client::class,'client_id');

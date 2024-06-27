@@ -17,6 +17,7 @@ class CreateLossesTable extends Migration
             $table->id();
             $table->integer('user_id')->index('user_id');
             $table->integer('client_id')->index('client_id');
+            $table->integer('property_id')->index('property_id');
             $table->string('name');
             $table->string('count')->nullable();
             $table->integer('status')->default('0')->comment('0=not good, 1=good');

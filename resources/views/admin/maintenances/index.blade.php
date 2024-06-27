@@ -24,7 +24,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title"> المفقودات</h4>
+                    <h4 class="card-title"> استمارات الصيانة</h4>
                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
                         <ul class="list-inline mb-0">
@@ -41,42 +41,66 @@
                             <thead>
                                 <tr>
                                     <th> رقم الوحدة</th>
-                                    <th>الادوات</th>
-                                    <th> العدد</th>
-                                    <th> الحالة</th>
-                                    <th> ملاحظة</th>
+                                    <th>دورة المياه</th>
+                                    <th> المكيفات</th>
+                                    <th> الأبواب</th>
+                                    <th> الغرف</th>
+                                    <th> المطبخ</th>
+                                    <th> أخرى</th>
                                     <th class="text-center"> العمليات</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($losses as $item)
+                                @foreach ($maintenances as $item)
                                 <tr>
                                     <td>{{$item->properties->number}}</td>
-                                    <td>{{$item->name}}</td>
-                                    <td> {{$item->count}}</td>
                                     <td> 
-                                        @if($item->status==1)
+                                        @if($item->bathroom==1)
                                             ✓
-                                        @else
-                                            ✖
                                         @endif
                                     </td>
-                                    <td> {{$item->notes}}</td>
+                                    <td> 
+                                        @if($item->conditioning==1)
+                                            ✓
+                                        @endif
+                                    </td>
+                                    <td> 
+                                        @if($item->door==1)
+                                            ✓
+                                        @endif
+                                    </td>
+                                    <td> 
+                                        @if($item->room==1)
+                                            ✓
+                                        @else
+                                            
+                                        @endif
+                                    </td>
+                                    <td> 
+                                        @if($item->kitchen==1)
+                                            ✓
+                                        @endif
+                                    </td>
+                                    <td> 
+                                        @if($item->other==1)
+                                            ✓
+                                        @endif
+                                    </td>
                                     
                                     <td class="text-center">
                                         <a class="btn btn-sm bg-success-light"
-                                            href="{{ url('admin/receipts/print', $item->id) }}">
+                                            href="{{ url('admin/maintenances/print', $item->id) }}">
                                             <button type="button" class="btn btn-icon btn-info mr-1"><i
                                                     class="la la-print"></i></button>
                                         </a>
-                                        <button type="button" class="btn btn-icon btn-success mr-1"><i
+                                        <!-- <button type="button" class="btn btn-icon btn-success mr-1"><i
                                                 class="la la-edit"></i></button>
 
                                         <a data-toggle="modal" data-catid="{{ $item->id }}" data-target="#delete"
                                             class="delete-course">
                                             <button type="button" class="btn btn-icon btn-danger mr-1"><i
                                                     class="la la-trash"></i></button>
-                                        </a>
+                                        </a> -->
                                     </td>
                                 </tr>
                                 @endforeach
@@ -92,17 +116,17 @@
         <div class="modal-dialog modal-dialog-centered" role="document" >
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">اضافة مفقود</h5>
+                    <h5 class="modal-title">اضافة استمارة صيانة</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('losses.store')}}" method="POST" 
+                    <form action="{{route('maintenances.store')}}" method="POST" 
                         name="le_form"  enctype="multipart/form-data">
                         @csrf
                         <div class="row form-row">
-                            <div class="col-12 col-sm-6">
+                            <div class="col-12 col-sm-12">
                                 <div class="form-group">
                                     <label>رقم الوحدة</label>
                                     <select name="client_id" class="form-control" id="clientId">
@@ -114,43 +138,98 @@
                                     <span id="clientError" class="error-message"></span>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-6">
-                                <div class="form-group">
-                                    <label> الأداه المفقودة</label>
-                                    <input type="text" name="name" id="amountId" class="form-control">
-                                    <span id="amountError" class="error-message"></span>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <div class="form-group">
-                                    <label>العدد</label>
-                                    <input type="number" name="count" id="amountId" class="form-control">
-                                    <span id="amountError" class="error-message"></span>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <div class="form-group">
-                                    <label>الملاحظة</label>
-                                    <input type="text" name="notes" id="amountId" class="form-control">
-                                    <span id="amountError" class="error-message"></span>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6">
+                            
+                            <div class="col-12 col-sm-12">
                                 <div class="form-group">
                                     <h5>
-                                    <strong>الحالة</strong>
+                                    <strong>نوع العطل</strong>
                                     <span class="required">*</span>
                                     </h5>
-                                    <div class="controls">
+                                   
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
                                         <div class="skin skin-square">
-                                            <input type="radio" value="1" name="status" required id="radio1">
-                                            <label for="radio1">تم الشراء</label>
+                                            <input type="checkbox" value="1" name="bathroom" id="radio1">
+                                            <label for="radio1">دورات المياة</label>
                                         </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" name="bathroom_desc" id="amountId" class="form-control" placeholder="وصف العطل">
+                                    <span id="amountError" class="error-message"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
                                         <div class="skin skin-square">
-                                            <input type="radio" value="0" name="status" id="radio2">
-                                            <label for="radio2">لم يتم الشراء</label>
+                                            <input type="checkbox" value="1" name="conditioning" id="radio1">
+                                            <label for="radio1"> المكيفات</label>
                                         </div>
-                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" name="conditioning_desc" id="amountId" class="form-control" placeholder="وصف العطل">
+                                    <span id="amountError" class="error-message"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                        <div class="skin skin-square">
+                                            <input type="checkbox" value="1" name="door" id="radio1">
+                                            <label for="radio1">الأبواب</label>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" name="door_desc" id="amountId" class="form-control" placeholder="وصف العطل">
+                                    <span id="amountError" class="error-message"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                        <div class="skin skin-square">
+                                            <input type="checkbox" value="1" name="room" id="radio1">
+                                            <label for="radio1">الغرف</label>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" name="room_desc" id="amountId" class="form-control" placeholder="وصف العطل">
+                                    <span id="amountError" class="error-message"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                        <div class="skin skin-square">
+                                            <input type="checkbox" value="1" name="kitchen" id="radio1">
+                                            <label for="radio1">المطبخ</label>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" name="kitchen_desc" id="amountId" class="form-control" placeholder="وصف العطل">
+                                    <span id="amountError" class="error-message"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                        <div class="skin skin-square">
+                                            <input type="checkbox" value="1" name="other" id="radio1">
+                                            <label for="radio1">أخري</label>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" name="other_desc" id="amountId" class="form-control" placeholder="وصف العطل">
+                                    <span id="amountError" class="error-message"></span>
                                 </div>
                             </div>
                             
@@ -175,7 +254,7 @@
                             <div class="col-sm-3">
                             </div>
                             <div class="col-sm-2">
-                                <form method="post" action="{{route('losses.destroy','test')}}">
+                                <form method="post" action="{{route('maintenances.destroy','test')}}">
                                     @csrf
                                     @method('delete')
                                     <input type="hidden" name="id" id="cat_id">

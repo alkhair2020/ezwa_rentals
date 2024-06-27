@@ -17,7 +17,7 @@ class CreateCleansTable extends Migration
             $table->id();
             $table->integer('user_id')->index('user_id');
             $table->integer('client_id')->index('client_id');
-
+            $table->integer('property_id')->index('property_id');
             $table->integer('bathroom')->default('0')->comment('0=not good, 1=good');
             $table->text('bathroom_desc')->nullable();
 

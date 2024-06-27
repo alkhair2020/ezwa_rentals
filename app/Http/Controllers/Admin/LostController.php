@@ -14,80 +14,45 @@ class LostController extends Controller
 {
     public function print($id)
     {
-        $expenses = Expense::where('id',$id)->with('clients')->first();
-        $clients = Client::where('id',$expenses->client_id )->with('properties')->with('receipts')->first();
-        $users = User::where('id',$expenses->user_id  )->first();
-        list($createyear, $createmonth, $createday) = explode('-',  $expenses->created_at->format('Y-m-d'));
+        $losses=Lost::with('properties')->with('clients')->first();
+
+        $clients = Client::where('id',$losses->client_id )->with('properties')->first();
+        $users = User::where('id',$losses->user_id  )->first();
+        
+        list($createyear, $createmonth, $createday) = explode('-',  $losses->created_at->format('Y-m-d'));
         $create_hijriDate = DateHelper::gregorianToHijri($createyear, $createmonth, $createday);
-        $expenses->create_hijriDate="{$create_hijriDate['year']}-{$create_hijriDate['month']}-{$create_hijriDate['day']}";
-        return view('admin.expenses.print', compact('expenses','clients','users'));
+        $losses->create_hijriDate="{$create_hijriDate['year']}-{$create_hijriDate['month']}-{$create_hijriDate['day']}";
+        // dd($losses);
+        return view('admin.losses.print', compact('losses'));
     }
     
     public function index()
     {
-        $clients=Client::get();
-        $expenses=Expense::with('clients')->get();
-        $losses=Lost::get();
-        return view('admin.losses.index',compact('expenses','clients','losses'));  
+        $clients=Client::where('status','1')->with('properties')->get();
+        $losses=Lost::with('properties')->get();
+        return view('admin.losses.index',compact('clients','losses'));  
     }
-    
-    public function clientExpenses($id)
-    {
-        $client = Client::findOrFail($id);
-        $expenses=Expense::where('client_id',$id)->with('clients')->get();
-        // dd($receipts);
-        return view('admin.expenses.index',compact('expenses','client'));
-    }
-
-    public function create()
-    {
-        $properties=Client::get();
-        return view('admin.clients.create',compact('properties'));
-    }
-    // public function clientAdd($id)
-    // {
-
-    //     return view('admin.clients.create');
-    // }
-        
     
 
     public function store(Request $request)
     {
         $user_id=Auth::user();  
-        // dd($request->all());
         $client = Client::where('id',$request->client_id)->first();
-        $client->status=0;
-        $client->save();
         
-        $property = Property::findOrFail($client->property_id);
-        $property->status="notclean";
-        $property->save();
-
-        $add = new Expense;
+        $add = new Lost;
         $add->user_id     = $user_id->id;
+        $add->property_id     = $client->property_id;
         $add->client_id     = $request->client_id;
-        $add->amount    = $request->amount;
-        if(isset($request->notes)){
-             $add->notes    = $request->notes;
-        }
+        $add->name    = $request->name;
+        $add->count    = $request->count;
+        $add->notes    = $request->notes;
+        $add->status    = $request->status;
         $add->save();
 
 
-        $add_report = new Report;
-        $add_report->user_id     = $user_id->id;
-        $add_report->property_id     = $client->property_id;
-        $add_report->client_id     =  $request->client_id;
-        $add_report->expense_id    = $add->id;
-        $add_report->payment_way    = "cash";
-        $add_report->status    = 0;
-        $add_report->worker_checked    =$request->worker_checked;
-        $add_report->cleaner    = $request->cleaner;
-        $add_report->status_door_card    = $request->status_door_card;
-        $add_report->save();
         
-        return redirect()->route('expenses.print', ['id' => $add->id]);
-        return redirect()->back()->with("message", 'تم إنهاء العقد ويمكنك طباعة مستند الصرف');
+        // return redirect()->route('expenses.print', ['id' => $add->id]);
+        return redirect()->back()->with("message", ' تم الاضافة');
     }
 
     public function show(Feature $feature)

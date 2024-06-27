@@ -32,4 +32,3 @@
   <!-- start color message-->
   <link rel="stylesheet" type="text/css" href="{{asset('admin/css-rtl/core/colors/palette-callout.css')}}">
   <!-- END color message-->
-

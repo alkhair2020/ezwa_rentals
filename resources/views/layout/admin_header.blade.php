@@ -49,6 +49,18 @@
           <span>التقارير</span>
         </a>
       </li>
+      <li class=" nav-item {{ Request::is('admin/cleans') ? 'active' : '' }}">
+        <a class="dropdown-toggle nav-link " href="{{url('admin/cleans')}}">
+          <!-- <i class="la la-folder-open"></i> -->
+          <span>أستمارات النظافة</span>
+        </a>
+      </li>
+      <li class=" nav-item {{ Request::is('admin/maintenances') ? 'active' : '' }}">
+        <a class="dropdown-toggle nav-link " href="{{url('admin/maintenances')}}">
+          <!-- <i class="la la-folder-open"></i> -->
+          <span>أستمارات الصيانة</span>
+        </a>
+      </li>
       <!-- <li class=" nav-item {{ Request::is('admin/receipts') ? 'active' : '' }}">
         <a class="dropdown-toggle nav-link " href="{{url('admin/receipts')}}"><i class="la la-folder-open"></i>
           <span>سندات القبض</span>

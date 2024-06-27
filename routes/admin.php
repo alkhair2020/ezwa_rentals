@@ -13,15 +13,25 @@ use App\Helpers\DateHelper;
  Route::resource('admin/tickets','Admin\TicketController');
 
 Route::group(['middleware' => 'auth', 'namespace' => 'Admin','prefix' => 'admin'], function () {        
-   Route::resource('roles','RoleController');
-   Route::resource('users','UserController');
-   Route::resource('properties','PropertyController');
-   Route::resource('clients','ClientController'); 
-   Route::resource('losses','LostController'); 
-   Route::get('property/clients/{id}', 'ClientController@propertyClients');
-   Route::get('clients/print/{id}', 'ClientController@print')->name('clients.print');
-   Route::get('client/closed', 'ClientController@clientClosed');
-   Route::post('client/renew', 'ClientController@clientRenew')->name('client.renew');
+    Route::resource('roles','RoleController');
+    Route::resource('users','UserController');
+    Route::resource('properties','PropertyController');
+
+    Route::resource('clients','ClientController'); 
+    Route::get('property/clients/{id}', 'ClientController@propertyClients');
+    Route::get('clients/print/{id}', 'ClientController@print')->name('clients.print');
+    Route::get('client/closed', 'ClientController@clientClosed');
+    Route::post('client/renew', 'ClientController@clientRenew')->name('client.renew');
+
+    Route::resource('losses','LostController'); 
+    Route::get('losses/print/{id}', 'LostController@print')->name('losses.print');
+
+    Route::resource('maintenances','MaintenanceController'); 
+    Route::get('maintenances/print/{id}', 'MaintenanceController@print')->name('maintenances.print');
+
+    Route::resource('cleans','CleanController'); 
+    Route::get('cleans/print/{id}', 'CleanController@print')->name('cleans.print');
+   
 
    Route::resource('receipts','ReceiptController'); 
    Route::get('clients/receipts/{id}', 'ReceiptController@clientReceipts');
