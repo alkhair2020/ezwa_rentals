@@ -41,6 +41,7 @@
                             <thead>
                                 <tr>
                                     <th> رقم الوحدة</th>
+                                    <th> رقم العقد</th>
                                     <th>دورة المياه</th>
                                     <th> المكيفات</th>
                                     <th> الأبواب</th>
@@ -51,56 +52,56 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($cleans as $item)
+                                @foreach ($cleans as $clean)
                                 <tr>
-                                    <td>{{$item->properties->number}}</td>
+                                    <td>{{$clean->properties->number}}</td>
+                                    <td>{{$clean->clients->id}}</td>
                                     <td> 
-                                        @if($item->bathroom==1)
+                                        @if($clean->bathroom==1)
                                             ✓
                                         @endif
                                     </td>
                                     <td> 
-                                        @if($item->conditioning==1)
+                                        @if($clean->conditioning==1)
                                             ✓
                                         @endif
                                     </td>
                                     <td> 
-                                        @if($item->door==1)
+                                        @if($clean->door==1)
                                             ✓
                                         @endif
                                     </td>
                                     <td> 
-                                        @if($item->room==1)
+                                        @if($clean->room==1)
                                             ✓
                                         @else
                                             
                                         @endif
                                     </td>
                                     <td> 
-                                        @if($item->kitchen==1)
+                                        @if($clean->kitchen==1)
                                             ✓
                                         @endif
                                     </td>
                                     <td> 
-                                        @if($item->other==1)
+                                        @if($clean->other==1)
                                             ✓
                                         @endif
                                     </td>
                                     
                                     <td class="text-center">
                                         <a class="btn btn-sm bg-success-light"
-                                            href="{{ url('admin/cleans/print', $item->id) }}">
+                                            href="{{ url('admin/cleans/print', $clean->id) }}">
                                             <button type="button" class="btn btn-icon btn-info mr-1"><i
                                                     class="la la-print"></i></button>
                                         </a>
-                                        <!-- <button type="button" class="btn btn-icon btn-success mr-1"><i
-                                                class="la la-edit"></i></button>
-
-                                        <a data-toggle="modal" data-catid="{{ $item->id }}" data-target="#delete"
-                                            class="delete-course">
-                                            <button type="button" class="btn btn-icon btn-danger mr-1"><i
-                                                    class="la la-trash"></i></button>
-                                        </a> -->
+                                        <a class="btn btn-sm bg-success-light"  href="{{ url('admin/cleans/'.$clean->id).'/edit' }}"">
+                                            <i class="la la-edit"></i>
+                                        </a>
+                                        <a data-toggle="modal" data-catid="{{ $clean->id }}" data-target="#delete"
+                                            class="delete-course btn btn-sm ">
+                                            <i class="la la-trash "></i>
+                                        </a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -126,13 +127,25 @@
                         name="le_form"  enctype="multipart/form-data">
                         @csrf
                         <div class="row form-row">
-                            <div class="col-12 col-sm-12">
+                            <div class="col-12 col-sm-6">
                                 <div class="form-group">
                                     <label>رقم الوحدة</label>
-                                    <select name="client_id" class="form-control" id="clientId">
+                                    <select name="property_id" class="form-control" id="propertyId">
                                         <option value="" selected="" disabled="">حدد رقم الوحدة</option>
-                                        @foreach ($clients as $_item)
-                                        <option value="{{$_item->id}}">{{$_item->properties->number }}</option>
+                                        @foreach ($properties as $property)
+                                        <option value="{{$property->id}}">{{$property->id }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span id="clientError" class="error-message"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>رقم العقد</label>
+                                    <select name="client_id" class="form-control" id="clientId">
+                                        <option value="" selected="" disabled="">حدد رقم العقد</option>
+                                        @foreach ($clients as $client)
+                                        <option value="{{$client->id}}">{{$client->id }}</option>
                                         @endforeach
                                     </select>
                                     <span id="clientError" class="error-message"></span>
@@ -242,6 +255,7 @@
         </div>
     </div>
     <!-- /ADD Modal -->
+    
     <!-- Delete Modal -->
     <div class="modal fade" id="delete" aria-hidden="true" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -254,7 +268,7 @@
                             <div class="col-sm-3">
                             </div>
                             <div class="col-sm-2">
-                                <form method="post" action="{{route('maintenances.destroy','test')}}">
+                                <form method="post" action="{{route('cleans.destroy','test')}}">
                                     @csrf
                                     @method('delete')
                                     <input type="hidden" name="id" id="cat_id">
@@ -274,8 +288,6 @@
 <script src="{{asset('js/app.js')}}"></script>
 
 <script>
-
-
     $('#delete').on('show.bs.modal', function (event) {
 
         var button = $(event.relatedTarget)

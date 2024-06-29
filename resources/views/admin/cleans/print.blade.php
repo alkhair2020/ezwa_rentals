@@ -114,7 +114,7 @@
                                  المكيفات
                             </td>
                             <td class="text-center">
-                            <input type="checkbox" value="1" {{ $cleans->conditioning == '1' ? 'checked' : '' }}">
+                            <input type="checkbox" value="1" {{ $cleans->conditioning == '1' ? 'checked' : '' }}>
                             </td>
                             <td class="text-center"> {{ $cleans->conditioning_desc}} </td>
                         </tr>

@@ -84,17 +84,17 @@
 											<td class="text-center">
 												<div class="actions">
 													<a class="btn btn-sm bg-success-light" data-toggle="modal"
-													data-name ="{{$_item->name}}"
-													data-catid="{{ $_item->id }}"
-													data-target="#edit">
-													<button type="button" class="btn btn-outline-success "><i class="la la-edit"></i></button>
-												</a>
-												<a  data-toggle="modal" data-catid="{{ $_item->id }}" data-target="#delete" class="delete-course">
-													<button type="button" class=" btn btn-outline-warning"><i class="la la-trash-o"></i></button>
-												</a>
-											</div>
-										</td>
-									</tr>
+														data-name ="{{$_item->name}}"
+														data-catid="{{ $_item->id }}"
+														data-target="#edit">
+														<button type="button" class="btn btn-outline-success "><i class="la la-edit"></i></button>
+													</a>
+													<a  data-toggle="modal" data-catid="{{ $_item->id }}" data-target="#delete" class="delete-course">
+														<button type="button" class=" btn btn-outline-warning"><i class="la la-trash-o"></i></button>
+													</a>
+												</div>
+											</td>
+										</tr>
 									@endforeach
 
 								</tbody>
