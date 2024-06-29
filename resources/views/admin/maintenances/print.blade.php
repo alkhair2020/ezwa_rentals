@@ -57,21 +57,28 @@
       <div class="content-body">
         <section class="card">
           <div id="invoice-template" class="card-body">
-            <div id="invoice-company-details" class="row p-1">
-              <div class="col-md-12 col-sm-12 text-center ">
-              <u><h1>أستمارة
-                    ({{$maintenances->id}})
-                    طلب صيانة</h1></u>
-              </div>
-            </div>
             <div id="invoice-company-details" class="row ">
+                
+                <div class="col-md-8 col-sm-12  text-md-left">
+                    <div class="media">
+                    <img src="{{asset('img/ezwalogo.jpeg')}}" alt="company logo" class="img-fluid" width="220" style="    max-width: 100%;height: 120PX;" />
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 pt-2 ">
+                    <u><h1>أستمارة
+                      ({{$maintenances->id}})
+                      طلب صيانة</h1>
+                    </u>
+                </div>
+            </div>
+            <!-- <div id="invoice-company-details" class="row ">
                 <div class="col-md-10 col-sm-12  text-md-left">
                     <div class="media">
                     <img src="{{asset('img/ezwalogo.jpeg')}}" alt="company logo" class="img-fluid" width="200" style="    max-width: 100%;height: 71PX;" />
                     </div>
                 </div>
-            </div>
-            <br>
+            </div> -->
+            <br><br><br>
             <!-- /////////////////// -->
             <div id="" class="row ">
               <div class="col-md-12 col-sm-12 pt-2">
