@@ -10,8 +10,15 @@
                     <strong>Well done!</strong> You successfully read this important alertmessage.
                 </div>
             </dive> -->
-        @include('admin.includes.alerts.success')
+            @include('admin.includes.alerts.success')
         @endif
+        
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <div class="col-md-12 col-12">
             <div class="dropdown float-md-right">
                 <a href="{{route('clients.create')}}" class="btn btn-primary float-right mb-2"> عقد جديد</a>

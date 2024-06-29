@@ -93,21 +93,25 @@ class ExpenseController extends Controller
         // dd($request->all());
         $client = Client::where('id',$request->client_id)->first();
         $client->status=0;
-        $client->save();
+       
         
         $property = Property::findOrFail($client->property_id);
         $property->status="notclean";
-        $property->save();
+        
 
-        $add = new Expense;
-        $add->user_id     = $user_id->id;
-        $add->client_id     = $request->client_id;
-        $add->amount    = $request->amount;
-        if(isset($request->notes)){
-             $add->notes    = $request->notes;
+        $check_expense = Expense::where('client_id',$request->client_id)->first();
+        if($check_expense){
+            return redirect()->back()->with('error', 'تم إنشاء سند صرف بالفعل');
+        }else{
+            $add = new Expense;
+            $add->user_id     = $user_id->id;
+            $add->client_id     = $request->client_id;
+            $add->amount    = $request->amount;
+            if(isset($request->notes)){
+                $add->notes    = $request->notes;
+            }
+            $add->save();
         }
-        $add->save();
-
 
         $add_report = new Report;
         $add_report->user_id     = $user_id->id;
@@ -121,8 +125,11 @@ class ExpenseController extends Controller
         $add_report->status_door_card    = $request->status_door_card;
         $add_report->save();
         
+
+        $client->save();
+        $property->save();
         return redirect()->route('expenses.print', ['id' => $add->id]);
-        return redirect()->back()->with("message", 'تم إنهاء العقد ويمكنك طباعة مستند الصرف');
+        // return redirect()->back()->with("message", 'تم إنهاء العقد ويمكنك طباعة مستند الصرف');
     }
 
     /**
