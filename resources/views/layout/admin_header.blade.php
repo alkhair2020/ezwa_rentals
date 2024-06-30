@@ -13,7 +13,8 @@
       @endcan
       @can('property-list')
       <li class=" nav-item {{ Request::is('admin/properties') ? 'active' : '' }}">
-        <a class="dropdown-toggle nav-link " href="{{url('admin/properties')}}"><i class="la la-building"></i>
+        <a class="dropdown-toggle nav-link " href="{{url('admin/properties')}}">
+          <i class="la la-building"></i>
           <span>الوحدات</span>
         </a>
       </li>
@@ -25,11 +26,13 @@
         </a>
       </li>
       @endcan
+      @can('client-closed')
       <li class=" nav-item {{ Request::is('admin/client/closed') ? 'active' : '' }}">
         <a class="dropdown-toggle nav-link " href="{{url('admin/client/closed')}}"><i class="la la-folder-open"></i>
           <span>عقود منتهية</span>
         </a>
       </li>
+      @endcan
       @can('role-list')
       <li class=" nav-item {{ Request::is('admin/roles') ? 'active' : '' }}">
         <a class="dropdown-toggle nav-link " href="{{url('admin/roles')}}"><i class="la la-folder-open"></i>
@@ -44,34 +47,43 @@
         </a>
       </li>
       @endcan
+      @can('reports')
       <li class=" nav-item {{ Request::is('admin/reports') ? 'active' : '' }}">
         <a class="dropdown-toggle nav-link " href="{{url('admin/reports')}}"><i class="la la-folder-open"></i>
           <span>التقارير</span>
         </a>
       </li>
+      @endcan
+      @can('cleans-list')
       <li class=" nav-item {{ Request::is('admin/cleans') ? 'active' : '' }}">
         <a class="dropdown-toggle nav-link " href="{{url('admin/cleans')}}">
           <!-- <i class="la la-folder-open"></i> -->
           <span>أستمارات النظافة</span>
         </a>
       </li>
+      @endcan
+      @can('maintenance-list')
       <li class=" nav-item {{ Request::is('admin/maintenances') ? 'active' : '' }}">
         <a class="dropdown-toggle nav-link " href="{{url('admin/maintenances')}}">
           <!-- <i class="la la-folder-open"></i> -->
           <span>أستمارات الصيانة</span>
         </a>
       </li>
-      <!-- <li class=" nav-item {{ Request::is('admin/receipts') ? 'active' : '' }}">
+      @endcan
+      @can('receipt-list')
+      <li class=" nav-item {{ Request::is('admin/receipts') ? 'active' : '' }}">
         <a class="dropdown-toggle nav-link " href="{{url('admin/receipts')}}"><i class="la la-folder-open"></i>
           <span>سندات القبض</span>
         </a>
       </li>
+      @endcan
+      @can('expense-list')
       <li class=" nav-item {{ Request::is('admin/expenses') ? 'active' : '' }}">
         <a class="dropdown-toggle nav-link " href="{{url('admin/expenses')}}"><i class="la la-folder-open"></i>
           <span>سندات الصرف</span>
         </a>
-      </li> -->
-
+      </li>
+      @endcan
     </ul>
   </div>
 </div>

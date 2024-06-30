@@ -43,26 +43,9 @@ class ExpenseController extends Controller
     
     public function index()
     {
-
-        $properties=Country::get();
-        foreach($properties as $property){
-            $add = new Property;
-            $add->type    = $property->type;
-            $add->number    = $property->number;
-            $add->rooms    = $property->rooms;
-            $add->baths    = $property->baths;
-            $add->price_day    = $property->price_day;
-            $add->price_week    = $property->price_week;
-            $add->price_month    = $property->price_month;
-            $add->address    = $property->address;
-            $add->description    = $property->description;
-            $add->tax_number    = $property->tax_number;
-            $add->save();
-        }
-        dd('ff');
-
         $clients=Client::get();
-        $expenses=Expense::with('clients')->get();
+        $expenses=Expense::with('clients')->with('users')->with('reports')->get();
+        // dd($expenses);
         return view('admin.expenses.index',compact('expenses','clients'));  
     }
     
@@ -132,38 +115,21 @@ class ExpenseController extends Controller
         // return redirect()->back()->with("message", 'تم إنهاء العقد ويمكنك طباعة مستند الصرف');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Feature  $feature
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Feature $feature)
+    public function update(Request $request)
     {
-        //
-    }
+        $edit = Expense::findOrFail($request->id);
+        $edit->notes    = $request->notes;
+        $edit->save();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Feature  $feature
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Feature $feature)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Feature  $feature
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Feature $feature)
-    {
-        //
+        $edit_report = Report::where('expense_id',$edit->id)->first();
+        if(isset($request->status_door_card)){
+            $edit_report->status_door_card    = $request->status_door_card;
+        }else{
+            $edit_report->status_door_card    = 0;
+        }
+       
+        $edit_report->save();
+        return redirect()->back()->with("message", 'تم التعديل بنجاح');
     }
 
     

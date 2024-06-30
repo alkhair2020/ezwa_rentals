@@ -12,11 +12,11 @@
             </dive> -->
         @include('admin.includes.alerts.success')
         @endif
-        <div class="col-md-12 col-12">
+        <!-- <div class="col-md-12 col-12">
             <div class="dropdown float-md-right mb-1">
                 <a href="#Add_Specialities_details" data-toggle="modal" class="btn btn-primary float-right mt-2">سند قبض جديد</a>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <div class="row">
@@ -40,6 +40,7 @@
                         <table class="table table-striped table-bordered multi-ordering">
                             <thead>
                                 <tr>
+                                    <th>موظف الاستقبال</th>
                                     <th>اسم العميل</th>
                                     <th>المبلغ</th>
                                     <th> التاريخ</th>
@@ -49,23 +50,31 @@
                             <tbody>
                                 @foreach ($receipts as $receipt)
                                 <tr>
-                                    <td>{{$receipt->clients->name}}</td>
+                                    <td>
+                                        @if($receipt->users)
+                                            {{$receipt->users->name}}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($receipt->clients)
+                                            {{$receipt->clients->name}}
+                                        @endif
+                                    </td>
                                     <td>{{$receipt->amount}}</td>
                                     <td> {{$receipt->created_at->format('Y-m-d') }}</td>
                                     <td class="text-center">
                                         <a class="btn btn-sm bg-success-light"
                                             href="{{ url('admin/receipts/print', $receipt->id) }}">
-                                            <button type="button" class="btn btn-icon btn-info mr-1"><i
-                                                    class="la la-print"></i></button>
+                                           <i class="la la-print"></i>
                                         </a>
-                                        <button type="button" class="btn btn-icon btn-success mr-1"><i
+                                        <!-- <button type="button" class="btn btn-icon btn-success mr-1"><i
                                                 class="la la-edit"></i></button>
 
                                         <a data-toggle="modal" data-catid="{{ $receipt->id }}" data-target="#delete"
                                             class="delete-course">
                                             <button type="button" class="btn btn-icon btn-danger mr-1"><i
                                                     class="la la-trash"></i></button>
-                                        </a>
+                                        </a> -->
                                     </td>
                                 </tr>
                                 @endforeach

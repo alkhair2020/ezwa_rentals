@@ -14,8 +14,9 @@ class ReceiptController extends Controller
 {  
     public function index()
     {
-        $receipts=Receipt::with('clients')->get();
+        $receipts=Receipt::with('clients')->with('users')->get();
         $clients=Client::get();
+        // dd($receipts);
         return view('admin.receipts.index',compact('receipts','clients'));  
     }
     
