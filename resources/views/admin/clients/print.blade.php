@@ -123,7 +123,10 @@
                   {{$clients->id}}
                 </p>
                 <p>
-                  <span class="text-muted"></span> 300267685800003
+                  <span class="text-muted"></span> 
+                  @if($clients->properties->tax_number)
+                  {{$clients->properties->tax_number}}
+                  @endif
                 </p>
 
               </div>
