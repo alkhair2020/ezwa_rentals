@@ -134,7 +134,7 @@
                                 ?>
                                 @foreach ($reports as $report)
                                     <tr>
-                                        <td><p>@if($report->users){{$report->users->name}}@endif  {{$report->id}}</p></td>
+                                        <td><p>@if($report->users){{$report->users->name}}@endif </p></td>
                                         <td><p>@if($report->properties){{$report->properties->number}}@endif</p></td>
                                         <td><p>@if($report->clients){{$report->clients->name}}@endif</p></td>
                                         <td >
