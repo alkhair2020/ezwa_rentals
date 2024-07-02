@@ -80,23 +80,31 @@
                                             </div>
                                             <div class="row">
                                                 <!-- col -->
-                                                <div class="col-lg-4">
+                                                <div class="col-md-12">
                                                     <ul id="treeview1">
                                                         <li><a href="#">الصلاحيات</a>
                                                             <ul>
                                                         </li>
-                                                        @foreach($permission as $value)
+                                                    </ul>
+                                                    </li>
+                                                    </ul>
+                                                </div>
+                                                @foreach($permission as $value)
+                                                <div class="col-md-2">
+                                                    <ul id="treeview1">
+                                                        
+                                                       
                                                         <label
                                                             style="font-size: 16px;">{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
-                                                            {{ $value->name }}</label>
-
-                                                        @endforeach
+                                                             {{ __('permissions.' . $value->name . '') }}</label>
+                                                        
                                                         </li>
 
                                                     </ul>
                                                     </li>
                                                     </ul>
                                                 </div>
+                                                @endforeach
                                                 <!-- /col -->
                                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                                     <button type="submit" class="btn btn-main-primary">تاكيد</button>

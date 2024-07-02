@@ -94,10 +94,10 @@
                                                         <td>{{ ++$i }}</td>
                                                         <td>{{ $role->name }}</td>
                                                         <td>
-                                                            @can('role-list')
+                                                            <!-- @can('role-list')
                                                                 <a class="btn btn-success btn-sm"
                                                                     href="{{ route('roles.show', $role->id) }}">عرض</a>
-                                                            @endcan
+                                                            @endcan -->
                                                             
                                                             @can('role-edit')
                                                                 <a class="btn btn-primary btn-sm"
