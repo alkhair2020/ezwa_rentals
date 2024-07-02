@@ -99,8 +99,23 @@
             </div>
             <div class="content-body">
                 <section class="card">
-                    
-                    <div id="invoice-items-details" class="pt-2">
+                
+                    <div class="row">
+                        
+                        @if($from)
+                            <div class=" col-sm-6  text-center p-1" style="border-left: 1px solid #a5abc7">
+                                من تاريــــــــــخ : {{$from}}
+                            </div>
+                            <div class="vertical-line"></div>
+
+                        @endif
+                        @if($to)
+                            <div class=" col-sm-4 text-center  p-1">
+                                إلى تاريــــــــخ : {{$from}}
+                            </div>
+                        @endif
+                    </div>
+                    <div id="invoice-items-details" class="">
                         <div class="row">
                         <!-- table-responsive -->
                             <div class=" col-sm-12">

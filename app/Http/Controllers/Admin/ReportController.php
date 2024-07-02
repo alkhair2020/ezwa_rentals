@@ -21,7 +21,8 @@ class ReportController extends Controller
             $reports = Report::with('users')->with('clients')->with('properties')->with('receipts')->with('expenses')->orderBy('id', 'DESC')->get();
         }
         // dd($reports);
-        return view('admin.reports.print', compact('reports'));
+        return view('admin.reports.print', ['reports' => $reports, 'from' => $request->from,'to' => $request->to]);
+
     }
 
     public function create()
