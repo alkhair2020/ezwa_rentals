@@ -103,10 +103,9 @@
                     <div class="row">
                         
                         @if($from)
-                            <div class=" col-sm-6  text-center p-1" style="border-left: 1px solid #a5abc7">
+                            <div class=" col-sm-6  text-center p-1" style="border-left: 1px solid #E3EBF3;">
                                 من تاريــــــــــخ : {{$from}}
                             </div>
-                            <div class="vertical-line"></div>
 
                         @endif
                         @if($to)
