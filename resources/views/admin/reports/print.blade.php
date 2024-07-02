@@ -110,7 +110,7 @@
                         @endif
                         @if($to)
                             <div class=" col-sm-4 text-center  p-1">
-                                إلى تاريــــــــخ : {{$from}}
+                                إلى تاريــــــــخ : {{$to}}
                             </div>
                         @endif
                     </div>
