@@ -304,6 +304,14 @@
                                     <span id="payment_wayError" class="error-message"></span>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="projectinput1">الخصم</label>
+                                    <input type="number" name="discount" id="discountId" class="form-control" 
+                                        placeholder="الخصم" name="fname">
+                                    <span id="discountError" class="error-message"></span>
+                                </div>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block"
                             onclick="return ValidateRenew()">حفظ</button>

@@ -287,7 +287,7 @@
                   @elseif($clients->type=='national identity')
                   هوية وطنية
                   @else
-                  زائر
+                  جواز سفر
                   @endif
                 </p>
                 <p>

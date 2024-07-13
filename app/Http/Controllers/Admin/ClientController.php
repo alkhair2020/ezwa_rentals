@@ -251,7 +251,9 @@ class ClientController extends Controller
         $add->time    =$end_date->format('h:i A');
         $add->end_date    = $end_date->format('Y-m-d');
         
-        
+        if(isset( $request->discount)){
+            $add->discount    = $request->discount;
+        }
         if($request->property_type=='weekly'){
             $price_whith_percent= $property->price_week + ($property->price_week * $property->percentage) / 100;
             $add->property_price    = $price_whith_percent * $request->count_day ;
@@ -265,6 +267,7 @@ class ClientController extends Controller
             $add->property_price    =$price_whith_percent;
             $add->total    =$price_whith_percent - $request->discount;
         }
+
         $add->save();
 
         $datenow=Carbon::now()->format('Y-m-d');

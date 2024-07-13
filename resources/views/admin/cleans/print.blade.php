@@ -58,7 +58,7 @@
         <section class="card">
           <div id="invoice-template" class="card-body">
             <div id="invoice-company-details" class="row ">
-                <div class="col-md-8 col-sm-12  text-md-left">
+                <div class="col-md-5 col-sm-12  text-md-left">
                     <div class="media">
                     <img src="{{asset('img/ezwalogo.jpeg')}}" alt="company logo" class="img-fluid" width="220" style="    max-width: 100%;height: 120PX;" />
                     </div>
@@ -66,7 +66,7 @@
                 <div class="col-md-4 col-sm-12 pt-2 ">
                     <u><h1>أستمارة
                       ({{$cleans->id}})
-                      طلب صيانة</h1>
+                      طلب نظافة</h1>
                     </u>
                 </div>
             </div>
