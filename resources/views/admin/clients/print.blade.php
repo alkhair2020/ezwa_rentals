@@ -114,7 +114,7 @@
                   <span class="text-muted">رقم العقد :</span>
                 </p>
                 <p>
-                  <span class="text-muted">الرقم الضريبي :</span>
+                  <span class="text-muted">الرقم الضريبي للشقة :</span>
                 </p>
 
               </div>
@@ -319,6 +319,12 @@
                   <span class="text-muted"></span> {{$clients->number_companions}}
                 </p>
 
+              </div>
+              <div class="col-md-12 col-sm-12 ">
+                <p>
+                  <span class="text-muted"> الرقم الضريبي :  </span> {{$clients->tax_number}}
+                </p>
+                
               </div>
             </div>
             <!-- /////////////////// -->

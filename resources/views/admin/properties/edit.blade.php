@@ -147,7 +147,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="projectinput4">الرقم الضريبي</label>
-                                            <input type="number" name="tax_number" id="projectinput4" class="form-control" placeholder="الرقم الضريبي" value="{{$property->tax_numberId}}">
+                                            <input type="number" name="tax_number" id="projectinput4" class="form-control" placeholder="الرقم الضريبي" value="{{$property->tax_number}}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">

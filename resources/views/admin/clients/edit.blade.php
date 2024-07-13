@@ -36,7 +36,7 @@
                             <div class="form-body">
                                 <h4 class="form-section"><i class="ft-user"></i> بيانات العميل</h4>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput4">رقم الهوية</label>
                                             <input type="number" name="id_number" id="id_numberId" class="form-control"
@@ -44,7 +44,7 @@
                                             <span id="id_numberError" class="error-message"></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput1">الإسم بالكامل</label>
                                             <input type="text" name="name" id="nameId" class="form-control"
@@ -52,7 +52,13 @@
                                             <span id="nameError" class="error-message"></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput4">الرقم الضريبي</label>
+                                            <input type="number" name="tax_number" id="projectinput4" class="form-control" placeholder="الرقم الضريبي" value="{{$client->tax_number}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput4">رقم الجوال</label>
                                             <input type="number" name="phone" id="phoneId" class="form-control"
@@ -159,7 +165,7 @@
                                         <div class="form-group">
                                             <label for="projectinput1">التأمين</label>
                                             <input type="number" name="insurance" id="insuranceId" class="form-control"
-                                                placeholder="التأمين" value="{{$client->insurance}}">
+                                                placeholder="التأمين" value="{{$client->receipts->amount}}">
                                             <span id="insuranceError" class="error-message"></span>
                                         </div>
                                     </div>

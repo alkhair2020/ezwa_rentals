@@ -154,7 +154,7 @@ class ClientController extends Controller
         // }else{
         //     $add->nationality    = 'زائر';
         // }
-       
+        $add->tax_number    = $request->tax_number;
         $add->id_number    = $request->id_number;
         $add->phone    = $request->phone;
         $add->number_companions    = $request->number_companions;
@@ -242,6 +242,7 @@ class ClientController extends Controller
         $add->name    = $client->name;
         $add->type    = $client->type;
         $add->nationality    =$client->nationality;
+        $add->tax_number    = $client->tax_number;
         $add->id_number    = $client->id_number;
         $add->phone    = $client->phone;
         $add->number_companions    = $client->number_companions;
@@ -305,6 +306,7 @@ class ClientController extends Controller
     public function edit(Client $client)
     {
         $properties=Property::get();
+        $client = Client::where('id',$client->id)->with('receipts')->first();
         // dd($client);
         return view('admin.clients.edit',compact('properties','client'));
     }
@@ -318,6 +320,7 @@ class ClientController extends Controller
         $edit->name    = $request->name;
         $edit->type    = $request->type;
         $edit->nationality    = $request->nationality;
+        $edit->tax_number    = $request->tax_number;
         $edit->id_number    = $request->id_number;
         $edit->phone    = $request->phone;
         $edit->number_companions    = $request->number_companions;
@@ -329,15 +332,18 @@ class ClientController extends Controller
         if(isset( $request->discount)){
             $edit->discount    = $request->discount;
         }
-        if(isset( $request->insurance)){
-            $edit->insurance = $request->insurance;
-        }
+        // if(isset( $request->insurance)){
+        //     $edit->insurance = $request->insurance;
+        // }
         if(isset( $request->draft)){
-             $edit->draft    = $request->draft;
+            $edit->draft    = $request->draft;
         }
         $edit->total    = $property->price - $request->discount;
-        
         $edit->save();
+
+        $receipt = Receipt::where('client_id',$client->id)->first();
+        $receipt->amount    = $request->insurance;
+        $receipt->save();
         return redirect()->route('clients.index')->with("message", 'تم التعديل بنجاح');
     }
 

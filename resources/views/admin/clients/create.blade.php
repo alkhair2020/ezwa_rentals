@@ -36,7 +36,7 @@
                             <div class="form-body">
                                 <h4 class="form-section"><i class="ft-user"></i> بيانات العميل</h4>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput5">نوع الإثبات</label>
                                             <select name="type" class="form-control" id="typeId">
@@ -48,7 +48,7 @@
                                             <span id="typeError" class="error-message"></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput4">رقم الهوية</label>
                                             <input type="text" name="id_number" id="id_numberId" class="form-control"
@@ -56,7 +56,7 @@
                                             <span id="id_numberError" class="error-message"></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput1">الإسم بالكامل</label>
                                             <input type="text" name="name" id="nameId" class="form-control"
@@ -64,7 +64,13 @@
                                             <span id="nameError" class="error-message"></span>
                                         </div>
                                     </div>
-                                   
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput4"> الرقم الضريبي </label>
+                                            <input type="number" name="tax_number" id="tax_numberId" class="form-control" placeholder="الرقم الضريبي" >
+                                            <span id="tax_numberError" class="error-message"></span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
