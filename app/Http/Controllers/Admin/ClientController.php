@@ -146,13 +146,14 @@ class ClientController extends Controller
         $add->property_id     = $request->property_id;
         $add->name    = $request->name;
         $add->type    = $request->type;
-        if($request->type =="national identity"){
-            $add->nationality    = 'سعودي';
-        }elseif($request->type =="accommodation"){
-            $add->nationality    = 'مقيم';
-        }else{
-            $add->nationality    = 'زائر';
-        }
+        $add->nationality    = $request->nationality;
+        // if($request->type =="national identity"){
+        //     $add->nationality    = 'سعودي';
+        // }elseif($request->type =="accommodation"){
+        //     $add->nationality    = 'مقيم';
+        // }else{
+        //     $add->nationality    = 'زائر';
+        // }
        
         $add->id_number    = $request->id_number;
         $add->phone    = $request->phone;

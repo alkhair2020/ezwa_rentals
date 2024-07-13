@@ -67,12 +67,20 @@
                                    
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="projectinput4">رقم الجوال</label>
                                             <input type="number" name="phone" id="phoneId" class="form-control"
                                                 placeholder="رقم الجوال">
                                             <span id="phoneError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="projectinput1">الجنسية</label>
+                                            <input type="text" name="nationality" id="nationalityId" class="form-control"
+                                                placeholder="الجنسية" name="fname">
+                                            <span id="nameError" class="error-message"></span>
                                         </div>
                                     </div>
                                     <!-- <div class="col-md-4">
@@ -86,7 +94,7 @@
                                             <span id="nationalityError" class="error-message"></span>
                                         </div>
                                     </div> -->
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="projectinput4"> عدد الافراد</label>
                                             <input type="number" name="number_companions" id="number_companionsId"
@@ -301,12 +309,12 @@
         phoneError.innerHTML = "";
 
        
-        // if (nationalityId.value == "") {
-        //     nationalityError.innerHTML = "اختر الجنسية";
-        //     // titleid.focus();
-        //     return false;
-        // }
-        // nationalityError.innerHTML = "";
+        if (nationalityId.value == "") {
+             nationalityError.innerHTML = "اختر الجنسية";
+             // titleid.focus();
+             return false;
+        }
+        nationalityError.innerHTML = "";
        
         if (number_companionsId.value == "") {
             number_companionsError.innerHTML = "اكتب عدد الافراد";

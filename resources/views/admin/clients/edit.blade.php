@@ -73,7 +73,7 @@
                                             <span id="typeError" class="error-message"></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <!-- <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="projectinput5">الجنسية</label>
                                             <select name="nationality" class="form-control" id="nationalityId">
@@ -82,6 +82,14 @@
                                                 <option value="مقيم"  {{ $client->nationality == 'مقيم' ? "selected" : "" }}>مقيم</option>
                                             </select>
                                             <span id="nationalityError" class="error-message"></span>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="projectinput4">الجنسية</label>
+                                            <input type="text" name="nationality" id="nationalityId" class="form-control"
+                                                placeholder="الجنسية" value="{{$client->nationality}}">
+                                            <span id="phoneError" class="error-message"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
