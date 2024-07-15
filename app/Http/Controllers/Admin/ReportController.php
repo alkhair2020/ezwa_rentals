@@ -10,7 +10,13 @@ class ReportController extends Controller
 {
     public function index(Request $request)
     {
-        if ($request->from && $request->to) {
+        
+        if ($clientName=$request->clientName) {
+            $reports = Report::whereHas('clients', function($query) use ($clientName) {
+                $query->where('name', 'like', '%' . $clientName . '%');
+            })->with('clients')->get();
+            // $reports = Report::whereDate('created_at', $request->from)->with('users')->with('clients')->with('properties')->with('receipts')->with('expenses')->orderBy('id', 'DESC')->get();
+        }elseif ($request->from && $request->to) {
             $from = Carbon::createFromFormat('Y-m-d', $request->from)->startOfDay();
             $to = Carbon::createFromFormat('Y-m-d', $request->to)->endOfDay();
             // $reports = Report::whereBetween('created_at', [$from, $to])->get();
@@ -22,9 +28,9 @@ class ReportController extends Controller
         }
         // dd($reports);
         return view('admin.reports.print', ['reports' => $reports, 'from' => $request->from,'to' => $request->to]);
-
+        
     }
-
+    
     public function create()
     {
         //

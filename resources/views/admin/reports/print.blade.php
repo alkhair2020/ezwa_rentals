@@ -79,6 +79,12 @@
                                             <input type="date" name="to" class="form-control">
                                         </div>
                                     </div>
+                                    <div class="col-12 col-sm-3">
+                                        <div class="form-group">
+                                            <label>اسم المستأجر</label>
+                                            <input type="text" name="clientName" class="form-control">
+                                        </div>
+                                    </div>
                                     <div class="col-12 col-sm-2 m-1 p-1">
                                         <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">بحث</button>
@@ -121,21 +127,23 @@
                             <table class="table table-bordered mb-0">
                                 <thead>
                                     <tr>
-                                        <th>م استقبال</th>
-                                        <th >رقم الغرفة</th>
-                                        <th >اسم النزيل</th>
-                                        <th >دخول</th>
-                                        <th >خروج</th>
-                                        <th >تحويل</th>
-                                        <th >شبكة </th>
-                                        <th >نقدي </th>
-                                        <th >تأمين دخول </th>
-                                        <th >تأمين خروج </th>
-                                        <th >كارت الباب </th>
-                                        <th >م استلام</th>
-                                        <th >م نظافة</th>
-                                        <th >طلبات</th>
-                                        <th>ملاحظة</th>
+                                        <th class="text-center">م استقبال</th>
+                                        <th class="text-center">رقم الغرفة</th>
+                                        <th class="text-center">رقم العقد</th>
+                                        <th class="text-center"> تاريخ</th>
+                                        <th class="text-center">اسم النزيل</th>
+                                        <th class="text-center">دخول</th>
+                                        <th class="text-center">خروج</th>
+                                        <th class="text-center">تحويل</th>
+                                        <th class="text-center">شبكة </th>
+                                        <th class="text-center">نقدي </th>
+                                        <th class="text-center">تأمين دخول </th>
+                                        <th class="text-center">تأمين خروج </th>
+                                        <th class="text-center">كارت الباب </th>
+                                        <th class="text-center">م استلام</th>
+                                        <th class="text-center">م نظافة</th>
+                                        <th class="text-center">طلبات</th>
+                                        <th class="text-center">ملاحظة</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -150,6 +158,8 @@
                                     <tr>
                                         <td><p>@if($report->users){{$report->users->name}}@endif </p></td>
                                         <td><p>@if($report->properties){{$report->properties->number}}@endif</p></td>
+                                        <td><p>@if($report->clients){{$report->clients->id}}@endif </p></td>
+                                        <td><p> @if($report->clients) {{$report->clients->start_date}}@endif </p></td>
                                         <td><p>@if($report->clients){{$report->clients->name}}@endif</p></td>
                                         <td >
                                             @if($report->status==1)
@@ -332,6 +342,9 @@
     p {
       margin-top: 0;
       margin-bottom: .8rem !important;
+    }
+    .table th, .table td {
+        padding: 0.75rem 1rem;
     }
   </style>
 </body>
