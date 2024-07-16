@@ -66,14 +66,16 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="projectinput4"> الرقم الضريبي </label>
-                                            <input type="number" name="tax_number" id="tax_numberId" class="form-control" placeholder="الرقم الضريبي" >
-                                            <span id="tax_numberError" class="error-message"></span>
+                                            <label for="projectinput1">الجنسية</label>
+                                            <input type="text" name="nationality" id="nationalityId" class="form-control"
+                                                placeholder="الجنسية" name="fname">
+                                            <span id="nameError" class="error-message"></span>
                                         </div>
                                     </div>
+                                    
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput4">رقم الجوال</label>
                                             <input type="number" name="phone" id="phoneId" class="form-control"
@@ -81,14 +83,7 @@
                                             <span id="phoneError" class="error-message"></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="projectinput1">الجنسية</label>
-                                            <input type="text" name="nationality" id="nationalityId" class="form-control"
-                                                placeholder="الجنسية" name="fname">
-                                            <span id="nameError" class="error-message"></span>
-                                        </div>
-                                    </div>
+                                    
                                     <!-- <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="projectinput5">الجنسية</label>
@@ -100,12 +95,27 @@
                                             <span id="nationalityError" class="error-message"></span>
                                         </div>
                                     </div> -->
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput4"> عدد الافراد</label>
                                             <input type="number" name="number_companions" id="number_companionsId"
                                                 class="form-control" placeholder="عدد الافراد">
                                             <span id="number_companionsError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput1">أسم الشركة</label>
+                                            <input type="text" name="company_name" id="companyNameId" class="form-control"
+                                                placeholder="أسم الشركة" name="fname" readOnly>
+                                            <span id="nameError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput4"> الرقم الضريبي </label>
+                                            <input type="number" name="tax_number" id="tax_numberId" class="form-control" placeholder="الرقم الضريبي" readOnly>
+                                            <span id="tax_numberError" class="error-message"></span>
                                         </div>
                                     </div>
                                 </div>

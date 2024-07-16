@@ -38,6 +38,17 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
+                                            <label for="projectinput5">نوع الإثبات</label>
+                                            <select name="type" class="form-control" id="typeId">
+                                                <option value="" selected="" disabled="">اختر نوع الهوية</option>
+                                                <option value="national identity" {{ $client->type == 'national identity' ? "selected" : "" }}>هوية وطنية</option>
+                                                <option value="accommodation" {{ $client->type == 'accommodation' ? "selected" : "" }}>إقامة</option>
+                                            </select>
+                                            <span id="typeError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
                                             <label for="projectinput4">رقم الهوية</label>
                                             <input type="number" name="id_number" id="id_numberId" class="form-control"
                                                 placeholder="رقم الهوية" value="{{$client->id_number}}">
@@ -54,10 +65,16 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="projectinput4">الرقم الضريبي</label>
-                                            <input type="number" name="tax_number" id="projectinput4" class="form-control" placeholder="الرقم الضريبي" value="{{$client->tax_number}}">
+                                            <label for="projectinput4">الجنسية</label>
+                                            <input type="text" name="nationality" id="nationalityId" class="form-control"
+                                                placeholder="الجنسية" value="{{$client->nationality}}">
+                                            <span id="phoneError" class="error-message"></span>
                                         </div>
                                     </div>
+                                    
+                                </div>
+                                <div class="row">
+                                    
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput4">رقم الجوال</label>
@@ -66,19 +83,7 @@
                                             <span id="phoneError" class="error-message"></span>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="projectinput5">نوع الإثبات</label>
-                                            <select name="type" class="form-control" id="typeId">
-                                                <option value="" selected="" disabled="">اختر نوع الهوية</option>
-                                                <option value="national identity" {{ $client->type == 'national identity' ? "selected" : "" }}>هوية وطنية</option>
-                                                <option value="accommodation" {{ $client->type == 'accommodation' ? "selected" : "" }}>إقامة</option>
-                                            </select>
-                                            <span id="typeError" class="error-message"></span>
-                                        </div>
-                                    </div>
+                                    
                                     <!-- <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="projectinput5">الجنسية</label>
@@ -90,20 +95,27 @@
                                             <span id="nationalityError" class="error-message"></span>
                                         </div>
                                     </div> -->
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="projectinput4">الجنسية</label>
-                                            <input type="text" name="nationality" id="nationalityId" class="form-control"
-                                                placeholder="الجنسية" value="{{$client->nationality}}">
-                                            <span id="phoneError" class="error-message"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
+                                    
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput4"> عدد الافراد</label>
                                             <input type="number" name="number_companions" id="number_companionsId"
                                                 class="form-control" placeholder="عدد الافراد" value="{{$client->number_companions}}">
                                             <span id="number_companionsError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput1">أسم الشركة</label>
+                                            <input type="text" name="company_name" id="companyNameId" class="form-control"
+                                                placeholder="أسم الشركة" name="fname" value="{{$client->company_name}}" readOnly>
+                                            <span id="nameError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput4">الرقم الضريبي</label>
+                                            <input type="number" name="tax_number" id="projectinput4" class="form-control" placeholder="الرقم الضريبي" value="{{$client->tax_number}}" readOnly>
                                         </div>
                                     </div>
                                 </div>
@@ -142,7 +154,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput5">نوع الإجار</label>
                                             <select name="property_type" class="form-control" id="property_typeId">
@@ -153,7 +165,15 @@
                                             <span id="property_typeError" class="error-message"></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="projectinput1">السعر</label>
+                                            <input type="number" name="property_price" id="propertyPriceId" class="form-control"
+                                                placeholder="السعر" value="{{$client->property_price}}">
+                                            <span id="propertyPriceError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput1">الخصم</label>
                                             <input type="number" name="discount" id="discountId" class="form-control" 
@@ -161,7 +181,7 @@
                                             <span id="discountError" class="error-message"></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="projectinput1">التأمين</label>
                                             <input type="number" name="insurance" id="insuranceId" class="form-control"

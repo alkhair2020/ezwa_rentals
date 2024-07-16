@@ -332,13 +332,13 @@ class ClientController extends Controller
         if(isset( $request->discount)){
             $edit->discount    = $request->discount;
         }
-        // if(isset( $request->insurance)){
-        //     $edit->insurance = $request->insurance;
-        // }
-        if(isset( $request->draft)){
-            $edit->draft    = $request->draft;
+        if($request->property_price){
+            $edit->property_price = $request->property_price;
         }
-        $edit->total    = $property->price - $request->discount;
+        // if(isset( $request->draft)){
+        //     $edit->draft    = $request->draft;
+        // }
+        $edit->total    = $request->property_price - $request->discount;
         $edit->save();
 
         $receipt = Receipt::where('client_id',$client->id)->first();
