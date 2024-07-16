@@ -234,6 +234,8 @@
                                         <th rowspan="1" colspan="1"> </th>
                                         <th rowspan="1" colspan="1"></th>
                                         <th rowspan="1" colspan="1"></th>
+                                        <th rowspan="1" colspan="1"></th>
+                                        <th rowspan="1" colspan="1"></th>
                                         <th rowspan="1" colspan="1">{{$transfer}}</th>
                                         <th rowspan="1" colspan="1">{{$network}}</th>
                                         <th rowspan="1" colspan="1">{{$cash}}</th>
