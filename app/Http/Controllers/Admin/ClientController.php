@@ -64,7 +64,7 @@ class ClientController extends Controller
     }
     public function index()
     {
-        $clients=Client::with('properties')->with('users')->with('receipts')->with('expenses')->where('status','1')->orderBy('id', 'DESC')->get();
+        $clients=Client::with('properties')->with('users')->with('receipts')->with('expenses')->where('status','!=','0')->orderBy('id', 'DESC')->get();
         
         return view('admin.clients.index',compact('clients'));
     }
@@ -269,7 +269,7 @@ class ClientController extends Controller
             $add->property_price    =$price_whith_percent;
             $add->total    =$price_whith_percent - $request->discount;
         }
-
+        $add->status=2;
         $add->save();
 
         $datenow=Carbon::now()->format('Y-m-d');
@@ -350,24 +350,19 @@ class ClientController extends Controller
     
     public function destroy(Request $request )
     {
-        
-            $client = Client::findOrFail($request->id);
-            if($client){
-                $receipt = Receipt::where('client_id',$client->id)->first();
-                if($receipt)
-                    $receipt->delete();
-                $expense = Expense::where('client_id',$client->id)->first();
-                if($expense)
-                    $expense->delete();
-                $report = Report::where('client_id',$client->id)->first();
-                if($report)
-                    $report->delete();
-                $client->delete();
-            }
-            
-            
-            // dd($request->id);
-            return back()->with("success",'تم الحذف بنجاح'); 
-              
+        $client = Client::findOrFail($request->id);
+        if($client){
+            $receipt = Receipt::where('client_id',$client->id)->first();
+            if($receipt)
+                $receipt->delete();
+            $expense = Expense::where('client_id',$client->id)->first();
+            if($expense)
+                $expense->delete();
+            $report = Report::where('client_id',$client->id)->first();
+            if($report)
+                $report->delete();
+            $client->delete();
+        }
+        return back()->with("success",'تم الحذف بنجاح');      
     } 
 }

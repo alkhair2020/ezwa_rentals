@@ -32,7 +32,7 @@ class CreateClientsTable extends Migration
             $table->float('discount')->default('0');
             $table->float('property_price')->default('0');
             $table->float('total')->default('0');
-            $table->integer('status')->default('1')->comment('0=expired, 1=not expired');
+            $table->integer('status')->default('1')->comment('0=expired, 1=not expired , 2=renew');
             $table->timestamps();
         });
     }

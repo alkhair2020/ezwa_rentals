@@ -14,17 +14,16 @@ class ReportController extends Controller
         if ($clientName=$request->clientName) {
             $reports = Report::whereHas('clients', function($query) use ($clientName) {
                 $query->where('name', 'like', '%' . $clientName . '%');
-            })->with('clients')->get();
-            // $reports = Report::whereDate('created_at', $request->from)->with('users')->with('clients')->with('properties')->with('receipts')->with('expenses')->orderBy('id', 'DESC')->get();
+            })->latest()->with('clients')->get();
         }elseif ($request->from && $request->to) {
             $from = Carbon::createFromFormat('Y-m-d', $request->from)->startOfDay();
             $to = Carbon::createFromFormat('Y-m-d', $request->to)->endOfDay();
             // $reports = Report::whereBetween('created_at', [$from, $to])->get();
-            $reports = Report::whereBetween('created_at', [$from, $to])->with('users')->with('clients')->with('properties')->with('receipts')->with('expenses')->orderBy('id', 'DESC')->get();
+            $reports = Report::whereBetween('created_at', [$from, $to])->with('users')->with('clients')->with('properties')->with('receipts')->with('expenses')->latest()->get();
         }elseif($request->from){
-            $reports = Report::whereDate('created_at', $request->from)->with('users')->with('clients')->with('properties')->with('receipts')->with('expenses')->orderBy('id', 'DESC')->get();
+            $reports = Report::whereDate('created_at', $request->from)->with('users')->with('clients')->with('properties')->with('receipts')->with('expenses')->latest()->get();
         }else{
-            $reports = Report::with('users')->with('clients')->with('properties')->with('receipts')->with('expenses')->orderBy('id', 'DESC')->get();
+            $reports = Report::with('users')->with('clients')->with('properties')->with('receipts')->with('expenses')->latest()->get();
         }
         // dd($reports);
         return view('admin.reports.print', ['reports' => $reports, 'from' => $request->from,'to' => $request->to]);

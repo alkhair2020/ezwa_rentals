@@ -200,11 +200,14 @@
                                                 @endif
                                             @endif
                                         </td>
-                                        <td ">
-                                            @if($report->receipts)
-                                            <?php $receipts+=$report->receipts->amount ;?>
-                                            {{$report->receipts->amount}}
-                                            @endif</td>
+                                        <td>
+                                            @if($report->status !=2)
+                                                @if($report->receipts)
+                                                    <?php $receipts+=$report->receipts->amount ;?>
+                                                    {{$report->receipts->amount}}
+                                                @endif
+                                            @endif
+                                        </td>
                                         <td >
                                             @if($report->expenses)
                                                 <?php $expenses+=$report->expenses->amount ;?>

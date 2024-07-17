@@ -81,12 +81,16 @@
                                     <td>{{$client->property_price}}</td>
                                     <td>{{$client->discount}}</td>
                                     <td>{{$client->total}}</td>
-                                    <td>{{$client->receipts->amount}}</td>
                                     <td>
-                                        @if($client->status==0)
-                                            منتهي
+                                        {{$client->receipts->amount}}
+                                    </td>
+                                    <td>
+                                        @if($client->status==1)
+                                            ساري
+                                        @elseif($client->status==2)
+                                            ساري(مجدد)   
                                         @else
-                                            ساري    
+                                        منتهي 
                                         @endif
                                     </td>
 
@@ -101,21 +105,25 @@
                                         @endcan
 
                                         @can('receipt-print')
-                                        @if($client->receipts)
-                                        <a class="btn btn-sm bg-success-light"
-                                            href="{{ url('admin/receipts/print', $client->receipts->id) }}">
-                                            <button type="button" class="btn btn-icon btn-secondary mr-1"> قبض</button>
-                                        </a>
-                                        @else
-                                        <a class="btn btn-sm bg-success-light" data-toggle="modal"
-                                            data-target="#create_receipts">
-                                            <!-- <a  class="btn btn-sm bg-success-light" href="{{ url('admin/clients/receipts', $client->id) }}"> -->
-                                            <button type="button" class="btn btn-icon btn-secondary mr-1"> قبض</button>
-                                        </a>
-                                        @endif
+                                            @if($client->status ==1)
+                                                @if($client->receipts)
+                                                <a class="btn btn-sm bg-success-light"
+                                                    href="{{ url('admin/receipts/print', $client->receipts->id) }}">
+                                                    <button type="button" class="btn btn-icon btn-secondary mr-1"> قبض</button>
+                                                </a>
+                                                @endif
+                                            @else
+                                                @if($client->receipts)
+                                                    <a class="btn btn-sm bg-success-light"
+                                                        href="#">
+                                                        <button type="button" class="btn btn-icon btn-secondary mr-1"> قبض</button>
+                                                    </a>
+                                                @endif
+                                            @endif
                                         @endcan
+
                                         @can('client-renew')
-                                        <a class="" data-toggle="modal"
+                                            <a class="" data-toggle="modal"
                                                     data-catid="{{ $client->id }}" 
                                                     data-target="#client_renew">
                                                     <button type="button" class="btn btn-icon btn-primary">تجديد</button>
