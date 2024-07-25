@@ -1,0 +1,179 @@
+<div class="form-body col-md-6"  >
+                            <div class="p-1" style="    border: 1px solid #e7e5e5;">
+                                <h4 class="form-section"><i class="ft-user"></i>المعلومات الاساسية</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="projectinput1">رقم الغرفة</label>
+                                            <input type="number" name="number" id="numberId" class="form-control" placeholder="اكتب رقم الغرفة"
+                                            name="fname">
+                                            <span id="numberError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="projectinput1">الطابق</label>
+                                            <input type="number" name="number" id="numberId" class="form-control" placeholder="اكتب رقم الطابق"
+                                            name="fname">
+                                            <span id="numberError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="projectinput1">عدد الغرف</label>
+                                            <input type="number" name="rooms" id="roomsId" class="form-control" placeholder="اكتب عدد الغرف"
+                                            name="fname">
+                                            <span id="roomsError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="projectinput4"> عدد دورات المياة</label>
+                                            <input type="number" name="baths" id="bathsId" class="form-control" placeholder=" عدد الحمامات" >
+                                            <span id="bathsError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="projectinput4">عدد الأسٍرة المفردة</label>
+                                            <input type="number" name="baths" id="bathsId" class="form-control" placeholder="عدد الأسٍرة المفردة" >
+                                            <span id="bathsError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="projectinput4">عدد الأسٍرة المزدوجة</label>
+                                            <input type="number" name="baths" id="bathsId" class="form-control" placeholder="عدد الأسٍرة المزدوجة" >
+                                            <span id="bathsError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="projectinput4">عدد الخزائن</label>
+                                            <input type="number" name="baths" id="bathsId" class="form-control" placeholder="عدد الخزائن" >
+                                            <span id="bathsError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="projectinput4">عدد التلفزيونات</label>
+                                            <input type="number" name="baths" id="bathsId" class="form-control" placeholder="عدد التلفزيونات" >
+                                            <span id="bathsError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="projectinput4">نوع المكيف</label>
+                                            <input type="number" name="baths" id="bathsId" class="form-control" placeholder="نوع المكيف" >
+                                            <span id="bathsError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="projectinput4">نوع الغرفة</label>
+                                            <input type="number" name="baths" id="bathsId" class="form-control" placeholder="" >
+                                            <span id="bathsError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-body col-md-6">
+                            <div class="p-1" style="    border: 1px solid #e7e5e5;">
+                                <h4 class="form-section"><i class="ft-user"></i> المميزات العامة</h4>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                                <div class="skin skin-square">
+                                                    <input type="checkbox" value="1" name="bathroom" id="radio1">
+                                                    <label for="radio1">دورات المياة</label>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                                <div class="skin skin-square">
+                                                    <input type="checkbox" value="1" name="bathroom" id="radio1">
+                                                    <label for="radio1">دورات المياة</label>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                                <div class="skin skin-square">
+                                                    <input type="checkbox" value="1" name="bathroom" id="radio1">
+                                                    <label for="radio1">دورات المياة</label>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                                <div class="skin skin-square">
+                                                    <input type="checkbox" value="1" name="bathroom" id="radio1">
+                                                    <label for="radio1">دورات المياة</label>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="p-1" style="    border: 1px solid #e7e5e5;">
+                                <h4 class="form-section"><i class="ft-user"></i> المميزات الخاصة</h4>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                                <div class="skin skin-square">
+                                                    <input type="checkbox" value="1" name="bathroom" id="radio1">
+                                                    <label for="radio1">دورات المياة</label>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                                <div class="skin skin-square">
+                                                    <input type="checkbox" value="1" name="bathroom" id="radio1">
+                                                    <label for="radio1">دورات المياة</label>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                                <div class="skin skin-square">
+                                                    <input type="checkbox" value="1" name="bathroom" id="radio1">
+                                                    <label for="radio1">دورات المياة</label>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                                <div class="skin skin-square">
+                                                    <input type="checkbox" value="1" name="bathroom" id="radio1">
+                                                    <label for="radio1">دورات المياة</label>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                                <div class="skin skin-square">
+                                                    <input type="checkbox" value="1" name="bathroom" id="radio1">
+                                                    <label for="radio1">دورات المياة</label>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-1" style="    border: 1px solid #e7e5e5;">
+                                <h4 class="form-section"><i class="ft-user"></i>ملاحظات</h4>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <textarea id="descriptionId" rows="1" class="form-control" name="description" placeholder=""></textarea>
+                                            <span id="descriptionError" class="error-message"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>

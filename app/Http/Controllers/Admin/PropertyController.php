@@ -8,13 +8,51 @@ use Illuminate\Http\Request;
 
 class PropertyController extends Controller
 {
-   
+    public function rooms()
+    {
+        $properties=Property::where('type',"room")->get();
+        return view('admin.properties.rooms',compact('properties'));
+    }
+    public function storeRoom(Request $request)
+    {
+        
+        $add = new Property;
+        $add->type    ='room';
+        $add->number    = $request->number;
+        $add->rooms    = $request->rooms;
+        $add->baths    = $request->baths;
+        $add->floor    = $request->floor;
+        $add->num_single_bed    = $request->num_single_bed;
+        $add->num_double_bed    = $request->num_double_bed;
+        $add->num_locker    = $request->num_locker;
+        $add->num_TVs    = $request->num_TVs;
+        $add->conditioner_type    = $request->conditioner_type;
+        $add->price_id     = $request->price_id;
+        $add->internet    = $request->internet;
+        $add->parking    = $request->parking;
+        $add->elevator    = $request->elevator;
+        $add->cleaning_rooms    = $request->cleaning_rooms;
+        $add->telephone_directory    = $request->telephone_directory;
+        $add->newspaper    = $request->newspaper;
+        $add->qibla    = $request->qibla;
+        $add->fridge    = $request->fridge;
+        $add->lounge    = $request->lounge;
+        $add->oven    = $request->oven;
+        $add->microwave    = $request->microwave;
+        $add->washing_machine    = $request->washing_machine;
+        $add->iron    = $request->iron;
+        $add->dining_table    = $request->dining_table;
+        $add->kitchen    = $request->kitchen;
+        $add->description    = $request->description;
+        $add->save();
+        return redirect()->route('properties.index')->with("message", 'تم الإضافة بنجاح');
+    }
      public function index()
     {
         $properties=Property::all();
         return view('admin.properties.index',compact('properties'));
     }
-
+   
     public function create()
     {
         return view('admin.properties.create');

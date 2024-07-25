@@ -156,7 +156,7 @@
                                 ?>
                                 @foreach ($reports as $report)
                                     <tr>
-                                        <td><p>@if($report->users){{$report->users->name}}@endif </p></td>
+                                        <td><p>@if($report->users){{$report->users->name}}@endif  {{$report->id}}</p></td>
                                         <td><p>@if($report->properties){{$report->properties->number}}@endif</p></td>
                                         <td><p>@if($report->clients){{$report->clients->id}}@endif </p></td>
                                         <td><p> @if($report->clients) {{$report->clients->start_date}}@endif </p></td>
@@ -166,7 +166,8 @@
                                                 ✓
                                             @elseif($report->status==2)
                                                 تجديد
-                                            @endif</td>
+                                            @endif
+                                        </td>
                                         <td >@if($report->status==0)
                                                 ✓
                                             @endif</td>
@@ -195,7 +196,7 @@
                                                 @if($report->payment_way=="cash")
                                                     @if($report->clients)
                                                         <?php $cash+=$report->clients->total ;?>
-                                                        {{$report->clients->total}}
+                                                        {{$report->clients->total}} 
                                                     @endif
                                                 @endif
                                             @endif
